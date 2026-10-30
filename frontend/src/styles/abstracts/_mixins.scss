@@ -1,0 +1,15 @@
+@use "variables" as vars;
+
+@mixin respond-to($device) {
+    $breakpoint: map-get(vars.$breakpoints, $device);
+
+    @if $breakpoint {
+        @media (min-width: $breakpoint) {
+            @content;
+        }
+    }
+
+    @else {
+        @error "Breakpoint '#{$device}' non défini.";
+    }
+}
