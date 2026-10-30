@@ -1,9 +1,16 @@
 import Button from "../../components/atoms/Button/Button";
 import Input from "../../components/atoms/Input/Input";
 import Checkbox from "../../components/atoms/Checkbox/Checkbox";
+import Select from "../../components/atoms/Select/Select";
 import "./DesignSystemPage.scss";
 
 function DesignSystemPage() {
+    const options = [
+        { label: "Forêt", value: "forest" },
+        { label: "Plage", value: "beach" },
+        { label: "Prairie", value: "meadow" },
+        { label: "Lac", value: "lake" },
+    ];
     return (
         <main className="design-system-page">
             <header className="design-system-page__header">
@@ -133,6 +140,71 @@ function DesignSystemPage() {
                         <Checkbox
                             label="Acceptation des conditions"
                             error="Tu dois accepter les conditions."
+                        />
+                    </div>
+                </div>
+            </section>
+
+            <section className="design-system-section">
+                <div className="design-system-section__header">
+                    <h2>Select</h2>
+                    <p>
+                        Menu déroulant permettant de sélectionner une option parmi plusieurs choix.
+                    </p>
+                </div>
+
+                <div className="design-system-section__content">
+                    <div className="design-system-section__input-example">
+                        <h3>État normal</h3>
+
+                        <Select
+                            label="Environnement"
+                            options={[
+                                { label: "Forêt", value: "forest" },
+                                { label: "Plage", value: "beach" },
+                                { label: "Prairie", value: "meadow" },
+                                { label: "Lac", value: "lake" },
+                            ]}
+                            hint="Sélectionne un environnement."
+                        />
+                    </div>
+
+                    <div className="design-system-section__input-example">
+                        <h3>Champ obligatoire</h3>
+
+                        <Select
+                            label="Difficulté"
+                            required
+                            placeholder="Choisir une difficulté"
+                            options={[
+                                { label: "Facile", value: "easy" },
+                                { label: "Modérée", value: "moderate" },
+                                { label: "Difficile", value: "hard" },
+                            ]}
+                        />
+                    </div>
+
+                    <div className="design-system-section__input-example">
+                        <h3>État d'erreur</h3>
+
+                        <Select
+                            label="Rayon de recherche"
+                            options={[
+                                { label: "5 km", value: "5" },
+                                { label: "10 km", value: "10" },
+                                { label: "20 km", value: "20" },
+                            ]}
+                            error="Veuillez sélectionner un rayon."
+                        />
+                    </div>
+
+                    <div className="design-system-section__input-example">
+                        <h3>État désactivé</h3>
+
+                        <Select
+                            label="Environnement indisponible"
+                            options={options}
+                            disabled
                         />
                     </div>
                 </div>
