@@ -3,6 +3,7 @@ import Input from "../../components/atoms/Input/Input";
 import Checkbox from "../../components/atoms/Checkbox/Checkbox";
 import Select from "../../components/atoms/Select/Select";
 import Badge from "../../components/atoms/Badge/Badge";
+import Radio from "../../components/atoms/Radio/Radio";
 import "./DesignSystemPage.scss";
 
 function DesignSystemPage() {
@@ -249,6 +250,70 @@ function DesignSystemPage() {
                         <Badge variant="warning" icon="⚠️">
                             Vigilance
                         </Badge>
+                    </div>
+                </div>
+            </section>
+
+            <section className="design-system-section">
+                <div className="design-system-section__header">
+                    <h2>Radio</h2>
+                    <p>
+                        Élément permettant de sélectionner une seule option parmi plusieurs
+                        possibilités.
+                    </p>
+                </div>
+
+                <div className="design-system-section__content">
+                    <h3>États</h3>
+
+                    <div className="design-system-section__examples">
+                        <Radio
+                            name="difficulty-example"
+                            value="easy"
+                            label="Facile"
+                        />
+
+                        <Radio
+                            name="difficulty-example"
+                            value="moderate"
+                            label="Modéré"
+                            defaultChecked
+                        />
+
+                        <Radio
+                            name="difficulty-example"
+                            value="difficult"
+                            label="Difficile"
+                        />
+
+                        <Radio
+                            name="difficulty-disabled"
+                            value="disabled"
+                            label="Option indisponible"
+                            disabled
+                        />
+                    </div>
+
+                    <h3>Avec indication</h3>
+
+                    <div className="design-system-section__examples">
+                        <Radio
+                            name="difficulty-hint"
+                            value="easy"
+                            label="Facile"
+                            hint="Parcours accessible à tous"
+                        />
+                    </div>
+
+                    <h3>Avec erreur</h3>
+
+                    <div className="design-system-section__examples">
+                        <Radio
+                            name="difficulty-error"
+                            value="easy"
+                            label="Facile"
+                            error="Veuillez sélectionner une difficulté"
+                        />
                     </div>
                 </div>
             </section>
