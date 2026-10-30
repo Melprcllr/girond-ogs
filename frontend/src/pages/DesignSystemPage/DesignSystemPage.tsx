@@ -6,6 +6,7 @@ import Badge from "../../components/atoms/Badge/Badge";
 import Radio from "../../components/atoms/Radio/Radio";
 import { useState } from "react";
 import RadioGroup from "../../components/molecules/RadioGroup/RadioGroup";
+import Textarea from "../../components/atoms/Textarea/Textarea";
 import "./DesignSystemPage.scss";
 
 function DesignSystemPage() {
@@ -387,6 +388,58 @@ function DesignSystemPage() {
                     </div>
                 </div>
             </section>
+
+            <section className="design-system-section">
+                <div className="design-system-section__header">
+                    <h2>Textarea</h2>
+                    <p>
+                        Zone de saisie multiligne permettant aux visiteurs
+                        de rédiger un message dans le formulaire de contact.
+                    </p>
+                </div>
+
+                <div className="design-system-section__content">
+                    <h3>États</h3>
+
+                    <div className="design-system-section__examples">
+                        <Textarea
+                            label="Votre message"
+                            placeholder="Écrivez votre message ici..."
+                        />
+
+                        <Textarea
+                            label="Votre message"
+                            defaultValue="Bonjour, je souhaiterais obtenir davantage d'informations sur un lieu."
+                        />
+
+                        <Textarea
+                            label="Votre message"
+                            placeholder="Saisie indisponible"
+                            disabled
+                        />
+                    </div>
+
+                    <h3>Avec indication</h3>
+
+                    <div className="design-system-section__examples">
+                        <Textarea
+                            label="Votre message"
+                            hint="Décrivez votre demande afin que nous puissions vous répondre au mieux."
+                            placeholder="Écrivez votre message..."
+                        />
+                    </div>
+
+                    <h3>Avec erreur</h3>
+
+                    <div className="design-system-section__examples">
+                        <Textarea
+                            label="Votre message"
+                            error="Veuillez renseigner votre message."
+                        />
+                    </div>
+                </div>
+            </section>
+            
 
         </main>
     );
