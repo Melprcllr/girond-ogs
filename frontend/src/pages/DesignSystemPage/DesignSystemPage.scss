@@ -51,4 +51,13 @@
         flex-wrap: wrap;
         gap: var(--spacing-3);
     }
+
+    &__input-example {
+        width: 100%;
+        max-width: 420px;
+
+        h3 {
+            margin-bottom: var(--spacing-3);
+        }
+    }
 }

@@ -1,4 +1,5 @@
 import Button from "../../components/atoms/Button/Button";
+import Input from "../../components/atoms/Input/Input";
 import "./DesignSystemPage.scss";
 
 function DesignSystemPage() {
@@ -45,6 +46,59 @@ function DesignSystemPage() {
                     </div>
                 </div>
             </section>
+
+            <section className="design-system-section">
+                <div className="design-system-section__header">
+                    <h2>Input</h2>
+                    <p>
+                        Champ de saisie permettant à l'utilisateur de renseigner une information.
+                    </p>
+                </div>
+
+                <div className="design-system-section__content">
+                    <div className="design-system-section__input-example">
+                        <h3>État normal</h3>
+
+                        <Input
+                            label="Ville"
+                            placeholder="Ex : Bordeaux"
+                            hint="Saisis une ville ou une adresse."
+                        />
+                    </div>
+
+                    <div className="design-system-section__input-example">
+                        <h3>Champ obligatoire</h3>
+
+                        <Input
+                            label="Adresse e-mail"
+                            type="email"
+                            placeholder="exemple@email.fr"
+                            required
+                        />
+                    </div>
+
+                    <div className="design-system-section__input-example">
+                        <h3>État d'erreur</h3>
+
+                        <Input
+                            label="Recherche"
+                            placeholder="Rechercher une balade..."
+                            error="Une erreur est survenue."
+                        />
+                    </div>
+
+                    <div className="design-system-section__input-example">
+                        <h3>État désactivé</h3>
+
+                        <Input
+                            label="Champ désactivé"
+                            placeholder="Indisponible"
+                            disabled
+                        />
+                    </div>
+                </div>
+            </section>
+
         </main>
     );
 }
