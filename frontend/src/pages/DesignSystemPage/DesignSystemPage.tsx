@@ -1,5 +1,6 @@
 import Button from "../../components/atoms/Button/Button";
 import Input from "../../components/atoms/Input/Input";
+import Checkbox from "../../components/atoms/Checkbox/Checkbox";
 import "./DesignSystemPage.scss";
 
 function DesignSystemPage() {
@@ -94,6 +95,44 @@ function DesignSystemPage() {
                             label="Champ désactivé"
                             placeholder="Indisponible"
                             disabled
+                        />
+                    </div>
+                </div>
+            </section>
+
+            <section className="design-system-section">
+                <div className="design-system-section__header">
+                    <h2>Checkbox</h2>
+                    <p>
+                        Case à cocher permettant de sélectionner une ou plusieurs options.
+                    </p>
+                </div>
+
+                <div className="design-system-section__content">
+                    <h3>États</h3>
+
+                    <div className="design-system-section__examples">
+                        <Checkbox label="Forêt" />
+                        <Checkbox label="Plage" defaultChecked />
+                        <Checkbox label="Prairie" disabled />
+                        <Checkbox label="Lac" defaultChecked disabled />
+                    </div>
+
+                    <h3>Avec indication</h3>
+
+                    <div className="design-system-section__examples">
+                        <Checkbox
+                            label="Présence d'eau"
+                            hint="Ruisseau, rivière, lac ou étang."
+                        />
+                    </div>
+
+                    <h3>Avec erreur</h3>
+
+                    <div className="design-system-section__examples">
+                        <Checkbox
+                            label="Acceptation des conditions"
+                            error="Tu dois accepter les conditions."
                         />
                     </div>
                 </div>
