@@ -1,0 +1,108 @@
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2);
+
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+
+    font-family: var(--font-body);
+    font-weight: 600;
+    line-height: 1.2;
+
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+
+    &:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 3px;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    // Variants
+
+    &--primary {
+        background-color: var(--color-primary);
+        color: var(--color-text-inverse);
+
+        &:hover:not(:disabled) {
+            background-color: #254736;
+        }
+    }
+
+    &--secondary {
+        background-color: var(--color-surface);
+        color: var(--color-primary);
+        border-color: var(--color-primary);
+
+        &:hover:not(:disabled) {
+            background-color: var(--color-secondary);
+        }
+    }
+
+    &--tertiary {
+        background-color: transparent;
+        color: var(--color-text-primary);
+
+        &:hover:not(:disabled) {
+            background-color: var(--color-secondary);
+        }
+    }
+
+    &--danger {
+        background-color: var(--color-danger);
+        color: #9b3931;
+
+        &:hover:not(:disabled) {
+            background-color: #edc4bf;
+        }
+    }
+
+    // Sizes
+
+    &--small {
+        min-height: 32px;
+        padding: var(--spacing-2) var(--spacing-3);
+        font-size: 0.8125rem;
+    }
+
+    &--medium {
+        min-height: 40px;
+        padding: var(--spacing-2) var(--spacing-4);
+        font-size: 0.9375rem;
+    }
+
+    &--large {
+        min-height: 48px;
+        padding: var(--spacing-3) var(--spacing-6);
+        font-size: 1rem;
+    }
+
+    // Full width
+
+    &--full-width {
+        width: 100%;
+    }
+
+    // Icons
+
+    &__icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+}

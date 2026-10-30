@@ -1,9 +1,7 @@
+import DesignSystemPage from "./pages/DesignSystemPage/DesignSystemPage";
+
 function App() {
-  return (
-    <main>
-      <h1>Girond'ogs</h1>
-    </main>
-  );
+  return <DesignSystemPage />;
 }
 
 export default App;
