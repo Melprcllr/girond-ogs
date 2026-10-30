@@ -1,0 +1,39 @@
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3);
+    min-width: 0;
+    padding: 0;
+    border: none;
+
+    &__label {
+        margin-bottom: var(--spacing-1);
+        color: var(--color-text-primary);
+        font-family: var(--font-body);
+        font-size: 0.9375rem;
+        font-weight: 600;
+    }
+
+    &__options {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-3);
+    }
+
+    &__hint,
+    &__error {
+        font-size: 0.8125rem;
+    }
+
+    &__hint {
+        color: var(--color-text-secondary);
+    }
+
+    &__error {
+        color: #963c35;
+    }
+
+    &:disabled {
+        opacity: 0.65;
+    }
+}

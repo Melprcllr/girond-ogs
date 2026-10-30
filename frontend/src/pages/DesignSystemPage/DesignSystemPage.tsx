@@ -4,6 +4,8 @@ import Checkbox from "../../components/atoms/Checkbox/Checkbox";
 import Select from "../../components/atoms/Select/Select";
 import Badge from "../../components/atoms/Badge/Badge";
 import Radio from "../../components/atoms/Radio/Radio";
+import { useState } from "react";
+import RadioGroup from "../../components/molecules/RadioGroup/RadioGroup";
 import "./DesignSystemPage.scss";
 
 function DesignSystemPage() {
@@ -12,6 +14,13 @@ function DesignSystemPage() {
         { label: "Plage", value: "beach" },
         { label: "Prairie", value: "meadow" },
         { label: "Lac", value: "lake" },
+    ];
+    const [difficulty, setDifficulty] = useState("moderate");
+
+    const difficultyOptions = [
+        { label: "Facile", value: "easy" },
+        { label: "Modéré", value: "moderate" },
+        { label: "Difficile", value: "difficult" },
     ];
     return (
         <main className="design-system-page">
@@ -313,6 +322,67 @@ function DesignSystemPage() {
                             value="easy"
                             label="Facile"
                             error="Veuillez sélectionner une difficulté"
+                        />
+                    </div>
+                </div>
+            </section>
+
+            <section className="design-system-section">
+                <div className="design-system-section__header">
+                    <h2>RadioGroup</h2>
+                    <p>
+                        Groupe de boutons radio permettant de sélectionner une seule
+                        option parmi plusieurs possibilités.
+                    </p>
+                </div>
+
+                <div className="design-system-section__content">
+                    <h3>Groupe interactif</h3>
+
+                    <div className="design-system-section__examples">
+                        <RadioGroup
+                            label="Difficulté du parcours"
+                            name="design-difficulty"
+                            options={difficultyOptions}
+                            value={difficulty}
+                            onChange={setDifficulty}
+                            hint="Sélectionne le niveau qui te convient."
+                        />
+
+                        <p>
+                            Valeur sélectionnée : <strong>{difficulty}</strong>
+                        </p>
+                    </div>
+
+                    <h3>État désactivé</h3>
+
+                    <div className="design-system-section__examples">
+                        <RadioGroup
+                            label="Disponibilité"
+                            name="design-availability"
+                            options={[
+                                { label: "Disponible", value: "available" },
+                                { label: "Indisponible", value: "unavailable" },
+                            ]}
+                            value="available"
+                            onChange={() => { }}
+                            disabled
+                        />
+                    </div>
+
+                    <h3>Avec erreur</h3>
+
+                    <div className="design-system-section__examples">
+                        <RadioGroup
+                            label="Type de parcours"
+                            name="design-route"
+                            options={[
+                                { label: "Boucle", value: "loop" },
+                                { label: "Aller-retour", value: "return" },
+                            ]}
+                            value=""
+                            onChange={() => { }}
+                            error="Veuillez sélectionner un type de parcours."
                         />
                     </div>
                 </div>
