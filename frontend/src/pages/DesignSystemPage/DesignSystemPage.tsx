@@ -2,6 +2,7 @@ import Button from "../../components/atoms/Button/Button";
 import Input from "../../components/atoms/Input/Input";
 import Checkbox from "../../components/atoms/Checkbox/Checkbox";
 import Select from "../../components/atoms/Select/Select";
+import Badge from "../../components/atoms/Badge/Badge";
 import "./DesignSystemPage.scss";
 
 function DesignSystemPage() {
@@ -206,6 +207,48 @@ function DesignSystemPage() {
                             options={options}
                             disabled
                         />
+                    </div>
+                </div>
+            </section>
+
+            <section className="design-system-section">
+                <div className="design-system-section__header">
+                    <h2>Badge</h2>
+                    <p>
+                        Élément visuel permettant de présenter une information courte
+                        ou un statut.
+                    </p>
+                </div>
+
+                <div className="design-system-section__content">
+                    <h3>Variantes</h3>
+
+                    <div className="design-system-section__examples">
+                        <Badge variant="neutral">Information</Badge>
+                        <Badge variant="success">Chiens autorisés</Badge>
+                        <Badge variant="warning">Laisse obligatoire</Badge>
+                        <Badge variant="danger">Baignade déconseillée</Badge>
+                        <Badge variant="info">Zone ombragée</Badge>
+                    </div>
+
+                    <h3>Tailles</h3>
+
+                    <div className="design-system-section__examples">
+                        <Badge size="small">Small</Badge>
+                        <Badge size="medium">Medium</Badge>
+                        <Badge size="large">Large</Badge>
+                    </div>
+
+                    <h3>Avec icône</h3>
+
+                    <div className="design-system-section__examples">
+                        <Badge variant="success" icon="🐾">
+                            Balade canine
+                        </Badge>
+
+                        <Badge variant="warning" icon="⚠️">
+                            Vigilance
+                        </Badge>
                     </div>
                 </div>
             </section>
