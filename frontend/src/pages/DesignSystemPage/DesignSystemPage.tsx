@@ -16,6 +16,7 @@ import type { FilterSelection } from "../../components/organisms/FilterPanel/Fil
 import PlaceCard from "../../components/organisms/PlaceCard/PlaceCard";
 import type { Place } from "../../types/Place";
 import PlacesGrid from "../../components/organisms/PlacesGrid/PlacesGrid";
+import PlacesMap from '../../components/organisms/PlacesMap/PlacesMap';
 
 import "./DesignSystemPage.scss";
 
@@ -74,6 +75,8 @@ function DesignSystemPage() {
         description:
             "Un espace naturel agréable avec une forêt ombragée et un point d'eau à proximité.",
         imageUrl: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e",
+        latitude: 44.988,
+        longitude: -1.085,
 
         characteristics: {
             vineyards: false,
@@ -107,6 +110,8 @@ function DesignSystemPage() {
             postalCode: "33680",
             description: "Un espace naturel avec forêt ombragée et point d'eau.",
             imageUrl: "/images/demo-lacanau.jpg",
+            latitude: 44.988,
+            longitude: -1.085,
             characteristics: {
                 vineyards: false,
                 forest: true,
@@ -131,6 +136,8 @@ function DesignSystemPage() {
             postalCode: "33680",
             description: "Un environnement naturel entre océan et forêt.",
             imageUrl: "/images/demo-porge.jpg",
+            latitude: 44.988,
+            longitude: -1.085,
             characteristics: {
                 vineyards: false,
                 forest: true,
@@ -155,6 +162,8 @@ function DesignSystemPage() {
             postalCode: "33250",
             description: "Un paysage viticole ouvert au cœur du Médoc.",
             imageUrl: "/images/demo-medoc.jpg",
+            latitude: 44.988,
+            longitude: -1.085,
             characteristics: {
                 vineyards: true,
                 forest: false,
@@ -179,6 +188,8 @@ function DesignSystemPage() {
             postalCode: "33260",
             description: "Un environnement forestier avec de nombreuses zones ombragées.",
             imageUrl: "/images/demo-foret.jpg",
+            latitude: 44.988,
+            longitude: -1.085,
             characteristics: {
                 vineyards: false,
                 forest: true,
@@ -871,6 +882,23 @@ function DesignSystemPage() {
                 </div>
             </section>
 
+            <section className="design-system-section">
+                <div className="design-system-section__header">
+                    <h2>PlacesMap</h2>
+                    <p>
+                        Carte interactive des lieux dog-friendly avec Leaflet et OpenStreetMap.
+                    </p>
+                </div>
+
+                <div className="design-system-section__content">
+                    <PlacesMap
+                        places={demoPlaces}
+                        onPlaceClick={(placeId) => {
+                            console.log('Lieu sélectionné :', placeId);
+                        }}
+                    />
+                </div>
+            </section>
 
         </main>
     );

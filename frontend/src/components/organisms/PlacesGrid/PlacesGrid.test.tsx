@@ -12,6 +12,8 @@ const mockPlaces: Place[] = [
         postalCode: "33680",
         description: "Un espace naturel avec un point d'eau.",
         imageUrl: "/images/lacanau.jpg",
+        latitude: 44.988,
+        longitude: -1.085,
         characteristics: {
             vineyards: false,
             forest: true,
@@ -36,6 +38,8 @@ const mockPlaces: Place[] = [
         postalCode: "33680",
         description: "Une plage au cœur de la nature.",
         imageUrl: "/images/porge.jpg",
+        latitude: 44.872,
+        longitude: -1.175,
         characteristics: {
             vineyards: false,
             forest: true,
