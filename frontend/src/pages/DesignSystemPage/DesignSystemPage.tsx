@@ -15,6 +15,7 @@ import FilterPanel from "../../components/organisms/FilterPanel/FilterPanel";
 import type { FilterSelection } from "../../components/organisms/FilterPanel/FilterPanel";
 import PlaceCard from "../../components/organisms/PlaceCard/PlaceCard";
 import type { Place } from "../../types/Place";
+import PlacesGrid from "../../components/organisms/PlacesGrid/PlacesGrid";
 
 import "./DesignSystemPage.scss";
 
@@ -96,6 +97,121 @@ function DesignSystemPage() {
 
     const [isDemoFavorite, setIsDemoFavorite] = useState(false);
     const [selectedDemoPlace, setSelectedDemoPlace] = useState<string | null>(null);
+
+
+    const demoPlaces: Place[] = [
+        {
+            id: "lac-lacanau",
+            name: "Lac de Lacanau",
+            commune: "Lacanau",
+            postalCode: "33680",
+            description: "Un espace naturel avec forêt ombragée et point d'eau.",
+            imageUrl: "/images/demo-lacanau.jpg",
+            characteristics: {
+                vineyards: false,
+                forest: true,
+                beach: false,
+                shadedAreas: true,
+                water: true,
+            },
+            regulations: {
+                dogsOnLeash: false,
+                dogsProhibited: false,
+            },
+            risks: {
+                processionaryCaterpillars: true,
+                farmAnimals: false,
+                cyanobacteria: false,
+            },
+        },
+        {
+            id: "plage-porge",
+            name: "Plage du Porge",
+            commune: "Le Porge",
+            postalCode: "33680",
+            description: "Un environnement naturel entre océan et forêt.",
+            imageUrl: "/images/demo-porge.jpg",
+            characteristics: {
+                vineyards: false,
+                forest: true,
+                beach: true,
+                shadedAreas: false,
+                water: true,
+            },
+            regulations: {
+                dogsOnLeash: true,
+                dogsProhibited: false,
+            },
+            risks: {
+                processionaryCaterpillars: false,
+                farmAnimals: false,
+                cyanobacteria: false,
+            },
+        },
+        {
+            id: "vignobles-medoc",
+            name: "Vignobles du Médoc",
+            commune: "Pauillac",
+            postalCode: "33250",
+            description: "Un paysage viticole ouvert au cœur du Médoc.",
+            imageUrl: "/images/demo-medoc.jpg",
+            characteristics: {
+                vineyards: true,
+                forest: false,
+                beach: false,
+                shadedAreas: false,
+                water: false,
+            },
+            regulations: {
+                dogsOnLeash: true,
+                dogsProhibited: false,
+            },
+            risks: {
+                processionaryCaterpillars: false,
+                farmAnimals: true,
+                cyanobacteria: false,
+            },
+        },
+        {
+            id: "foret-pilat",
+            name: "Forêt du Pilat",
+            commune: "La Teste-de-Buch",
+            postalCode: "33260",
+            description: "Un environnement forestier avec de nombreuses zones ombragées.",
+            imageUrl: "/images/demo-foret.jpg",
+            characteristics: {
+                vineyards: false,
+                forest: true,
+                beach: false,
+                shadedAreas: true,
+                water: false,
+            },
+            regulations: {
+                dogsOnLeash: false,
+                dogsProhibited: false,
+            },
+            risks: {
+                processionaryCaterpillars: true,
+                farmAnimals: false,
+                cyanobacteria: false,
+            },
+        },
+    ];
+
+    const [demoFavoriteIds, setDemoFavoriteIds] = useState<string[]>([]);
+    const [selectedGridPlace, setSelectedGridPlace] = useState<string | null>(null);
+
+    const handleDemoFavorite = (placeId: string) => {
+        setDemoFavoriteIds((current) =>
+            current.includes(placeId)
+                ? current.filter((id) => id !== placeId)
+                : [...current, placeId]
+        );
+    };
+
+    const handleGridPlaceClick = (placeId: string) => {
+        setSelectedGridPlace(placeId);
+    };
 
     return (
         <main className="design-system-page">
@@ -708,6 +824,53 @@ function DesignSystemPage() {
                     </div>
                 </div>
             </section>
+
+
+            <section className="design-system-section">
+                <div className="design-system-section__header">
+                    <h2>PlacesGrid</h2>
+                    <p>
+                        Grille responsive permettant d'afficher plusieurs lieux
+                        à partir du composant PlaceCard.
+                    </p>
+                </div>
+
+                <div className="design-system-section__content">
+                    <h3>Exemple interactif</h3>
+
+                    <div className="design-system-section__examples">
+                        <PlacesGrid
+                            places={demoPlaces}
+                            favoriteIds={demoFavoriteIds}
+                            onToggleFavorite={handleDemoFavorite}
+                            onPlaceClick={handleGridPlaceClick}
+                        />
+
+                        {selectedGridPlace && (
+                            <p role="status">
+                                Lieu sélectionné :{" "}
+                                {demoPlaces.find(
+                                    (place) => place.id === selectedGridPlace
+                                )?.name}
+                                {" — "}
+                                (la navigation vers la fiche sera ajoutée ultérieurement).
+                            </p>
+                        )}
+                    </div>
+
+                    <h3>État vide</h3>
+
+                    <div className="design-system-section__examples">
+                        <PlacesGrid
+                            places={[]}
+                            favoriteIds={[]}
+                            onToggleFavorite={() => { }}
+                            onPlaceClick={() => { }}
+                        />
+                    </div>
+                </div>
+            </section>
+
 
         </main>
     );
