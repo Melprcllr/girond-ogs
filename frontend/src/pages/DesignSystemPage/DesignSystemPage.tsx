@@ -10,6 +10,7 @@ import Textarea from "../../components/atoms/Textarea/Textarea";
 import CheckboxGroup from "../../components/molecules/CheckboxGroup/CheckboxGroup";
 import SearchBar from "../../components/molecules/SearchBar/SearchBar";
 import type { Commune } from "../../components/molecules/SearchBar/SearchBar";
+import FilterAccordion from "../../components/molecules/FilterAccordion/FilterAccordion";
 
 import "./DesignSystemPage.scss";
 
@@ -27,6 +28,7 @@ function DesignSystemPage() {
         { label: "Modéré", value: "moderate" },
         { label: "Difficile", value: "difficult" },
     ];
+
     const [selectedEnvironments, setSelectedEnvironments] = useState([
         "forest",
         "river",
@@ -39,6 +41,7 @@ function DesignSystemPage() {
         { label: "Rivière", value: "river" },
         { label: "Lac ou étang", value: "lake" },
     ];
+
     const demoCommunes: Commune[] = [
         { id: "canejan", name: "Canéjan", postalCodes: ["33610"] },
         { id: "merignac", name: "Mérignac", postalCodes: ["33700"] },
@@ -48,6 +51,11 @@ function DesignSystemPage() {
     ];
     const [selectedCommune, setSelectedCommune] =
         useState<Commune | null>(null);
+
+    const [environmentOpen, setEnvironmentOpen] = useState(true);
+    const [regulationOpen, setRegulationOpen] = useState(false);
+    const [risksOpen, setRisksOpen] = useState(false);
+
     return (
         <main className="design-system-page">
             <header className="design-system-page__header">
@@ -560,6 +568,48 @@ function DesignSystemPage() {
                             onClear={() => { }}
                             disabled
                         />
+                    </div>
+                </div>
+            </section>
+
+            <section className="design-system-section">
+                <div className="design-system-section__header">
+                    <h2>FilterAccordion</h2>
+                    <p>
+                        Menu dépliant permettant de regrouper les filtres
+                        par catégorie et de les afficher à la demande.
+                    </p>
+                </div>
+
+                <div className="design-system-section__content">
+                    <h3>Catégories de filtres</h3>
+
+                    <div className="design-system-section__examples">
+                        <FilterAccordion
+                            title="Environnement"
+                            isOpen={environmentOpen}
+                            onToggle={() => setEnvironmentOpen((open) => !open)}
+                            activeCount={2}
+                        >
+                            <p>Contenu de la catégorie Environnement.</p>
+                        </FilterAccordion>
+
+                        <FilterAccordion
+                            title="Chiens et réglementation"
+                            isOpen={regulationOpen}
+                            onToggle={() => setRegulationOpen((open) => !open)}
+                            activeCount={1}
+                        >
+                            <p>Contenu de la catégorie Chiens et réglementation.</p>
+                        </FilterAccordion>
+
+                        <FilterAccordion
+                            title="Risques et vigilance"
+                            isOpen={risksOpen}
+                            onToggle={() => setRisksOpen((open) => !open)}
+                        >
+                            <p>Contenu de la catégorie Risques et vigilance.</p>
+                        </FilterAccordion>
                     </div>
                 </div>
             </section>
