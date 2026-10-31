@@ -8,6 +8,9 @@ import Radio from "../../components/atoms/Radio/Radio";
 import RadioGroup from "../../components/molecules/RadioGroup/RadioGroup";
 import Textarea from "../../components/atoms/Textarea/Textarea";
 import CheckboxGroup from "../../components/molecules/CheckboxGroup/CheckboxGroup";
+import SearchBar from "../../components/molecules/SearchBar/SearchBar";
+import type { Commune } from "../../components/molecules/SearchBar/SearchBar";
+
 import "./DesignSystemPage.scss";
 
 function DesignSystemPage() {
@@ -28,7 +31,6 @@ function DesignSystemPage() {
         "forest",
         "river",
     ]);
-
     const environmentOptions = [
         { label: "Forêt", value: "forest" },
         { label: "Prairie", value: "meadow" },
@@ -37,6 +39,15 @@ function DesignSystemPage() {
         { label: "Rivière", value: "river" },
         { label: "Lac ou étang", value: "lake" },
     ];
+    const demoCommunes: Commune[] = [
+        { id: "canejan", name: "Canéjan", postalCodes: ["33610"] },
+        { id: "merignac", name: "Mérignac", postalCodes: ["33700"] },
+        { id: "pessac", name: "Pessac", postalCodes: ["33600"] },
+        { id: "talence", name: "Talence", postalCodes: ["33400"] },
+        { id: "gradignan", name: "Gradignan", postalCodes: ["33170"] },
+    ];
+    const [selectedCommune, setSelectedCommune] =
+        useState<Commune | null>(null);
     return (
         <main className="design-system-page">
             <header className="design-system-page__header">
@@ -513,6 +524,41 @@ function DesignSystemPage() {
                             value={[]}
                             onChange={() => { }}
                             error="Veuillez renseigner au moins une caractéristique."
+                        />
+                    </div>
+                </div>
+            </section>
+
+            <section className="design-system-section">
+                <div className="design-system-section__header">
+                    <h2>SearchBar</h2>
+                    <p>
+                        Recherche géographique permettant de trouver une commune
+                        de Gironde par son nom ou son code postal.
+                    </p>
+                </div>
+
+                <div className="design-system-section__content">
+                    <h3>Recherche interactive</h3>
+
+                    <div className="design-system-section__examples">
+                        <SearchBar
+                            communes={demoCommunes}
+                            selectedCommune={selectedCommune}
+                            onSelect={setSelectedCommune}
+                            onClear={() => setSelectedCommune(null)}
+                        />
+                    </div>
+
+                    <h3>État désactivé</h3>
+
+                    <div className="design-system-section__examples">
+                        <SearchBar
+                            communes={demoCommunes}
+                            selectedCommune={null}
+                            onSelect={() => { }}
+                            onClear={() => { }}
+                            disabled
                         />
                     </div>
                 </div>
