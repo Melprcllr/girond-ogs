@@ -11,6 +11,8 @@ import CheckboxGroup from "../../components/molecules/CheckboxGroup/CheckboxGrou
 import SearchBar from "../../components/molecules/SearchBar/SearchBar";
 import type { Commune } from "../../components/molecules/SearchBar/SearchBar";
 import FilterAccordion from "../../components/molecules/FilterAccordion/FilterAccordion";
+import FilterPanel from "../../components/organisms/FilterPanel/FilterPanel";
+import type { FilterSelection } from "../../components/organisms/FilterPanel/FilterPanel";
 
 import "./DesignSystemPage.scss";
 
@@ -55,6 +57,11 @@ function DesignSystemPage() {
     const [environmentOpen, setEnvironmentOpen] = useState(true);
     const [regulationOpen, setRegulationOpen] = useState(false);
     const [risksOpen, setRisksOpen] = useState(false);
+
+    const [filterSelection, setFilterSelection] = useState<FilterSelection>({
+        included: [],
+        excluded: [],
+    });
 
     return (
         <main className="design-system-page">
@@ -610,6 +617,27 @@ function DesignSystemPage() {
                         >
                             <p>Contenu de la catégorie Risques et vigilance.</p>
                         </FilterAccordion>
+                    </div>
+                </div>
+            </section>
+
+            <section className="design-system-section">
+                <div className="design-system-section__header">
+                    <h2>FilterPanel</h2>
+                    <p>
+                        Panneau de filtres permettant de sélectionner les caractéristiques
+                        recherchées et celles à éviter pour les lieux.
+                    </p>
+                </div>
+
+                <div className="design-system-section__content">
+                    <h3>Exemple interactif</h3>
+
+                    <div className="design-system-section__examples">
+                        <FilterPanel
+                            value={filterSelection}
+                            onChange={setFilterSelection}
+                        />
                     </div>
                 </div>
             </section>
