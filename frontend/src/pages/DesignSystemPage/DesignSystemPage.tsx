@@ -1,12 +1,13 @@
+import { useState } from "react";
 import Button from "../../components/atoms/Button/Button";
 import Input from "../../components/atoms/Input/Input";
 import Checkbox from "../../components/atoms/Checkbox/Checkbox";
 import Select from "../../components/atoms/Select/Select";
 import Badge from "../../components/atoms/Badge/Badge";
 import Radio from "../../components/atoms/Radio/Radio";
-import { useState } from "react";
 import RadioGroup from "../../components/molecules/RadioGroup/RadioGroup";
 import Textarea from "../../components/atoms/Textarea/Textarea";
+import CheckboxGroup from "../../components/molecules/CheckboxGroup/CheckboxGroup";
 import "./DesignSystemPage.scss";
 
 function DesignSystemPage() {
@@ -22,6 +23,19 @@ function DesignSystemPage() {
         { label: "Facile", value: "easy" },
         { label: "Modéré", value: "moderate" },
         { label: "Difficile", value: "difficult" },
+    ];
+    const [selectedEnvironments, setSelectedEnvironments] = useState([
+        "forest",
+        "river",
+    ]);
+
+    const environmentOptions = [
+        { label: "Forêt", value: "forest" },
+        { label: "Prairie", value: "meadow" },
+        { label: "Plage", value: "beach" },
+        { label: "Vignoble", value: "vineyard" },
+        { label: "Rivière", value: "river" },
+        { label: "Lac ou étang", value: "lake" },
     ];
     return (
         <main className="design-system-page">
@@ -439,7 +453,70 @@ function DesignSystemPage() {
                     </div>
                 </div>
             </section>
-            
+
+
+            <section className="design-system-section">
+                <div className="design-system-section__header">
+                    <h2>CheckboxGroup</h2>
+                    <p>
+                        Groupe de cases à cocher permettant de sélectionner
+                        plusieurs caractéristiques d'un même lieu.
+                    </p>
+                </div>
+
+                <div className="design-system-section__content">
+                    <h3>Groupe interactif</h3>
+
+                    <div className="design-system-section__examples">
+                        <CheckboxGroup
+                            label="Environnements présents"
+                            name="design-environments"
+                            options={environmentOptions}
+                            value={selectedEnvironments}
+                            onChange={setSelectedEnvironments}
+                            hint="Plusieurs environnements peuvent être sélectionnés."
+                        />
+
+                        <p>
+                            Caractéristiques sélectionnées :{" "}
+                            <strong>{selectedEnvironments.length}</strong>
+                        </p>
+                    </div>
+
+                    <h3>État désactivé</h3>
+
+                    <div className="design-system-section__examples">
+                        <CheckboxGroup
+                            label="Équipements disponibles"
+                            name="design-equipment"
+                            options={[
+                                { label: "Parking", value: "parking" },
+                                { label: "Point d'eau potable", value: "water" },
+                                { label: "Aire de pique-nique", value: "picnic" },
+                            ]}
+                            value={["parking"]}
+                            onChange={() => { }}
+                            disabled
+                        />
+                    </div>
+
+                    <h3>Avec erreur</h3>
+
+                    <div className="design-system-section__examples">
+                        <CheckboxGroup
+                            label="Caractéristiques du lieu"
+                            name="design-characteristics"
+                            options={[
+                                { label: "Ombragé", value: "shaded" },
+                                { label: "Présence d'eau", value: "water" },
+                            ]}
+                            value={[]}
+                            onChange={() => { }}
+                            error="Veuillez renseigner au moins une caractéristique."
+                        />
+                    </div>
+                </div>
+            </section>
 
         </main>
     );
