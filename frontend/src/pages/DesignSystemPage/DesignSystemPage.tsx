@@ -13,6 +13,8 @@ import type { Commune } from "../../components/molecules/SearchBar/SearchBar";
 import FilterAccordion from "../../components/molecules/FilterAccordion/FilterAccordion";
 import FilterPanel from "../../components/organisms/FilterPanel/FilterPanel";
 import type { FilterSelection } from "../../components/organisms/FilterPanel/FilterPanel";
+import PlaceCard from "../../components/organisms/PlaceCard/PlaceCard";
+import type { Place } from "../../types/Place";
 
 import "./DesignSystemPage.scss";
 
@@ -62,6 +64,38 @@ function DesignSystemPage() {
         included: [],
         excluded: [],
     });
+
+    const demoPlace: Place = {
+        id: "demo-lac",
+        name: "Lac de Lacanau",
+        commune: "Lacanau",
+        postalCode: "33680",
+        description:
+            "Un espace naturel agréable avec une forêt ombragée et un point d'eau à proximité.",
+        imageUrl: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e",
+
+        characteristics: {
+            vineyards: false,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: true,
+        },
+
+        regulations: {
+            dogsOnLeash: false,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: true,
+            farmAnimals: false,
+            cyanobacteria: false,
+        },
+    };
+
+    const [isDemoFavorite, setIsDemoFavorite] = useState(false);
+    const [selectedDemoPlace, setSelectedDemoPlace] = useState<string | null>(null);
 
     return (
         <main className="design-system-page">
@@ -638,6 +672,39 @@ function DesignSystemPage() {
                             value={filterSelection}
                             onChange={setFilterSelection}
                         />
+                    </div>
+                </div>
+            </section>
+
+            <section className="design-system-section">
+                <div className="design-system-section__header">
+                    <h2>PlaceCard</h2>
+                    <p>
+                        Carte de présentation d'un lieu, pensée pour une utilisation
+                        mobile-first avec ses caractéristiques, ses vigilances et ses favoris.
+                    </p>
+                </div>
+
+                <div className="design-system-section__content">
+                    <h3>Exemple interactif</h3>
+
+                    <div className="design-system-section__examples">
+                        <div style={{ width: "100%", maxWidth: "380px" }}>
+                            <PlaceCard
+                                place={demoPlace}
+                                isFavorite={isDemoFavorite}
+                                onToggleFavorite={() => setIsDemoFavorite((current) => !current)}
+                                onClick={(placeId) => setSelectedDemoPlace(placeId)}
+                            />
+                        </div>
+
+                        {selectedDemoPlace && (
+                            <p>
+                                Lieu sélectionné : {selectedDemoPlace}
+                                {" — "}
+                                (la navigation vers la fiche sera ajoutée ultérieurement).
+                            </p>
+                        )}
                     </div>
                 </div>
             </section>
