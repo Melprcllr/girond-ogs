@@ -5,6 +5,20 @@
     gap: var(--spacing-4);
     width: 100%;
 
+    &__item {
+        min-width: 0;
+        border-radius: var(--radius-lg);
+        transition:
+            outline-color 0.2s ease,
+            box-shadow 0.2s ease;
+
+        &--selected {
+            outline: 3px solid var(--color-accent);
+            outline-offset: 3px;
+            box-shadow: var(--shadow-md);
+        }
+    }
+
     &__empty {
         margin: 0;
         padding: var(--spacing-6);

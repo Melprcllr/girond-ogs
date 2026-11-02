@@ -1,13 +1,50 @@
-import { MapContainer, TileLayer, CircleMarker, Popup } from 'react-leaflet';
+import { useEffect } from 'react';
+import {
+    MapContainer,
+    TileLayer,
+    CircleMarker,
+    Popup,
+    useMap,
+} from 'react-leaflet';
 import type { Place } from '../../../types/Place';
 import './PlacesMap.scss';
 
 interface PlacesMapProps {
     places: Place[];
     onPlaceClick: (placeId: string) => void;
+    selectedPlaceId?: string | null;
 }
 
-function PlacesMap({ places, onPlaceClick }: PlacesMapProps) {
+interface MapControllerProps {
+    selectedPlace: Place | undefined;
+}
+
+// Gère le déplacement et le zoom de la carte
+function MapController({ selectedPlace }: MapControllerProps) {
+    const map = useMap();
+
+    useEffect(() => {
+        if (selectedPlace) {
+            map.setView(
+                [selectedPlace.latitude, selectedPlace.longitude],
+                12,
+                { animate: true },
+            );
+        }
+    }, [selectedPlace, map]);
+
+    return null;
+}
+
+function PlacesMap({
+    places,
+    onPlaceClick,
+    selectedPlaceId = null,
+}: PlacesMapProps) {
+    const selectedPlace = places.find(
+        (place) => place.id === selectedPlaceId,
+    );
+
     return (
         <div className="places-map">
             <MapContainer
@@ -21,28 +58,35 @@ function PlacesMap({ places, onPlaceClick }: PlacesMapProps) {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
 
-                {places.map((place) => (
-                    <CircleMarker
-                        key={place.id}
-                        center={[place.latitude, place.longitude]}
-                        radius={8}
-                        pathOptions={{
-                            color: '#315C49',
-                            fillColor: '#A9BDA5',
-                            fillOpacity: 1,
-                        }}
-                        eventHandlers={{
-                            click: () => onPlaceClick(place.id),
-                        }}
-                    >
-                        <Popup>
-                            <div className="places-map__popup">
-                                <strong>{place.name}</strong>
-                                <span>{place.commune}</span>
-                            </div>
-                        </Popup>
-                    </CircleMarker>
-                ))}
+                <MapController selectedPlace={selectedPlace} />
+
+                {places.map((place) => {
+                    const isSelected = place.id === selectedPlaceId;
+
+                    return (
+                        <CircleMarker
+                            key={place.id}
+                            center={[place.latitude, place.longitude]}
+                            radius={isSelected ? 12 : 8}
+                            pathOptions={{
+                                color: isSelected ? '#D98758' : '#315C49',
+                                fillColor: isSelected ? '#D98758' : '#A9BDA5',
+                                fillOpacity: 1,
+                                weight: isSelected ? 3 : 1,
+                            }}
+                            eventHandlers={{
+                                click: () => onPlaceClick(place.id),
+                            }}
+                        >
+                            <Popup>
+                                <div className="places-map__popup">
+                                    <strong>{place.name}</strong>
+                                    <span>{place.commune}</span>
+                                </div>
+                            </Popup>
+                        </CircleMarker>
+                    );
+                })}
             </MapContainer>
         </div>
     );
