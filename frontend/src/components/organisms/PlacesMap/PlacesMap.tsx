@@ -13,6 +13,7 @@ interface PlacesMapProps {
     places: Place[];
     onPlaceClick: (placeId: string) => void;
     selectedPlaceId?: string | null;
+    fullScreen?: boolean;
 }
 
 interface MapControllerProps {
@@ -40,13 +41,18 @@ function PlacesMap({
     places,
     onPlaceClick,
     selectedPlaceId = null,
+    fullScreen = false,
 }: PlacesMapProps) {
     const selectedPlace = places.find(
         (place) => place.id === selectedPlaceId,
     );
 
     return (
-        <div className="places-map">
+        <div
+            className={`places-map ${
+                fullScreen ? "places-map--fullscreen" : ""
+            }`}
+        >
             <MapContainer
                 center={[44.85, -0.57]}
                 zoom={8}
