@@ -1,4 +1,3 @@
-
 import type { Place } from "../../../types/Place";
 import PlaceCard from "../PlaceCard/PlaceCard";
 import "./PlacesGrid.scss";
@@ -8,6 +7,7 @@ interface PlacesGridProps {
     favoriteIds: string[];
     onToggleFavorite: (placeId: string) => void;
     onPlaceClick: (placeId: string) => void;
+    selectedPlaceId?: string | null;
     emptyMessage?: string;
 }
 
@@ -16,6 +16,7 @@ function PlacesGrid({
     favoriteIds,
     onToggleFavorite,
     onPlaceClick,
+    selectedPlaceId = null,
     emptyMessage = "Aucun lieu ne correspond à votre recherche.",
 }: PlacesGridProps) {
     if (places.length === 0) {
@@ -29,13 +30,20 @@ function PlacesGrid({
     return (
         <div className="places-grid">
             {places.map((place) => (
-                <PlaceCard
+                <div
                     key={place.id}
-                    place={place}
-                    isFavorite={favoriteIds.includes(place.id)}
-                    onToggleFavorite={onToggleFavorite}
-                    onClick={onPlaceClick}
-                />
+                    className={`places-grid__item ${place.id === selectedPlaceId
+                            ? "places-grid__item--selected"
+                            : ""
+                        }`}
+                >
+                    <PlaceCard
+                        place={place}
+                        isFavorite={favoriteIds.includes(place.id)}
+                        onToggleFavorite={onToggleFavorite}
+                        onClick={onPlaceClick}
+                    />
+                </div>
             ))}
         </div>
     );

@@ -3,6 +3,8 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import PlacesMap from './PlacesMap';
 import type { Place } from '../../../types/Place';
 
+const mockSetView = vi.fn();
+
 vi.mock('react-leaflet', () => ({
     MapContainer: ({ children }: { children: React.ReactNode }) => (
         <div data-testid="map-container">{children}</div>
@@ -11,12 +13,18 @@ vi.mock('react-leaflet', () => ({
     CircleMarker: ({
         children,
         eventHandlers,
+        radius,
+        pathOptions,
     }: {
         children: React.ReactNode;
         eventHandlers?: { click?: () => void };
+        radius?: number;
+        pathOptions?: { color?: string };
     }) => (
         <div
             data-testid="map-marker"
+            data-radius={radius}
+            data-color={pathOptions?.color}
             onClick={eventHandlers?.click}
         >
             {children}
@@ -25,6 +33,9 @@ vi.mock('react-leaflet', () => ({
     Popup: ({ children }: { children: React.ReactNode }) => (
         <div>{children}</div>
     ),
+    useMap: () => ({
+        setView: mockSetView,
+    }),
 }));
 
 const mockPlaces: Place[] = [
@@ -101,5 +112,35 @@ describe('PlacesMap', () => {
         );
 
         expect(screen.queryByTestId('map-marker')).not.toBeInTheDocument();
+    });
+    it('should center the map on the selected place', () => {
+        render(
+            <PlacesMap
+                places={mockPlaces}
+                onPlaceClick={vi.fn()}
+                selectedPlaceId="lac-lacanau"
+            />,
+        );
+    
+        expect(mockSetView).toHaveBeenCalledWith(
+            [44.988, -1.085],
+            12,
+            { animate: true },
+        );
+    });
+    
+    it('should highlight the selected marker', () => {
+        render(
+            <PlacesMap
+                places={mockPlaces}
+                onPlaceClick={vi.fn()}
+                selectedPlaceId="lac-lacanau"
+            />,
+        );
+    
+        const marker = screen.getByTestId('map-marker');
+    
+        expect(marker).toHaveAttribute('data-radius', '12');
+        expect(marker).toHaveAttribute('data-color', '#D98758');
     });
 });

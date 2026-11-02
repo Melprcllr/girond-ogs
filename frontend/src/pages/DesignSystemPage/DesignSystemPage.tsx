@@ -872,12 +872,13 @@ function DesignSystemPage() {
                     <h3>État vide</h3>
 
                     <div className="design-system-section__examples">
-                        <PlacesGrid
-                            places={[]}
-                            favoriteIds={[]}
-                            onToggleFavorite={() => { }}
-                            onPlaceClick={() => { }}
-                        />
+                    <PlacesGrid
+                        places={demoPlaces}
+                        favoriteIds={demoFavoriteIds}
+                        onToggleFavorite={handleDemoFavorite}
+                        onPlaceClick={handleGridPlaceClick}
+                        selectedPlaceId={selectedGridPlace}
+                    />
                     </div>
                 </div>
             </section>
@@ -891,14 +892,14 @@ function DesignSystemPage() {
                 </div>
 
                 <div className="design-system-section__content">
-                    <PlacesMap
-                        places={demoPlaces}
-                        onPlaceClick={(placeId) => {
-                            console.log('Lieu sélectionné :', placeId);
-                        }}
-                    />
+                <PlacesMap
+                    places={demoPlaces}
+                    onPlaceClick={handleGridPlaceClick}
+                    selectedPlaceId={selectedGridPlace}
+                />
                 </div>
             </section>
+
 
         </main>
     );

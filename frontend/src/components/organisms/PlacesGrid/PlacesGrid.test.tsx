@@ -187,4 +187,59 @@ describe("PlacesGrid", () => {
             "Aucun lieu trouvé dans cette commune."
         );
     });
+
+    it("applique une classe de sélection au lieu sélectionné", () => {
+        const { container } = render(
+            <PlacesGrid
+                places={mockPlaces}
+                favoriteIds={[]}
+                onToggleFavorite={vi.fn()}
+                onPlaceClick={vi.fn()}
+                selectedPlaceId="1"
+            />
+        );
+    
+        const selectedPlace = container.querySelector(
+            ".places-grid__item--selected"
+        );
+    
+        expect(selectedPlace).toBeInTheDocument();
+        expect(selectedPlace).toHaveTextContent("Lac de Lacanau");
+    });
+    
+    it("ne sélectionne pas les autres lieux", () => {
+        const { container } = render(
+            <PlacesGrid
+                places={mockPlaces}
+                favoriteIds={[]}
+                onToggleFavorite={vi.fn()}
+                onPlaceClick={vi.fn()}
+                selectedPlaceId="1"
+            />
+        );
+    
+        const items = container.querySelectorAll(".places-grid__item");
+    
+        expect(items[0]).toHaveClass("places-grid__item--selected");
+        expect(items[1]).not.toHaveClass("places-grid__item--selected");
+    });
+    
+    it("n'applique aucune sélection si aucun lieu n'est sélectionné", () => {
+        const { container } = render(
+            <PlacesGrid
+                places={mockPlaces}
+                favoriteIds={[]}
+                onToggleFavorite={vi.fn()}
+                onPlaceClick={vi.fn()}
+                selectedPlaceId={null}
+            />
+        );
+    
+        const selectedItems = container.querySelectorAll(
+            ".places-grid__item--selected"
+        );
+    
+        expect(selectedItems).toHaveLength(0);
+    });
+
 });
