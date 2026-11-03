@@ -38,6 +38,17 @@ const riskOptions = [
     },
 ];
 
+const regulationOptions = [
+    {
+        label: "Chiens attachés",
+        value: "dogsOnLeash",
+    },
+    {
+        label: "Chiens interdits",
+        value: "dogsProhibited",
+    },
+];
+
 function HomePage() {
     const [selectedPlaceId, setSelectedPlaceId] = useState<string | null>(
         null
@@ -52,6 +63,8 @@ function HomePage() {
     );
 
     const [selectedRisks, setSelectedRisks] = useState<string[]>([]);
+
+    const [selectedRegulations, setSelectedRegulations] = useState<string[]>([]);
 
     const filterAreaRef = useRef<HTMLDivElement>(null);
 
@@ -152,6 +165,21 @@ function HomePage() {
                                 options={riskOptions}
                                 value={selectedRisks}
                                 onChange={setSelectedRisks}
+                            />
+                        </div>
+                    )}
+
+                    {activeFilter === "regulations" && (
+                        <div
+                            id="regulations-filter-panel"
+                            className="home-page__filter-panel"
+                        >
+                            <MapFilterPanel
+                                title="Réglementation"
+                                name="regulations"
+                                options={regulationOptions}
+                                value={selectedRegulations}
+                                onChange={setSelectedRegulations}
                             />
                         </div>
                     )}
