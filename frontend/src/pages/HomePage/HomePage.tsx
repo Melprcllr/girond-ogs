@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import PlacesMap from "../../components/organisms/PlacesMap/PlacesMap";
 import MapFilterPanel from "../../components/molecules/MapFilterPanel/MapFilterPanel";
+import DistanceFilter from "../../components/molecules/DistanceFilter/DistanceFilter";
 import { demoPlaces } from "../../data/demoPlaces";
 import {
     MapPin,
@@ -11,6 +12,8 @@ import {
 } from "lucide-react";
 
 import "./HomePage.scss";
+
+type FilterType = "distance" | "environment" | "risks" | "regulations";
 
 const environmentOptions = [
     { label: "Vignes", value: "vineyards" },
@@ -25,8 +28,9 @@ function HomePage() {
         null
     );
 
-    const [isEnvironmentFilterOpen, setIsEnvironmentFilterOpen] =
-        useState(false);
+    const [activeFilter, setActiveFilter] = useState<FilterType | null>(null);
+
+    const [distance, setDistance] = useState(5);
 
     const [selectedEnvironments, setSelectedEnvironments] = useState<string[]>(
         []
@@ -38,12 +42,14 @@ function HomePage() {
         setSelectedPlaceId(placeId);
     };
 
-    const handleEnvironmentFilterToggle = () => {
-        setIsEnvironmentFilterOpen((previousState) => !previousState);
+    const handleFilterToggle = (filter: FilterType) => {
+        setActiveFilter((currentFilter) =>
+            currentFilter === filter ? null : filter
+        );
     };
 
     useEffect(() => {
-        if (!isEnvironmentFilterOpen) {
+        if (!activeFilter) {
             return;
         }
 
@@ -52,7 +58,7 @@ function HomePage() {
                 filterAreaRef.current &&
                 !filterAreaRef.current.contains(event.target as Node)
             ) {
-                setIsEnvironmentFilterOpen(false);
+                setActiveFilter(null);
             }
         };
 
@@ -61,7 +67,7 @@ function HomePage() {
         return () => {
             document.removeEventListener("pointerdown", handleClickOutside);
         };
-    }, [isEnvironmentFilterOpen]);
+    }, [activeFilter]);
 
     return (
         <main className="home-page">
@@ -91,8 +97,23 @@ function HomePage() {
                     className="home-page__filter-area"
                     ref={filterAreaRef}
                 >
-                    {isEnvironmentFilterOpen && (
-                        <div className="home-page__filter-panel">
+                    {activeFilter === "distance" && (
+                        <div
+                            id="distance-filter-panel"
+                            className="home-page__filter-panel"
+                        >
+                            <DistanceFilter
+                                distance={distance}
+                                onChange={setDistance}
+                            />
+                        </div>
+                    )}
+
+                    {activeFilter === "environment" && (
+                        <div
+                            id="environment-filter-panel"
+                            className="home-page__filter-panel"
+                        >
                             <MapFilterPanel
                                 title="Environnement"
                                 name="environment"
@@ -109,6 +130,9 @@ function HomePage() {
                             type="button"
                             aria-label="Filtrer par distance"
                             title="Distance"
+                            aria-expanded={activeFilter === "distance"}
+                            aria-controls="distance-filter-panel"
+                            onClick={() => handleFilterToggle("distance")}
                         >
                             <MapPin size={22} strokeWidth={1.8} />
                         </button>
@@ -118,9 +142,9 @@ function HomePage() {
                             type="button"
                             aria-label="Filtrer par environnement"
                             title="Environnement"
-                            aria-expanded={isEnvironmentFilterOpen}
+                            aria-expanded={activeFilter === "environment"}
                             aria-controls="environment-filter-panel"
-                            onClick={handleEnvironmentFilterToggle}
+                            onClick={() => handleFilterToggle("environment")}
                         >
                             <Trees size={22} strokeWidth={1.8} />
                         </button>
@@ -130,6 +154,9 @@ function HomePage() {
                             type="button"
                             aria-label="Filtrer les risques à éviter"
                             title="À éviter"
+                            aria-expanded={activeFilter === "risks"}
+                            aria-controls="risks-filter-panel"
+                            onClick={() => handleFilterToggle("risks")}
                         >
                             <ShieldAlert size={22} strokeWidth={1.8} />
                         </button>
@@ -139,6 +166,9 @@ function HomePage() {
                             type="button"
                             aria-label="Filtrer par réglementation"
                             title="Réglementation"
+                            aria-expanded={activeFilter === "regulations"}
+                            aria-controls="regulations-filter-panel"
+                            onClick={() => handleFilterToggle("regulations")}
                         >
                             <ClipboardList size={22} strokeWidth={1.8} />
                         </button>
