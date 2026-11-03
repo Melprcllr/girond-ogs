@@ -23,6 +23,21 @@ const environmentOptions = [
     { label: "Point d'eau", value: "water" },
 ];
 
+const riskOptions = [
+    {
+        label: "Chenilles processionnaires",
+        value: "processionaryCaterpillars",
+    },
+    {
+        label: "Animaux d'élevage",
+        value: "farmAnimals",
+    },
+    {
+        label: "Risque de cyanobactéries",
+        value: "cyanobacteria",
+    },
+];
+
 function HomePage() {
     const [selectedPlaceId, setSelectedPlaceId] = useState<string | null>(
         null
@@ -35,6 +50,8 @@ function HomePage() {
     const [selectedEnvironments, setSelectedEnvironments] = useState<string[]>(
         []
     );
+
+    const [selectedRisks, setSelectedRisks] = useState<string[]>([]);
 
     const filterAreaRef = useRef<HTMLDivElement>(null);
 
@@ -120,6 +137,21 @@ function HomePage() {
                                 options={environmentOptions}
                                 value={selectedEnvironments}
                                 onChange={setSelectedEnvironments}
+                            />
+                        </div>
+                    )}
+
+                    {activeFilter === "risks" && (
+                        <div
+                            id="risks-filter-panel"
+                            className="home-page__filter-panel"
+                        >
+                            <MapFilterPanel
+                                title="À éviter"
+                                name="risks"
+                                options={riskOptions}
+                                value={selectedRisks}
+                                onChange={setSelectedRisks}
                             />
                         </div>
                     )}
