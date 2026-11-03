@@ -1,3 +1,4 @@
+
 .home-page {
     position: relative;
     width: 100%;
@@ -58,12 +59,29 @@
         height: 100%;
     }
 
-    &__filters {
+    &__filter-area {
         position: absolute;
         bottom: 24px;
         left: 16px;
         right: 16px;
         z-index: 1000;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    &__filter-panel {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+
+        animation: filter-panel-appear 0.2s ease-out;
+    }
+
+    &__filters {
+        width: 100%;
 
         display: flex;
         gap: 8px;
@@ -100,9 +118,26 @@
             outline: 2px solid #D98758;
             outline-offset: 3px;
         }
+
+        &[aria-expanded="true"] {
+            background-color: #315C49;
+            color: #FFFFFF;
+        }
     }
 
     &__place-sheet {
         display: none;
+    }
+}
+
+@keyframes filter-panel-appear {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

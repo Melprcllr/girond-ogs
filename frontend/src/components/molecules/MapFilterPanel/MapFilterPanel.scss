@@ -1,0 +1,18 @@
+
+.map-filter-panel {
+    width: min(320px, calc(100vw - 32px));
+    padding: 16px;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+
+    .checkbox-group {
+        margin: 0;
+    }
+
+    .checkbox-group__options {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+}
