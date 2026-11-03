@@ -32,4 +32,12 @@
         height: 100%;
         border-radius: 0;
     }
+
+    &__marker-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+    }
 }

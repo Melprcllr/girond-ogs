@@ -1,13 +1,15 @@
-import { useEffect } from 'react';
+
+import { useEffect } from "react";
 import {
     MapContainer,
     TileLayer,
-    CircleMarker,
+    Marker,
     Popup,
     useMap,
-} from 'react-leaflet';
-import type { Place } from '../../../types/Place';
-import './PlacesMap.scss';
+} from "react-leaflet";
+import L from "leaflet";
+import type { Place } from "../../../types/Place";
+import "./PlacesMap.scss";
 
 interface PlacesMapProps {
     places: Place[];
@@ -20,7 +22,41 @@ interface MapControllerProps {
     selectedPlace: Place | undefined;
 }
 
-// Gère le déplacement et le zoom de la carte
+// Crée une épingle personnalisée selon l'état du lieu.
+function createPlaceIcon(isSelected: boolean) {
+    const color = isSelected ? "#D98758" : "#315C49";
+
+    return L.divIcon({
+        className: "places-map__marker-icon",
+        html: `
+            <svg
+                width="40"
+                height="48"
+                viewBox="0 0 40 48"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+            >
+                <path
+                    d="M20 1C9.5 1 1 9.5 1 20C1 33 20 47 20 47C20 47 39 33 39 20C39 9.5 30.5 1 20 1Z"
+                    fill="${color}"
+                    stroke="#FFFFFF"
+                    stroke-width="2"
+                />
+                <circle
+                    cx="20"
+                    cy="20"
+                    r="6"
+                    fill="#FFFFFF"
+                />
+            </svg>
+        `,
+        iconSize: [40, 48],
+        iconAnchor: [20, 47],
+        popupAnchor: [0, -44],
+    });
+}
+
+// Gère le déplacement et le zoom de la carte.
 function MapController({ selectedPlace }: MapControllerProps) {
     const map = useMap();
 
@@ -70,16 +106,10 @@ function PlacesMap({
                     const isSelected = place.id === selectedPlaceId;
 
                     return (
-                        <CircleMarker
+                        <Marker
                             key={place.id}
-                            center={[place.latitude, place.longitude]}
-                            radius={isSelected ? 12 : 8}
-                            pathOptions={{
-                                color: isSelected ? '#D98758' : '#315C49',
-                                fillColor: isSelected ? '#D98758' : '#A9BDA5',
-                                fillOpacity: 1,
-                                weight: isSelected ? 3 : 1,
-                            }}
+                            position={[place.latitude, place.longitude]}
+                            icon={createPlaceIcon(isSelected)}
                             eventHandlers={{
                                 click: () => onPlaceClick(place.id),
                             }}
@@ -90,7 +120,7 @@ function PlacesMap({
                                     <span>{place.commune}</span>
                                 </div>
                             </Popup>
-                        </CircleMarker>
+                        </Marker>
                     );
                 })}
             </MapContainer>

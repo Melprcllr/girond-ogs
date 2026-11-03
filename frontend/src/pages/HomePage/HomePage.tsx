@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import PlacesMap from "../../components/organisms/PlacesMap/PlacesMap";
 import MapFilterPanel from "../../components/molecules/MapFilterPanel/MapFilterPanel";
 import DistanceFilter from "../../components/molecules/DistanceFilter/DistanceFilter";
+import PlaceBottomSheet from "../../components/organisms/PlaceBottomSheet/PlaceBottomSheet";
+
 import { demoPlaces } from "../../data/demoPlaces";
 import {
     MapPin,
@@ -98,6 +100,10 @@ function HomePage() {
             document.removeEventListener("pointerdown", handleClickOutside);
         };
     }, [activeFilter]);
+
+    const selectedPlace = demoPlaces.find(
+        (place) => place.id === selectedPlaceId
+    );
 
     return (
         <main className="home-page">
@@ -235,9 +241,12 @@ function HomePage() {
                     </div>
                 </div>
 
-                <div className="home-page__place-sheet">
-                    Fiche de lieu
-                </div>
+                {selectedPlace && (
+                    <PlaceBottomSheet
+                        place={selectedPlace}
+                        onClose={() => setSelectedPlaceId(null)}
+                    />
+                )}
             </section>
         </main>
     );
