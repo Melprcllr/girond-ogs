@@ -8,7 +8,7 @@ export const demoPlaces: Place[] = [
         commune: "Lacanau",
         postalCode: "33680",
         description: "Un espace naturel avec forêt ombragée et point d'eau.",
-        imageUrl: "/images/demo-lacanau.jpg",
+        imageUrl: "/images/demoPlaces/lac-lacanau.jpg",
         latitude: 44.988,
         longitude: -1.085,
         characteristics: {
@@ -35,7 +35,7 @@ export const demoPlaces: Place[] = [
         commune: "Le Porge",
         postalCode: "33680",
         description: "Un environnement naturel entre océan et forêt.",
-        imageUrl: "/images/demo-porge.jpg",
+        imageUrl: "/images/demoPlaces/plage-porge.jpg",
         latitude: 44.988,
         longitude: -1.085,
         characteristics: {
@@ -62,7 +62,7 @@ export const demoPlaces: Place[] = [
         commune: "Pauillac",
         postalCode: "33250",
         description: "Un paysage viticole ouvert au cœur du Médoc.",
-        imageUrl: "/images/demo-medoc.jpg",
+        imageUrl: "/images/demoPlaces/vignobles-pauillac.jpg",
         latitude: 44.988,
         longitude: -1.085,
         characteristics: {
@@ -89,7 +89,7 @@ export const demoPlaces: Place[] = [
         commune: "La Teste-de-Buch",
         postalCode: "33260",
         description: "Un environnement forestier avec de nombreuses zones ombragées.",
-        imageUrl: "/images/demo-foret.jpg",
+        imageUrl: "/images/demoPlaces/foret-pilat.jpeg",
         latitude: 44.988,
         longitude: -1.085,
         characteristics: {
@@ -117,7 +117,7 @@ export const demoPlaces: Place[] = [
         commune: "Hourtin",
         postalCode: "33990",
         description: "Lieu de démonstration avec un environnement naturel et des espaces boisés.",
-        imageUrl: "/images/demo-hourtin.jpg",
+        imageUrl: "/images/demoPlaces/lac-hourtin.jpeg",
         latitude: 45.19,
         longitude: -1.15,
         characteristics: {
@@ -144,7 +144,7 @@ export const demoPlaces: Place[] = [
         commune: "Bordeaux",
         postalCode: "33000",
         description: "Lieu de démonstration situé dans un environnement urbain et végétalisé.",
-        imageUrl: "/images/demo-bordeaux.jpg",
+        imageUrl: "/images/demoPlaces/parc-de-bordeaux.jpg",
         latitude: 44.85,
         longitude: -0.58,
         characteristics: {
@@ -171,7 +171,7 @@ export const demoPlaces: Place[] = [
         commune: "Saint-Émilion",
         postalCode: "33330",
         description: "Lieu de démonstration au cœur d'un paysage viticole.",
-        imageUrl: "/images/demo-saint-emilion.jpg",
+        imageUrl: "/images/demoPlaces/vignobles-saint-emilion.jpg",
         latitude: 44.89,
         longitude: -0.16,
         characteristics: {
@@ -198,7 +198,7 @@ export const demoPlaces: Place[] = [
         commune: "Blasimon",
         postalCode: "33540",
         description: "Lieu de démonstration avec des espaces naturels et un point d'eau.",
-        imageUrl: "/images/demo-blasimon.jpg",
+        imageUrl: "/images/demoPlaces/domaine-blasimon.jpg",
         latitude: 44.75,
         longitude: -0.08,
         characteristics: {
