@@ -3,17 +3,41 @@ import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 
 import SearchBar from "./SearchBar";
-import type { Commune } from "./SearchBar";
+import type { Town } from "../../../data/towns";
 
-const communes: Commune[] = [
-    { id: "canejan", name: "Canéjan", postalCodes: ["33610"] },
-    { id: "merignac", name: "Mérignac", postalCodes: ["33700"] },
-    { id: "pessac", name: "Pessac", postalCodes: ["33600"] },
-    { id: "commune-1", name: "Commune A", postalCodes: ["33610"] },
+const towns: Town[] = [
+    {
+        id: "canejan",
+        name: "Canéjan",
+        postalCodes: ["33610"],
+        latitude: 44.763,
+        longitude: -0.653,
+    },
+    {
+        id: "merignac",
+        name: "Mérignac",
+        postalCodes: ["33700"],
+        latitude: 44.842,
+        longitude: -0.645,
+    },
+    {
+        id: "pessac",
+        name: "Pessac",
+        postalCodes: ["33600"],
+        latitude: 44.806,
+        longitude: -0.631,
+    },
+    {
+        id: "commune-1",
+        name: "Commune A",
+        postalCodes: ["33610"],
+        latitude: 44.75,
+        longitude: -0.65,
+    },
 ];
 
 const renderSearchBar = (
-    selectedCommune: Commune | null = null,
+    selectedTown: Town | null = null,
     disabled = false
 ) => {
     const onSelect = vi.fn();
@@ -21,8 +45,8 @@ const renderSearchBar = (
 
     render(
         <SearchBar
-            communes={communes}
-            selectedCommune={selectedCommune}
+            towns={towns}
+            selectedTown={selectedTown}
             onSelect={onSelect}
             onClear={onClear}
             disabled={disabled}
@@ -41,7 +65,7 @@ describe("SearchBar", () => {
         ).toBeInTheDocument();
     });
 
-    it("finds a commune by name", () => {
+    it("finds a town by name", () => {
         renderSearchBar();
 
         fireEvent.change(
@@ -49,11 +73,12 @@ describe("SearchBar", () => {
             { target: { value: "Mérignac" } }
         );
 
-        expect(screen.getByRole("option", { name: /Mérignac/ }))
-            .toBeInTheDocument();
+        expect(
+            screen.getByRole("option", { name: /Mérignac/ })
+        ).toBeInTheDocument();
     });
 
-    it("finds a commune without accent", () => {
+    it("finds a town without accent", () => {
         renderSearchBar();
 
         fireEvent.change(
@@ -61,11 +86,12 @@ describe("SearchBar", () => {
             { target: { value: "Canejan" } }
         );
 
-        expect(screen.getByRole("option", { name: /Canéjan/ }))
-            .toBeInTheDocument();
+        expect(
+            screen.getByRole("option", { name: /Canéjan/ })
+        ).toBeInTheDocument();
     });
 
-    it("finds communes by postal code", () => {
+    it("finds towns by postal code", () => {
         renderSearchBar();
 
         fireEvent.change(
@@ -73,14 +99,16 @@ describe("SearchBar", () => {
             { target: { value: "33610" } }
         );
 
-        expect(screen.getByRole("option", { name: /Canéjan/ }))
-            .toBeInTheDocument();
+        expect(
+            screen.getByRole("option", { name: /Canéjan/ })
+        ).toBeInTheDocument();
 
-        expect(screen.getByRole("option", { name: /Commune A/ }))
-            .toBeInTheDocument();
+        expect(
+            screen.getByRole("option", { name: /Commune A/ })
+        ).toBeInTheDocument();
     });
 
-    it("displays a message when no commune matches", () => {
+    it("displays a message when no town matches", () => {
         renderSearchBar();
 
         fireEvent.change(
@@ -99,9 +127,11 @@ describe("SearchBar", () => {
         const input = screen.getByLabelText("Commune ou code postal");
 
         fireEvent.change(input, { target: { value: "Canéjan" } });
-        fireEvent.click(screen.getByRole("option", { name: /Canéjan/ }));
+        fireEvent.click(
+            screen.getByRole("option", { name: /Canéjan/ })
+        );
 
-        expect(onSelect).toHaveBeenCalledWith(communes[0]);
+        expect(onSelect).toHaveBeenCalledWith(towns[0]);
         expect(input).toHaveValue("");
     });
 
@@ -113,19 +143,19 @@ describe("SearchBar", () => {
         fireEvent.change(input, { target: { value: "33610" } });
         fireEvent.keyDown(input, { key: "Enter" });
 
-        expect(onSelect).toHaveBeenCalledWith(communes[0]);
+        expect(onSelect).toHaveBeenCalledWith(towns[0]);
     });
 
-    it("displays the selected commune as a badge", () => {
-        renderSearchBar(communes[0]);
+    it("displays the selected town as a badge", () => {
+        renderSearchBar(towns[0]);
 
         expect(
             screen.getByText("Canéjan (33610)")
         ).toBeInTheDocument();
     });
 
-    it("calls onClear when the selected commune is removed", () => {
-        const { onClear } = renderSearchBar(communes[0]);
+    it("calls onClear when the selected town is removed", () => {
+        const { onClear } = renderSearchBar(towns[0]);
 
         fireEvent.click(
             screen.getByRole("button", {

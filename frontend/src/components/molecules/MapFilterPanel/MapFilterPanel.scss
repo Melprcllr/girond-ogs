@@ -6,8 +6,48 @@
     border-radius: 12px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
 
-    .checkbox-group {
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+    }
+
+    &__title {
         margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: #34413A;
+    }
+
+    &__reset {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        padding: 0;
+        border: none;
+        border-radius: 8px;
+        background-color: transparent;
+        color: #315C49;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background-color: #F3EFE5;
+        }
+
+        &:focus-visible {
+            outline: 2px solid #315C49;
+            outline-offset: 2px;
+        }
+    }
+
+    &__checkbox-group {
+        .checkbox-group__label {
+            display: none;
+        }
     }
 
     .checkbox-group__options {

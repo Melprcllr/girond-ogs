@@ -1,4 +1,5 @@
 
+import { RotateCcw } from "lucide-react";
 import CheckboxGroup from "../CheckboxGroup/CheckboxGroup";
 import type { CheckboxGroupOption } from "../CheckboxGroup/CheckboxGroup";
 import "./MapFilterPanel.scss";
@@ -18,18 +19,40 @@ function MapFilterPanel({
     value,
     onChange,
 }: MapFilterPanelProps) {
+    const handleReset = () => {
+        onChange([]);
+    };
+
     return (
         <section
-        id="environment-filter-panel"
-        className="map-filter-panel"
-        aria-label={title}
+            className="map-filter-panel"
+            aria-label={title}
         >
+            <div className="map-filter-panel__header">
+                <h2 className="map-filter-panel__title">
+                    {title}
+                </h2>
+
+                {value.length > 0 && (
+                    <button
+                        className="map-filter-panel__reset"
+                        type="button"
+                        onClick={handleReset}
+                        aria-label={`Réinitialiser les filtres : ${title}`}
+                        title="Réinitialiser les filtres"
+                    >
+                        <RotateCcw size={18} />
+                    </button>
+                )}
+            </div>
+
             <CheckboxGroup
                 label={title}
                 name={name}
                 options={options}
                 value={value}
                 onChange={onChange}
+                className="map-filter-panel__checkbox-group"
             />
         </section>
     );

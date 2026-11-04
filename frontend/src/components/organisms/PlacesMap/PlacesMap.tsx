@@ -1,5 +1,5 @@
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import {
     MapContainer,
     TileLayer,
@@ -8,18 +8,23 @@ import {
     useMap,
 } from "react-leaflet";
 import L from "leaflet";
+
 import type { Place } from "../../../types/Place";
+import type { Town } from "../../../data/towns";
+
 import "./PlacesMap.scss";
 
 interface PlacesMapProps {
     places: Place[];
     onPlaceClick: (placeId: string) => void;
     selectedPlaceId?: string | null;
+    selectedTown?: Town | null;
     fullScreen?: boolean;
 }
 
 interface MapControllerProps {
     selectedPlace: Place | undefined;
+    selectedTown: Town | null;
 }
 
 // Crée une épingle personnalisée selon l'état du lieu.
@@ -57,18 +62,55 @@ function createPlaceIcon(isSelected: boolean) {
 }
 
 // Gère le déplacement et le zoom de la carte.
-function MapController({ selectedPlace }: MapControllerProps) {
+// Gère le déplacement et le zoom de la carte.
+function MapController({
+    selectedPlace,
+    selectedTown,
+}: MapControllerProps) {
     const map = useMap();
 
+    // Mémorise la dernière commune sélectionnée.
+    const previousTownId = useRef<string | null>(
+        selectedTown?.id ?? null
+    );
+
     useEffect(() => {
+        const currentTownId = selectedTown?.id ?? null;
+
+        // Une nouvelle commune vient d'être sélectionnée.
+        if (
+            selectedTown &&
+            previousTownId.current !== currentTownId
+        ) {
+            // Ferme les éventuels popups encore ouverts.
+            map.closePopup();
+
+            // Interrompt les anciens déplacements de la carte.
+            map.stop();
+        }
+
+        previousTownId.current = currentTownId;
+
+        // Si une fiche de lieu est ouverte, on centre sur ce lieu.
         if (selectedPlace) {
             map.setView(
                 [selectedPlace.latitude, selectedPlace.longitude],
                 12,
                 { animate: true },
             );
+
+            return;
         }
-    }, [selectedPlace, map]);
+
+        // Sinon, on centre sur la commune sélectionnée.
+        if (selectedTown) {
+            map.setView(
+                [selectedTown.latitude, selectedTown.longitude],
+                12,
+                { animate: true },
+            );
+        }
+    }, [selectedPlace, selectedTown, map]);
 
     return null;
 }
@@ -77,6 +119,7 @@ function PlacesMap({
     places,
     onPlaceClick,
     selectedPlaceId = null,
+    selectedTown = null,
     fullScreen = false,
 }: PlacesMapProps) {
     const selectedPlace = places.find(
@@ -94,13 +137,17 @@ function PlacesMap({
                 zoom={8}
                 scrollWheelZoom={false}
                 className="places-map__container"
+                zoomControl={false}
             >
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
 
-                <MapController selectedPlace={selectedPlace} />
+                <MapController
+                    selectedPlace={selectedPlace}
+                    selectedTown={selectedTown}
+                />
 
                 {places.map((place) => {
                     const isSelected = place.id === selectedPlaceId;

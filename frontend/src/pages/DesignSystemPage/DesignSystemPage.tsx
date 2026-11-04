@@ -9,7 +9,8 @@ import RadioGroup from "../../components/molecules/RadioGroup/RadioGroup";
 import Textarea from "../../components/atoms/Textarea/Textarea";
 import CheckboxGroup from "../../components/molecules/CheckboxGroup/CheckboxGroup";
 import SearchBar from "../../components/molecules/SearchBar/SearchBar";
-import type { Commune } from "../../components/molecules/SearchBar/SearchBar";
+import type { Town } from "../../data/towns";
+import { towns } from "../../data/towns";
 import FilterAccordion from "../../components/molecules/FilterAccordion/FilterAccordion";
 import FilterPanel from "../../components/organisms/FilterPanel/FilterPanel";
 import type { FilterSelection } from "../../components/organisms/FilterPanel/FilterPanel";
@@ -49,15 +50,7 @@ function DesignSystemPage() {
         { label: "Lac ou étang", value: "lake" },
     ];
 
-    const demoCommunes: Commune[] = [
-        { id: "canejan", name: "Canéjan", postalCodes: ["33610"] },
-        { id: "merignac", name: "Mérignac", postalCodes: ["33700"] },
-        { id: "pessac", name: "Pessac", postalCodes: ["33600"] },
-        { id: "talence", name: "Talence", postalCodes: ["33400"] },
-        { id: "gradignan", name: "Gradignan", postalCodes: ["33170"] },
-    ];
-    const [selectedCommune, setSelectedCommune] =
-        useState<Commune | null>(null);
+    const [selectedTown, setSelectedTown] = useState<Town | null>(null);
 
     const [environmentOpen, setEnvironmentOpen] = useState(true);
     const [regulationOpen, setRegulationOpen] = useState(false);
@@ -85,6 +78,7 @@ function DesignSystemPage() {
             beach: false,
             shadedAreas: true,
             water: true,
+            pineTrees: true,
         },
 
         regulations: {
@@ -612,10 +606,10 @@ function DesignSystemPage() {
 
                     <div className="design-system-section__examples">
                         <SearchBar
-                            communes={demoCommunes}
-                            selectedCommune={selectedCommune}
-                            onSelect={setSelectedCommune}
-                            onClear={() => setSelectedCommune(null)}
+                            towns={towns}
+                            selectedTown={selectedTown}
+                            onSelect={setSelectedTown}
+                            onClear={() => setSelectedTown(null)}
                         />
                     </div>
 
@@ -623,8 +617,8 @@ function DesignSystemPage() {
 
                     <div className="design-system-section__examples">
                         <SearchBar
-                            communes={demoCommunes}
-                            selectedCommune={null}
+                            towns={towns}
+                            selectedTown={null}
                             onSelect={() => { }}
                             onClear={() => { }}
                             disabled
@@ -765,13 +759,13 @@ function DesignSystemPage() {
                     <h3>État vide</h3>
 
                     <div className="design-system-section__examples">
-                    <PlacesGrid
-                        places={demoPlaces}
-                        favoriteIds={demoFavoriteIds}
-                        onToggleFavorite={handleDemoFavorite}
-                        onPlaceClick={handleGridPlaceClick}
-                        selectedPlaceId={selectedGridPlace}
-                    />
+                        <PlacesGrid
+                            places={demoPlaces}
+                            favoriteIds={demoFavoriteIds}
+                            onToggleFavorite={handleDemoFavorite}
+                            onPlaceClick={handleGridPlaceClick}
+                            selectedPlaceId={selectedGridPlace}
+                        />
                     </div>
                 </div>
             </section>
@@ -785,11 +779,11 @@ function DesignSystemPage() {
                 </div>
 
                 <div className="design-system-section__content">
-                <PlacesMap
-                    places={demoPlaces}
-                    onPlaceClick={handleGridPlaceClick}
-                    selectedPlaceId={selectedGridPlace}
-                />
+                    <PlacesMap
+                        places={demoPlaces}
+                        onPlaceClick={handleGridPlaceClick}
+                        selectedPlaceId={selectedGridPlace}
+                    />
                 </div>
             </section>
 

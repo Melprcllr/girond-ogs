@@ -20,6 +20,7 @@ const mockPlaces: Place[] = [
             beach: false,
             shadedAreas: true,
             water: true,
+            pineTrees: true,
         },
         regulations: {
             dogsOnLeash: false,
@@ -46,6 +47,7 @@ const mockPlaces: Place[] = [
             beach: true,
             shadedAreas: false,
             water: true,
+            pineTrees: true,
         },
         regulations: {
             dogsOnLeash: true,

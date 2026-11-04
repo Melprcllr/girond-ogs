@@ -2,22 +2,18 @@
 import { useMemo, useState } from "react";
 import type { KeyboardEvent } from "react";
 
+import type { Town } from "../../../data/towns";
+
 import Input from "../../atoms/Input/Input";
 import Button from "../../atoms/Button/Button";
 import Badge from "../../atoms/Badge/Badge";
 
 import "./SearchBar.scss";
 
-export interface Commune {
-    id: string;
-    name: string;
-    postalCodes: string[];
-}
-
 interface SearchBarProps {
-    communes: Commune[];
-    selectedCommune: Commune | null;
-    onSelect: (commune: Commune) => void;
+    towns: Town[];
+    selectedTown: Town | null;
+    onSelect: (town: Town) => void;
     onClear: () => void;
     disabled?: boolean;
     placeholder?: string;
@@ -33,8 +29,8 @@ function normalizeText(value: string): string {
 }
 
 function SearchBar({
-    communes,
-    selectedCommune,
+    towns,
+    selectedTown,
     onSelect,
     onClear,
     disabled = false,
@@ -50,20 +46,20 @@ function SearchBar({
             return [];
         }
 
-        return communes.filter((commune) => {
-            const matchesName = normalizeText(commune.name)
+        return towns.filter((town) => {
+            const matchesName = normalizeText(town.name)
                 .includes(normalizedQuery);
 
-            const matchesPostalCode = commune.postalCodes.some((code) =>
+            const matchesPostalCode = town.postalCodes.some((code) =>
                 code.includes(normalizedQuery)
             );
 
             return matchesName || matchesPostalCode;
         });
-    }, [communes, query]);
+    }, [towns, query]);
 
-    const handleSelect = (commune: Commune) => {
-        onSelect(commune);
+    const handleSelect = (town: Town) => {
+        onSelect(town);
         setQuery("");
     };
 
@@ -95,7 +91,7 @@ function SearchBar({
                     autoComplete="off"
                     aria-autocomplete="list"
                     aria-expanded={query.trim().length > 0}
-                    aria-controls="commune-suggestions"
+                    aria-controls="town-suggestions"
                 />
 
                 {query && (
@@ -113,26 +109,26 @@ function SearchBar({
 
             {query.trim() && (
                 <ul
-                    id="commune-suggestions"
+                    id="town-suggestions"
                     className="search-bar__suggestions"
                     role="listbox"
                     aria-label="Communes proposées"
                 >
                     {suggestions.length > 0 ? (
-                        suggestions.map((commune) => (
-                            <li key={commune.id} role="none">
+                        suggestions.map((town) => (
+                            <li key={town.id} role="none">
                                 <Button
                                     variant="tertiary"
                                     fullWidth
                                     role="option"
                                     aria-selected={false}
-                                    onClick={() => handleSelect(commune)}
+                                    onClick={() => handleSelect(town)}
                                     disabled={disabled}
                                 >
                                     <span className="search-bar__suggestion">
-                                        <span>{commune.name}</span>
+                                        <span>{town.name}</span>
                                         <span className="search-bar__postal-code">
-                                            {commune.postalCodes.join(", ")}
+                                            {town.postalCodes.join(", ")}
                                         </span>
                                     </span>
                                 </Button>
@@ -146,10 +142,10 @@ function SearchBar({
                 </ul>
             )}
 
-            {selectedCommune && (
+            {selectedTown && (
                 <div className="search-bar__selection">
                     <Badge variant="success" size="medium">
-                        {selectedCommune.name} ({selectedCommune.postalCodes.join(", ")})
+                        {selectedTown.name} ({selectedTown.postalCodes.join(", ")})
                     </Badge>
 
                     <Button
@@ -157,7 +153,7 @@ function SearchBar({
                         size="small"
                         onClick={onClear}
                         disabled={disabled}
-                        aria-label={`Supprimer la commune ${selectedCommune.name}`}
+                        aria-label={`Supprimer la commune ${selectedTown.name}`}
                     >
                         ×
                     </Button>

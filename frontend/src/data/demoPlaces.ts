@@ -17,6 +17,7 @@ export const demoPlaces: Place[] = [
             beach: false,
             shadedAreas: true,
             water: true,
+            pineTrees: true,
         },
         regulations: {
             dogsOnLeash: false,
@@ -43,6 +44,7 @@ export const demoPlaces: Place[] = [
             beach: true,
             shadedAreas: false,
             water: true,
+            pineTrees: true,
         },
         regulations: {
             dogsOnLeash: true,
@@ -69,6 +71,7 @@ export const demoPlaces: Place[] = [
             beach: false,
             shadedAreas: false,
             water: false,
+            pineTrees: false,
         },
         regulations: {
             dogsOnLeash: true,
@@ -95,6 +98,7 @@ export const demoPlaces: Place[] = [
             beach: false,
             shadedAreas: true,
             water: false,
+            pineTrees: true,
         },
         regulations: {
             dogsOnLeash: false,
@@ -122,6 +126,7 @@ export const demoPlaces: Place[] = [
             beach: false,
             shadedAreas: true,
             water: true,
+            pineTrees: true,
         },
         regulations: {
             dogsOnLeash: true,
@@ -148,6 +153,7 @@ export const demoPlaces: Place[] = [
             beach: false,
             shadedAreas: true,
             water: false,
+            pineTrees: false,
         },
         regulations: {
             dogsOnLeash: true,
@@ -174,6 +180,7 @@ export const demoPlaces: Place[] = [
             beach: false,
             shadedAreas: false,
             water: false,
+            pineTrees: false,
         },
         regulations: {
             dogsOnLeash: true,
@@ -200,6 +207,7 @@ export const demoPlaces: Place[] = [
             beach: false,
             shadedAreas: true,
             water: true,
+            pineTrees: false,
         },
         regulations: {
             dogsOnLeash: false,

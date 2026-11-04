@@ -1,9 +1,13 @@
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import PlacesMap from "../../components/organisms/PlacesMap/PlacesMap";
 import MapFilterPanel from "../../components/molecules/MapFilterPanel/MapFilterPanel";
 import DistanceFilter from "../../components/molecules/DistanceFilter/DistanceFilter";
 import PlaceBottomSheet from "../../components/organisms/PlaceBottomSheet/PlaceBottomSheet";
+
+import SearchBar from "../../components/molecules/SearchBar/SearchBar";
+import { towns } from "../../data/towns";
+import type { Town } from "../../data/towns";
 
 import { demoPlaces } from "../../data/demoPlaces";
 import {
@@ -11,7 +15,12 @@ import {
     Trees,
     ShieldAlert,
     ClipboardList,
+    Menu,
+    X,
 } from "lucide-react";
+
+import type { Place } from "../../types/Place";
+import { filterPlaces } from "../../utils/filterPlaces";
 
 import "./HomePage.scss";
 
@@ -38,6 +47,10 @@ const riskOptions = [
         label: "Risque de cyanobactéries",
         value: "cyanobacteria",
     },
+    {
+        label: "Présence de pins",
+        value: "pineTrees",
+    },
 ];
 
 const regulationOptions = [
@@ -56,6 +69,8 @@ function HomePage() {
         null
     );
 
+    const [selectedTown, setSelectedTown] = useState<Town | null>(null);
+
     const [activeFilter, setActiveFilter] = useState<FilterType | null>(null);
 
     const [distance, setDistance] = useState(5);
@@ -68,7 +83,23 @@ function HomePage() {
 
     const [selectedRegulations, setSelectedRegulations] = useState<string[]>([]);
 
+    const filteredPlaces = useMemo(() => {
+        return filterPlaces(demoPlaces, {
+            environments: selectedEnvironments as (keyof Place["characteristics"])[],
+            risks: selectedRisks.filter(
+                (risk): risk is keyof Place["risks"] => risk !== "pineTrees",
+            ),
+            regulations: selectedRegulations as (keyof Place["regulations"])[],
+            avoidPineTrees: selectedRisks.includes("pineTrees"),
+        });
+    }, [
+        selectedEnvironments,
+        selectedRisks,
+        selectedRegulations,
+    ]);
+
     const filterAreaRef = useRef<HTMLDivElement>(null);
+    const searchRef = useRef<HTMLDivElement>(null);
 
     const handlePlaceClick = (placeId: string) => {
         setSelectedPlaceId(placeId);
@@ -78,6 +109,17 @@ function HomePage() {
         setActiveFilter((currentFilter) =>
             currentFilter === filter ? null : filter
         );
+    };
+
+    const handleSearchCommune = () => {
+        setActiveFilter(null);
+
+        searchRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+        });
+
+        searchRef.current?.querySelector("input")?.focus();
     };
 
     useEffect(() => {
@@ -101,31 +143,145 @@ function HomePage() {
         };
     }, [activeFilter]);
 
-    const selectedPlace = demoPlaces.find(
+    const selectedPlace = filteredPlaces.find(
         (place) => place.id === selectedPlaceId
     );
+
+    useEffect(() => {
+        if (
+            selectedPlaceId &&
+            !filteredPlaces.some((place) => place.id === selectedPlaceId)
+        ) {
+            setSelectedPlaceId(null);
+        }
+    }, [filteredPlaces, selectedPlaceId]);
+
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const menuRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        if (!isMenuOpen) {
+            return;
+        }
+
+        const handleClickOutside = (event: PointerEvent) => {
+            if (
+                menuRef.current &&
+                !menuRef.current.contains(event.target as Node)
+            ) {
+                setIsMenuOpen(false);
+            }
+        };
+
+        const handleEscape = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                setIsMenuOpen(false);
+            }
+        };
+
+        document.addEventListener("pointerdown", handleClickOutside);
+        document.addEventListener("keydown", handleEscape);
+
+        return () => {
+            document.removeEventListener("pointerdown", handleClickOutside);
+            document.removeEventListener("keydown", handleEscape);
+        };
+    }, [isMenuOpen]);
 
     return (
         <main className="home-page">
             <header className="home-page__header">
-                <div className="home-page__search">
-                    Recherche
+                <div
+                    ref={searchRef}
+                    className="home-page__search"
+                >
+                    <SearchBar
+                        towns={towns}
+                        selectedTown={selectedTown}
+                        onSelect={(town) => {
+                            setSelectedTown(town);
+                            setSelectedPlaceId(null);
+                            setActiveFilter(null);
+                        }}
+                        onClear={() => setSelectedTown(null)}
+                    />
                 </div>
 
                 <button
                     className="home-page__menu-button"
                     type="button"
-                    aria-label="Ouvrir le menu"
+                    aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+                    aria-expanded={isMenuOpen}
+                    aria-controls="home-page-menu"
+                    onClick={() => setIsMenuOpen((current) => !current)}
                 >
-                    ☰
+                    {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
             </header>
 
+            <div
+                className={`home-page__menu-overlay ${isMenuOpen ? "home-page__menu-overlay--open" : ""
+                    }`}
+                aria-hidden={!isMenuOpen}
+            >
+                <nav
+                    ref={menuRef}
+                    id="home-page-menu"
+                    className={`home-page__menu ${isMenuOpen ? "home-page__menu--open" : ""
+                        }`}
+                    aria-label="Menu principal"
+                >
+                    <div className="home-page__menu-header">
+                        <span className="home-page__menu-title">
+                            Girond'ogs
+                        </span>
+
+                        <button
+                            className="home-page__menu-close"
+                            type="button"
+                            aria-label="Fermer le menu"
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            <X size={22} />
+                        </button>
+                    </div>
+
+                    <div className="home-page__menu-links">
+                        <a href="/" onClick={() => setIsMenuOpen(false)}>
+                            Accueil
+                        </a>
+
+                        <a
+                            href="/gironde-avec-un-chien"
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            La Gironde avec un chien
+                        </a>
+
+                        <a
+                            href="/a-propos"
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            À propos de Girond'ogs
+                        </a>
+
+                        <a
+                            href="/contact"
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            Contact et signalement
+                        </a>
+                    </div>
+                </nav>
+            </div>
+
             <section className="home-page__map">
                 <PlacesMap
-                    places={demoPlaces}
+                    places={filteredPlaces}
                     onPlaceClick={handlePlaceClick}
                     selectedPlaceId={selectedPlaceId}
+                    selectedTown={selectedTown}
                     fullScreen
                 />
 
@@ -141,6 +297,8 @@ function HomePage() {
                             <DistanceFilter
                                 distance={distance}
                                 onChange={setDistance}
+                                hasSelectedCommune={selectedTown !== null}
+                                onSearchCommune={handleSearchCommune}
                             />
                         </div>
                     )}
