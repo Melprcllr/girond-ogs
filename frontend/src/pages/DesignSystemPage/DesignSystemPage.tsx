@@ -9,7 +9,8 @@ import RadioGroup from "../../components/molecules/RadioGroup/RadioGroup";
 import Textarea from "../../components/atoms/Textarea/Textarea";
 import CheckboxGroup from "../../components/molecules/CheckboxGroup/CheckboxGroup";
 import SearchBar from "../../components/molecules/SearchBar/SearchBar";
-import type { Commune } from "../../components/molecules/SearchBar/SearchBar";
+import type { Town } from "../../data/towns";
+import { towns } from "../../data/towns";
 import FilterAccordion from "../../components/molecules/FilterAccordion/FilterAccordion";
 import FilterPanel from "../../components/organisms/FilterPanel/FilterPanel";
 import type { FilterSelection } from "../../components/organisms/FilterPanel/FilterPanel";
@@ -17,6 +18,7 @@ import PlaceCard from "../../components/organisms/PlaceCard/PlaceCard";
 import type { Place } from "../../types/Place";
 import PlacesGrid from "../../components/organisms/PlacesGrid/PlacesGrid";
 import PlacesMap from '../../components/organisms/PlacesMap/PlacesMap';
+import { demoPlaces } from "../../data/demoPlaces";
 
 import "./DesignSystemPage.scss";
 
@@ -48,15 +50,7 @@ function DesignSystemPage() {
         { label: "Lac ou étang", value: "lake" },
     ];
 
-    const demoCommunes: Commune[] = [
-        { id: "canejan", name: "Canéjan", postalCodes: ["33610"] },
-        { id: "merignac", name: "Mérignac", postalCodes: ["33700"] },
-        { id: "pessac", name: "Pessac", postalCodes: ["33600"] },
-        { id: "talence", name: "Talence", postalCodes: ["33400"] },
-        { id: "gradignan", name: "Gradignan", postalCodes: ["33170"] },
-    ];
-    const [selectedCommune, setSelectedCommune] =
-        useState<Commune | null>(null);
+    const [selectedTown, setSelectedTown] = useState<Town | null>(null);
 
     const [environmentOpen, setEnvironmentOpen] = useState(true);
     const [regulationOpen, setRegulationOpen] = useState(false);
@@ -84,6 +78,7 @@ function DesignSystemPage() {
             beach: false,
             shadedAreas: true,
             water: true,
+            pineTrees: true,
         },
 
         regulations: {
@@ -100,114 +95,6 @@ function DesignSystemPage() {
 
     const [isDemoFavorite, setIsDemoFavorite] = useState(false);
     const [selectedDemoPlace, setSelectedDemoPlace] = useState<string | null>(null);
-
-
-    const demoPlaces: Place[] = [
-        {
-            id: "lac-lacanau",
-            name: "Lac de Lacanau",
-            commune: "Lacanau",
-            postalCode: "33680",
-            description: "Un espace naturel avec forêt ombragée et point d'eau.",
-            imageUrl: "/images/demo-lacanau.jpg",
-            latitude: 44.988,
-            longitude: -1.085,
-            characteristics: {
-                vineyards: false,
-                forest: true,
-                beach: false,
-                shadedAreas: true,
-                water: true,
-            },
-            regulations: {
-                dogsOnLeash: false,
-                dogsProhibited: false,
-            },
-            risks: {
-                processionaryCaterpillars: true,
-                farmAnimals: false,
-                cyanobacteria: false,
-            },
-        },
-        {
-            id: "plage-porge",
-            name: "Plage du Porge",
-            commune: "Le Porge",
-            postalCode: "33680",
-            description: "Un environnement naturel entre océan et forêt.",
-            imageUrl: "/images/demo-porge.jpg",
-            latitude: 44.988,
-            longitude: -1.085,
-            characteristics: {
-                vineyards: false,
-                forest: true,
-                beach: true,
-                shadedAreas: false,
-                water: true,
-            },
-            regulations: {
-                dogsOnLeash: true,
-                dogsProhibited: false,
-            },
-            risks: {
-                processionaryCaterpillars: false,
-                farmAnimals: false,
-                cyanobacteria: false,
-            },
-        },
-        {
-            id: "vignobles-medoc",
-            name: "Vignobles du Médoc",
-            commune: "Pauillac",
-            postalCode: "33250",
-            description: "Un paysage viticole ouvert au cœur du Médoc.",
-            imageUrl: "/images/demo-medoc.jpg",
-            latitude: 44.988,
-            longitude: -1.085,
-            characteristics: {
-                vineyards: true,
-                forest: false,
-                beach: false,
-                shadedAreas: false,
-                water: false,
-            },
-            regulations: {
-                dogsOnLeash: true,
-                dogsProhibited: false,
-            },
-            risks: {
-                processionaryCaterpillars: false,
-                farmAnimals: true,
-                cyanobacteria: false,
-            },
-        },
-        {
-            id: "foret-pilat",
-            name: "Forêt du Pilat",
-            commune: "La Teste-de-Buch",
-            postalCode: "33260",
-            description: "Un environnement forestier avec de nombreuses zones ombragées.",
-            imageUrl: "/images/demo-foret.jpg",
-            latitude: 44.988,
-            longitude: -1.085,
-            characteristics: {
-                vineyards: false,
-                forest: true,
-                beach: false,
-                shadedAreas: true,
-                water: false,
-            },
-            regulations: {
-                dogsOnLeash: false,
-                dogsProhibited: false,
-            },
-            risks: {
-                processionaryCaterpillars: true,
-                farmAnimals: false,
-                cyanobacteria: false,
-            },
-        },
-    ];
 
     const [demoFavoriteIds, setDemoFavoriteIds] = useState<string[]>([]);
     const [selectedGridPlace, setSelectedGridPlace] = useState<string | null>(null);
@@ -719,10 +606,10 @@ function DesignSystemPage() {
 
                     <div className="design-system-section__examples">
                         <SearchBar
-                            communes={demoCommunes}
-                            selectedCommune={selectedCommune}
-                            onSelect={setSelectedCommune}
-                            onClear={() => setSelectedCommune(null)}
+                            towns={towns}
+                            selectedTown={selectedTown}
+                            onSelect={setSelectedTown}
+                            onClear={() => setSelectedTown(null)}
                         />
                     </div>
 
@@ -730,8 +617,8 @@ function DesignSystemPage() {
 
                     <div className="design-system-section__examples">
                         <SearchBar
-                            communes={demoCommunes}
-                            selectedCommune={null}
+                            towns={towns}
+                            selectedTown={null}
                             onSelect={() => { }}
                             onClear={() => { }}
                             disabled
@@ -872,13 +759,13 @@ function DesignSystemPage() {
                     <h3>État vide</h3>
 
                     <div className="design-system-section__examples">
-                    <PlacesGrid
-                        places={demoPlaces}
-                        favoriteIds={demoFavoriteIds}
-                        onToggleFavorite={handleDemoFavorite}
-                        onPlaceClick={handleGridPlaceClick}
-                        selectedPlaceId={selectedGridPlace}
-                    />
+                        <PlacesGrid
+                            places={demoPlaces}
+                            favoriteIds={demoFavoriteIds}
+                            onToggleFavorite={handleDemoFavorite}
+                            onPlaceClick={handleGridPlaceClick}
+                            selectedPlaceId={selectedGridPlace}
+                        />
                     </div>
                 </div>
             </section>
@@ -892,11 +779,11 @@ function DesignSystemPage() {
                 </div>
 
                 <div className="design-system-section__content">
-                <PlacesMap
-                    places={demoPlaces}
-                    onPlaceClick={handleGridPlaceClick}
-                    selectedPlaceId={selectedGridPlace}
-                />
+                    <PlacesMap
+                        places={demoPlaces}
+                        onPlaceClick={handleGridPlaceClick}
+                        selectedPlaceId={selectedGridPlace}
+                    />
                 </div>
             </section>
 

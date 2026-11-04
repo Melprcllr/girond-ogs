@@ -1,0 +1,111 @@
+
+.distance-filter {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__title {
+        margin: 0;
+        color: #34413A;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    &__controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+    }
+
+    &__button {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border: none;
+        border-radius: 10px;
+        background-color: #F3EFE5;
+        color: #315C49;
+        cursor: pointer;
+
+        transition:
+            background-color 0.2s ease,
+            transform 0.2s ease;
+
+        &:active:not(:disabled) {
+            transform: scale(0.95);
+        }
+
+        &:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        &:focus-visible {
+            outline: 2px solid #D98758;
+            outline-offset: 3px;
+        }
+    }
+
+    &__value {
+        color: #315C49;
+        font-size: 24px;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+    }
+
+    &__hint {
+        margin: 0;
+        color: #66736B;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    &__message {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        p {
+            margin: 0;
+            color: #66736B;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+    }
+
+    &__search-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        min-height: 42px;
+        padding: 10px 14px;
+
+        border: none;
+        border-radius: 8px;
+        background-color: #315C49;
+        color: #FFFFFF;
+
+        font-size: 13px;
+        font-weight: 600;
+
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background-color: #264A3A;
+        }
+
+        &:focus-visible {
+            outline: 2px solid #D98758;
+            outline-offset: 3px;
+        }
+    }
+
+}

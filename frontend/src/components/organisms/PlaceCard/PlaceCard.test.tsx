@@ -20,6 +20,7 @@ const mockPlace: Place = {
         beach: false,
         shadedAreas: true,
         water: true,
+        pineTrees: true,
     },
 
     regulations: {
