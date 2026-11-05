@@ -1,10 +1,14 @@
 import type { Place } from "../types/Place";
+import { calculateDistance } from "./calculateDistance";
+import type { Coordinates } from "./calculateDistance";
 
 interface FilterPlacesOptions {
     environments: (keyof Place["characteristics"])[];
     avoidPineTrees: boolean;
     risks: (keyof Place["risks"])[];
     regulations: (keyof Place["regulations"])[];
+    center?: Coordinates;
+    maxDistanceKm?: number;
 }
 
 export function filterPlaces(
@@ -23,7 +27,8 @@ export function filterPlaces(
             const hasRisk = place.risks[risk];
 
             const hasPineTrees =
-                risk === "processionaryCaterpillars" && place.characteristics.pineTrees;
+                risk === "processionaryCaterpillars" &&
+                place.characteristics.pineTrees;
 
             return !hasRisk && !hasPineTrees;
         });
@@ -32,8 +37,20 @@ export function filterPlaces(
             (regulation) => place.regulations[regulation]
         );
 
+        const matchesDistance =
+            !filters.center ||
+            filters.maxDistanceKm === undefined ||
+            calculateDistance(filters.center, {
+                latitude: place.latitude,
+                longitude: place.longitude,
+            }) <= filters.maxDistanceKm;
+
         return (
-            matchesEnvironment && avoidsPineTrees && avoidsRisks && matchesRegulations
+            matchesEnvironment &&
+            avoidsPineTrees &&
+            avoidsRisks &&
+            matchesRegulations &&
+            matchesDistance
         );
     });
 }

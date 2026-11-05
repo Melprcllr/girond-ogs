@@ -91,11 +91,22 @@ function HomePage() {
             ),
             regulations: selectedRegulations as (keyof Place["regulations"])[],
             avoidPineTrees: selectedRisks.includes("pineTrees"),
+
+            center: selectedTown
+                ? {
+                    latitude: selectedTown.latitude,
+                    longitude: selectedTown.longitude,
+                }
+                : undefined,
+
+            maxDistanceKm: distance,
         });
     }, [
         selectedEnvironments,
         selectedRisks,
         selectedRegulations,
+        selectedTown,
+        distance,
     ]);
 
     const filterAreaRef = useRef<HTMLDivElement>(null);
@@ -201,6 +212,7 @@ function HomePage() {
                         selectedTown={selectedTown}
                         onSelect={(town) => {
                             setSelectedTown(town);
+                            setDistance(5);
                             setSelectedPlaceId(null);
                             setActiveFilter(null);
                         }}
@@ -282,6 +294,7 @@ function HomePage() {
                     onPlaceClick={handlePlaceClick}
                     selectedPlaceId={selectedPlaceId}
                     selectedTown={selectedTown}
+                    distance={distance}
                     fullScreen
                 />
 
