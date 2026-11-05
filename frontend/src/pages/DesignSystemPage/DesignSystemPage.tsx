@@ -783,6 +783,7 @@ function DesignSystemPage() {
                         places={demoPlaces}
                         onPlaceClick={handleGridPlaceClick}
                         selectedPlaceId={selectedGridPlace}
+                        distance={5}
                     />
                 </div>
             </section>

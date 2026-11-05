@@ -19,12 +19,37 @@ interface PlacesMapProps {
     onPlaceClick: (placeId: string) => void;
     selectedPlaceId?: string | null;
     selectedTown?: Town | null;
+    distance: number;
     fullScreen?: boolean;
 }
 
 interface MapControllerProps {
     selectedPlace: Place | undefined;
     selectedTown: Town | null;
+    distance: number;
+}
+
+// Calcule les limites géographiques d'un rayon autour d'un point.
+function getSearchBounds(
+    latitude: number,
+    longitude: number,
+    radiusKm: number,
+) {
+    const latitudeOffset = radiusKm / 111.32;
+
+    const longitudeOffset =
+        radiusKm / (111.32 * Math.cos((latitude * Math.PI) / 180));
+
+    return L.latLngBounds(
+        [
+            latitude - latitudeOffset,
+            longitude - longitudeOffset,
+        ],
+        [
+            latitude + latitudeOffset,
+            longitude + longitudeOffset,
+        ],
+    );
 }
 
 // Crée une épingle personnalisée selon l'état du lieu.
@@ -62,14 +87,13 @@ function createPlaceIcon(isSelected: boolean) {
 }
 
 // Gère le déplacement et le zoom de la carte.
-// Gère le déplacement et le zoom de la carte.
 function MapController({
     selectedPlace,
     selectedTown,
+    distance,
 }: MapControllerProps) {
     const map = useMap();
 
-    // Mémorise la dernière commune sélectionnée.
     const previousTownId = useRef<string | null>(
         selectedTown?.id ?? null
     );
@@ -82,10 +106,7 @@ function MapController({
             selectedTown &&
             previousTownId.current !== currentTownId
         ) {
-            // Ferme les éventuels popups encore ouverts.
             map.closePopup();
-
-            // Interrompt les anciens déplacements de la carte.
             map.stop();
         }
 
@@ -96,21 +117,27 @@ function MapController({
             map.setView(
                 [selectedPlace.latitude, selectedPlace.longitude],
                 12,
-                { animate: true },
+                { animate: true }
             );
 
             return;
         }
 
-        // Sinon, on centre sur la commune sélectionnée.
+        // Sinon, on adapte la carte au rayon autour de la commune.
         if (selectedTown) {
-            map.setView(
-                [selectedTown.latitude, selectedTown.longitude],
-                12,
-                { animate: true },
+            const bounds = getSearchBounds(
+                selectedTown.latitude,
+                selectedTown.longitude,
+                distance,
             );
+
+            map.fitBounds(bounds, {
+                padding: [40, 40],
+                animate: true,
+                maxZoom: 12,
+            });
         }
-    }, [selectedPlace, selectedTown, map]);
+    }, [selectedPlace, selectedTown, distance, map]);
 
     return null;
 }
@@ -120,10 +147,11 @@ function PlacesMap({
     onPlaceClick,
     selectedPlaceId = null,
     selectedTown = null,
+    distance,
     fullScreen = false,
 }: PlacesMapProps) {
     const selectedPlace = places.find(
-        (place) => place.id === selectedPlaceId,
+        (place) => place.id === selectedPlaceId
     );
 
     return (
@@ -147,6 +175,7 @@ function PlacesMap({
                 <MapController
                     selectedPlace={selectedPlace}
                     selectedTown={selectedTown}
+                    distance={distance}
                 />
 
                 {places.map((place) => {

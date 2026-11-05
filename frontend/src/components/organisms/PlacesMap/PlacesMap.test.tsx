@@ -87,7 +87,11 @@ describe("PlacesMap", () => {
 
     it("should display the map", () => {
         render(
-            <PlacesMap places={mockPlaces} onPlaceClick={vi.fn()} />,
+            <PlacesMap
+                places={mockPlaces}
+                onPlaceClick={vi.fn()}
+                distance={5}
+            />
         );
 
         expect(screen.getByTestId("map-container")).toBeInTheDocument();
@@ -96,7 +100,11 @@ describe("PlacesMap", () => {
 
     it("should display a marker for each place", () => {
         render(
-            <PlacesMap places={mockPlaces} onPlaceClick={vi.fn()} />,
+            <PlacesMap
+                places={mockPlaces}
+                onPlaceClick={vi.fn()}
+                distance={5}
+            />
         );
 
         expect(screen.getAllByTestId("map-marker")).toHaveLength(1);
@@ -104,7 +112,11 @@ describe("PlacesMap", () => {
 
     it("should display the place name and commune in the popup", () => {
         render(
-            <PlacesMap places={mockPlaces} onPlaceClick={vi.fn()} />,
+            <PlacesMap
+                places={mockPlaces}
+                onPlaceClick={vi.fn()}
+                distance={5}
+            />
         );
 
         expect(screen.getByText("Lac de Lacanau")).toBeInTheDocument();
@@ -113,21 +125,29 @@ describe("PlacesMap", () => {
 
     it("should call onPlaceClick when a marker is clicked", () => {
         const onPlaceClick = vi.fn();
-
+    
         render(
-            <PlacesMap places={mockPlaces} onPlaceClick={onPlaceClick} />,
+            <PlacesMap
+                places={mockPlaces}
+                onPlaceClick={onPlaceClick}
+                distance={5}
+            />
         );
-
+    
         fireEvent.click(screen.getByTestId("map-marker"));
-
+    
         expect(onPlaceClick).toHaveBeenCalledWith("lac-lacanau");
     });
 
     it("should display no markers when there are no places", () => {
         render(
-            <PlacesMap places={[]} onPlaceClick={vi.fn()} />,
+            <PlacesMap
+                places={[]}
+                onPlaceClick={vi.fn()}
+                distance={5}
+            />
         );
-
+    
         expect(screen.queryByTestId("map-marker")).not.toBeInTheDocument();
     });
 
@@ -137,6 +157,7 @@ describe("PlacesMap", () => {
                 places={mockPlaces}
                 onPlaceClick={vi.fn()}
                 selectedPlaceId="lac-lacanau"
+                distance={5}
             />,
         );
 
@@ -153,6 +174,7 @@ describe("PlacesMap", () => {
                 places={mockPlaces}
                 onPlaceClick={vi.fn()}
                 selectedPlaceId="lac-lacanau"
+                distance={5}
             />,
         );
 
@@ -166,7 +188,11 @@ describe("PlacesMap", () => {
 
     it("should display a green marker when the place is not selected", () => {
         render(
-            <PlacesMap places={mockPlaces} onPlaceClick={vi.fn()} />,
+            <PlacesMap
+                places={mockPlaces}
+                onPlaceClick={vi.fn()}
+                distance={5}
+            />
         );
 
         const marker = screen.getByTestId("map-marker");

@@ -167,4 +167,53 @@ describe("filterPlaces", () => {
         expect(result).toHaveLength(1);
         expect(result[0].name).toBe("Plage du Porge");
     });
+
+    it("filtre les lieux selon la distance autour d'une commune", () => {
+        const result = filterPlaces(mockPlaces, {
+            environments: [],
+            risks: [],
+            regulations: [],
+            avoidPineTrees: false,
+            center: {
+                latitude: 44.988,
+                longitude: -1.085,
+            },
+            maxDistanceKm: 5,
+        });
+
+        expect(result).toHaveLength(1);
+        expect(result[0].name).toBe("Lac de Lacanau");
+    });
+
+    it("conserve les lieux situés dans un rayon plus large", () => {
+        const result = filterPlaces(mockPlaces, {
+            environments: [],
+            risks: [],
+            regulations: [],
+            avoidPineTrees: false,
+            center: {
+                latitude: 44.988,
+                longitude: -1.085,
+            },
+            maxDistanceKm: 20,
+        });
+
+        expect(result).toHaveLength(2);
+    });
+
+    it("combine le filtre de distance avec les autres filtres", () => {
+        const result = filterPlaces(mockPlaces, {
+            environments: ["beach"],
+            risks: [],
+            regulations: [],
+            avoidPineTrees: false,
+            center: {
+                latitude: 44.988,
+                longitude: -1.085,
+            },
+            maxDistanceKm: 5,
+        });
+
+        expect(result).toHaveLength(0);
+    });
 });
