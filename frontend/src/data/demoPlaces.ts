@@ -1,6 +1,13 @@
 
 import type { Place } from "../types/Place";
 
+/**
+ * Fictitious data used solely for development purposes.
+ *
+ * The characteristics, regulations, and risks have not been verified.
+ * The coordinates are provisional and should not be used as a reference
+ * for distances or the actual location of the sites.
+ */
 export const demoPlaces: Place[] = [
     {
         id: "lac-lacanau",
@@ -9,8 +16,13 @@ export const demoPlaces: Place[] = [
         postalCode: "33680",
         description: "Un espace naturel avec forêt ombragée et point d'eau.",
         imageUrl: "/images/demoPlaces/lac-lacanau.jpg",
+        sources: [],
+        lastVerifiedAt: null,
         latitude: 44.988,
         longitude: -1.085,
+        parking: {
+            available: null,
+        },
         characteristics: {
             vineyards: false,
             forest: true,
@@ -26,7 +38,7 @@ export const demoPlaces: Place[] = [
         risks: {
             processionaryCaterpillars: true,
             farmAnimals: false,
-            cyanobacteria: false,
+            cyanobacteria: null,
         },
     },
     {
@@ -36,15 +48,20 @@ export const demoPlaces: Place[] = [
         postalCode: "33680",
         description: "Un environnement naturel entre océan et forêt.",
         imageUrl: "/images/demoPlaces/plage-porge.jpg",
+        sources: [],
+        lastVerifiedAt: null,
         latitude: 44.988,
         longitude: -1.085,
+        parking: {
+            available: null,
+        },
         characteristics: {
             vineyards: false,
             forest: true,
             beach: true,
             shadedAreas: false,
             water: true,
-            pineTrees: true,
+            pineTrees: null,
         },
         regulations: {
             dogsOnLeash: true,
@@ -63,13 +80,18 @@ export const demoPlaces: Place[] = [
         postalCode: "33250",
         description: "Un paysage viticole ouvert au cœur du Médoc.",
         imageUrl: "/images/demoPlaces/vignobles-pauillac.jpg",
+        sources: [],
+        lastVerifiedAt: null,
         latitude: 44.988,
         longitude: -1.085,
+        parking: {
+            available: null,
+        },
         characteristics: {
             vineyards: true,
             forest: false,
             beach: false,
-            shadedAreas: false,
+            shadedAreas: null,
             water: false,
             pineTrees: false,
         },
@@ -85,13 +107,18 @@ export const demoPlaces: Place[] = [
     },
     {
         id: "foret-pilat",
-        name: "Forêt du Pilat",
+        name: "Forêt de démonstration",
         commune: "La Teste-de-Buch",
         postalCode: "33260",
         description: "Un environnement forestier avec de nombreuses zones ombragées.",
         imageUrl: "/images/demoPlaces/foret-pilat.jpeg",
+        sources: [],
+        lastVerifiedAt: null,
         latitude: 44.988,
         longitude: -1.085,
+        parking: {
+            available: null,
+        },
         characteristics: {
             vineyards: false,
             forest: true,
@@ -101,7 +128,7 @@ export const demoPlaces: Place[] = [
             pineTrees: true,
         },
         regulations: {
-            dogsOnLeash: false,
+            dogsOnLeash: null,
             dogsProhibited: false,
         },
         risks: {
@@ -110,7 +137,6 @@ export const demoPlaces: Place[] = [
             cyanobacteria: false,
         },
     },
-
     {
         id: "lac-hourtin",
         name: "Lac d'Hourtin",
@@ -118,8 +144,13 @@ export const demoPlaces: Place[] = [
         postalCode: "33990",
         description: "Lieu de démonstration avec un environnement naturel et des espaces boisés.",
         imageUrl: "/images/demoPlaces/lac-hourtin.jpeg",
+        sources: [],
+        lastVerifiedAt: null,
         latitude: 45.19,
         longitude: -1.15,
+        parking: {
+            available: null,
+        },
         characteristics: {
             vineyards: false,
             forest: true,
@@ -135,7 +166,7 @@ export const demoPlaces: Place[] = [
         risks: {
             processionaryCaterpillars: true,
             farmAnimals: false,
-            cyanobacteria: false,
+            cyanobacteria: null,
         },
     },
     {
@@ -145,14 +176,19 @@ export const demoPlaces: Place[] = [
         postalCode: "33000",
         description: "Lieu de démonstration situé dans un environnement urbain et végétalisé.",
         imageUrl: "/images/demoPlaces/parc-de-bordeaux.jpg",
+        sources: [],
+        lastVerifiedAt: null,
         latitude: 44.85,
         longitude: -0.58,
+        parking: {
+            available: null,
+        },
         characteristics: {
             vineyards: false,
             forest: false,
             beach: false,
             shadedAreas: true,
-            water: false,
+            water: null,
             pineTrees: false,
         },
         regulations: {
@@ -172,8 +208,13 @@ export const demoPlaces: Place[] = [
         postalCode: "33330",
         description: "Lieu de démonstration au cœur d'un paysage viticole.",
         imageUrl: "/images/demoPlaces/vignobles-saint-emilion.jpg",
+        sources: [],
+        lastVerifiedAt: null,
         latitude: 44.89,
         longitude: -0.16,
+        parking: {
+            available: null,
+        },
         characteristics: {
             vineyards: true,
             forest: false,
@@ -188,7 +229,7 @@ export const demoPlaces: Place[] = [
         },
         risks: {
             processionaryCaterpillars: false,
-            farmAnimals: true,
+            farmAnimals: null,
             cyanobacteria: false,
         },
     },
@@ -199,8 +240,13 @@ export const demoPlaces: Place[] = [
         postalCode: "33540",
         description: "Lieu de démonstration avec des espaces naturels et un point d'eau.",
         imageUrl: "/images/demoPlaces/domaine-blasimon.jpg",
+        sources: [],
+        lastVerifiedAt: null,
         latitude: 44.75,
         longitude: -0.08,
+        parking: {
+            available: null,
+        },
         characteristics: {
             vineyards: false,
             forest: true,
@@ -219,5 +265,4 @@ export const demoPlaces: Place[] = [
             cyanobacteria: true,
         },
     },
-
 ];

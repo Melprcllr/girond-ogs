@@ -11,8 +11,14 @@ const mockPlace: Place = {
     postalCode: "33680",
     description: "Un espace naturel ombragé avec un point d'eau.",
     imageUrl: "/images/lac-lacanau.jpg",
+    sources: [],
+    lastVerifiedAt: null,
     latitude: 44.988,
     longitude: -1.085,
+    
+    parking: {
+        available: null,
+    },
 
     characteristics: {
         vineyards: false,

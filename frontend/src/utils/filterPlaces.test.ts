@@ -10,9 +10,14 @@ const mockPlaces: Place[] = [
         commune: "Lacanau",
         postalCode: "33680",
         description: "Un espace naturel avec un point d'eau.",
-        imageUrl: "/images/lacanau.jpg",
+        imageUrl: "/images/demoPlaces/lac-lacanau.jpg",
+        sources: [],
+        lastVerifiedAt: null,
         latitude: 44.988,
         longitude: -1.085,
+        parking: {
+            available: null,
+        },
         characteristics: {
             vineyards: false,
             forest: true,
@@ -37,9 +42,14 @@ const mockPlaces: Place[] = [
         commune: "Le Porge",
         postalCode: "33680",
         description: "Une plage au cœur de la nature.",
-        imageUrl: "/images/porge.jpg",
+        imageUrl: "/images/demoPlaces/plage-porge.jpg",
+        sources: [],
+        lastVerifiedAt: null,
         latitude: 44.872,
         longitude: -1.175,
+        parking: {
+            available: null,
+        },
         characteristics: {
             vineyards: false,
             forest: true,
@@ -60,6 +70,25 @@ const mockPlaces: Place[] = [
     },
 ];
 
+const unknownPlace: Place = {
+    ...mockPlaces[1],
+    id: "3",
+    name: "Lieu avec informations inconnues",
+    characteristics: {
+        ...mockPlaces[1].characteristics,
+        forest: null,
+        pineTrees: null,
+    },
+    regulations: {
+        ...mockPlaces[1].regulations,
+        dogsOnLeash: null,
+    },
+    risks: {
+        ...mockPlaces[1].risks,
+        cyanobacteria: null,
+    },
+};
+
 describe("filterPlaces", () => {
     it("conserve tous les lieux lorsqu'aucun filtre n'est sélectionné", () => {
         const result = filterPlaces(mockPlaces, {
@@ -70,6 +99,54 @@ describe("filterPlaces", () => {
         });
 
         expect(result).toHaveLength(2);
+    });
+
+    it("exclut les lieux dont une caractéristique environnementale est inconnue", () => {
+        const result = filterPlaces([...mockPlaces, unknownPlace], {
+            environments: ["forest"],
+            risks: [],
+            regulations: [],
+            avoidPineTrees: false,
+        });
+
+        expect(result).toHaveLength(2);
+        expect(result.map((place) => place.id)).not.toContain("3");
+    });
+
+    it("exclut les lieux dont un risque est inconnu", () => {
+        const result = filterPlaces([...mockPlaces, unknownPlace], {
+            environments: [],
+            risks: ["cyanobacteria"],
+            regulations: [],
+            avoidPineTrees: false,
+        });
+
+        expect(result).toHaveLength(2);
+        expect(result.map((place) => place.id)).not.toContain("3");
+    });
+
+    it("exclut les lieux dont la présence de pins est inconnue lorsque le filtre est activé", () => {
+        const result = filterPlaces([...mockPlaces, unknownPlace], {
+            environments: [],
+            risks: [],
+            regulations: [],
+            avoidPineTrees: true,
+        });
+
+        expect(result).toHaveLength(1);
+        expect(result[0].name).toBe("Plage du Porge");
+    });
+
+    it("exclut les lieux dont la réglementation demandée est inconnue", () => {
+        const result = filterPlaces([...mockPlaces, unknownPlace], {
+            environments: [],
+            risks: [],
+            regulations: ["dogsOnLeash"],
+            avoidPineTrees: false,
+        });
+
+        expect(result).toHaveLength(1);
+        expect(result[0].name).toBe("Plage du Porge");
     });
 
     it("filtre les lieux selon une caractéristique environnementale", () => {
@@ -144,7 +221,6 @@ describe("filterPlaces", () => {
         expect(result[0].name).toBe("Plage du Porge");
     });
 
-    
     it("retourne une liste vide lorsqu'aucun lieu ne correspond", () => {
         const result = filterPlaces(mockPlaces, {
             environments: ["vineyards"],
