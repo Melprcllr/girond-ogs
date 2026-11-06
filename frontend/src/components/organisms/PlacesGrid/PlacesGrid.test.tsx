@@ -11,9 +11,14 @@ const mockPlaces: Place[] = [
         commune: "Lacanau",
         postalCode: "33680",
         description: "Un espace naturel avec un point d'eau.",
-        imageUrl: "/images/lacanau.jpg",
+        imageUrl: "/images/demoPlaces/lac-lacanau.jpg",
+        sources: [],
+        lastVerifiedAt: null,
         latitude: 44.988,
         longitude: -1.085,
+        parking: {
+            available: null,
+        },
         characteristics: {
             vineyards: false,
             forest: true,
@@ -38,9 +43,14 @@ const mockPlaces: Place[] = [
         commune: "Le Porge",
         postalCode: "33680",
         description: "Une plage au cœur de la nature.",
-        imageUrl: "/images/porge.jpg",
+        imageUrl: "/images/demoPlaces/plage-porge.jpg",
+        sources: [],
+        lastVerifiedAt: null,
         latitude: 44.872,
         longitude: -1.175,
+        parking: {
+            available: null,
+        },
         characteristics: {
             vineyards: false,
             forest: true,

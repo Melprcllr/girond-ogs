@@ -69,8 +69,14 @@ function DesignSystemPage() {
         description:
             "Un espace naturel agréable avec une forêt ombragée et un point d'eau à proximité.",
         imageUrl: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e",
+        sources: [],
+        lastVerifiedAt: null,
         latitude: 44.988,
         longitude: -1.085,
+
+        parking: {
+            available: null,
+        },
 
         characteristics: {
             vineyards: false,

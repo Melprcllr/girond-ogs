@@ -10,9 +10,14 @@ const mockPlace: Place = {
     commune: "Lacanau",
     postalCode: "33680",
     description: "Un joli lac entouré de nature.",
-    imageUrl: "/images/demo-lac.jpg",
+    imageUrl: "/images/demoPlaces/lac-lacanau.jpg",
+    sources: [],
+    lastVerifiedAt: null,
     latitude: 44.988,
     longitude: -1.085,
+    parking: {
+        available: null,
+    },
     characteristics: {
         vineyards: false,
         forest: true,
@@ -139,4 +144,72 @@ describe("PlaceBottomSheet", () => {
 
         expect(onClose).toHaveBeenCalledTimes(1);
     });
+
+    it("affiche les informations du parking lorsqu'il est disponible", () => {
+        const placeWithParking: Place = {
+            ...mockPlace,
+            parking: {
+                available: true,
+                address: "13 rue Jean Macé, 33320 Eysines",
+                details: "Environ 10 places disponibles.",
+            },
+        };
+
+        render(
+            <PlaceBottomSheet
+                place={placeWithParking}
+                onClose={vi.fn()}
+            />
+        );
+
+        fireEvent.click(
+            screen.getByRole("button", { name: "Agrandir la fiche" })
+        );
+
+        expect(screen.getByText("Stationnement")).toBeInTheDocument();
+        expect(screen.getByText("Parking disponible")).toBeInTheDocument();
+        expect(
+            screen.getByText("13 rue Jean Macé, 33320 Eysines")
+        ).toBeInTheDocument();
+        expect(
+            screen.getByText("Environ 10 places disponibles.")
+        ).toBeInTheDocument();
+    });
+
+    it("indique lorsqu'aucun parking n'est disponible", () => {
+        const placeWithoutParking: Place = {
+            ...mockPlace,
+            parking: {
+                available: false,
+            },
+        };
+
+        render(
+            <PlaceBottomSheet
+                place={placeWithoutParking}
+                onClose={vi.fn()}
+            />
+        );
+
+        fireEvent.click(
+            screen.getByRole("button", { name: "Agrandir la fiche" })
+        );
+
+        expect(
+            screen.getByText("Aucun parking disponible")
+        ).toBeInTheDocument();
+    });
+
+    it("n'affiche pas la section stationnement lorsque l'information est inconnue", () => {
+        render(
+            <PlaceBottomSheet place={mockPlace} onClose={vi.fn()} />
+        );
+
+        fireEvent.click(
+            screen.getByRole("button", { name: "Agrandir la fiche" })
+        );
+
+        expect(screen.queryByText("Stationnement")).not.toBeInTheDocument();
+    });
+
 });

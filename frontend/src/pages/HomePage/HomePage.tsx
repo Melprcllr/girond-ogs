@@ -9,7 +9,7 @@ import SearchBar from "../../components/molecules/SearchBar/SearchBar";
 import { towns } from "../../data/towns";
 import type { Town } from "../../data/towns";
 
-import { demoPlaces } from "../../data/demoPlaces";
+import { places } from "../../data/places";
 import {
     MapPin,
     Trees,
@@ -84,7 +84,7 @@ function HomePage() {
     const [selectedRegulations, setSelectedRegulations] = useState<string[]>([]);
 
     const filteredPlaces = useMemo(() => {
-        return filterPlaces(demoPlaces, {
+        return filterPlaces(places, {
             environments: selectedEnvironments as (keyof Place["characteristics"])[],
             risks: selectedRisks.filter(
                 (risk): risk is keyof Place["risks"] => risk !== "pineTrees",

@@ -16,7 +16,7 @@
     transition:
         height 0.3s ease,
         max-height 0.3s ease;
-    
+
     &--collapsed {
         height: 132px;
         overflow: hidden;
@@ -35,29 +35,20 @@
     &__handle-area {
         position: relative;
         display: flex;
-        justify-content: center;
         align-items: center;
-        min-height: 28px;
-        flex-shrink: 0;
+        justify-content: center;
+        min-height: 24px;
     }
 
     &__handle {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 48px;
-        height: 28px;
         padding: 0;
         border: none;
-        border-radius: 9999px;
-        background: transparent;
-        color: var(--color-text-secondary);
+        background: none;
+        color: var(--color-text-primary);
         cursor: pointer;
-
-        &:focus-visible {
-            outline: 2px solid var(--color-primary);
-            outline-offset: 2px;
-        }
     }
 
     &__close {
@@ -67,36 +58,29 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 36px;
-        height: 36px;
+        width: 32px;
+        height: 32px;
         padding: 0;
         border: none;
         border-radius: 50%;
         background-color: var(--color-background);
         color: var(--color-text-primary);
         cursor: pointer;
-
-        &:focus-visible {
-            outline: 2px solid var(--color-primary);
-            outline-offset: 2px;
-        }
     }
 
     &__summary {
         display: flex;
         align-items: center;
         gap: 12px;
-        min-height: 64px;
+        min-width: 0;
     }
 
     &__thumbnail {
-        display: block;
         width: 76px;
-        height: 64px;
+        height: 76px;
         flex-shrink: 0;
-        border-radius: 8px;
         object-fit: cover;
-        background-color: var(--color-background);
+        border-radius: 12px;
     }
 
     &__heading {
@@ -109,16 +93,14 @@
     &__title {
         margin: 0;
         color: var(--color-text-primary);
-        font-family: var(--font-heading);
-        font-size: 1rem;
+        font-size: 1.125rem;
         font-weight: 700;
-        line-height: 1.3;
     }
 
     &__location {
         margin: 0;
         color: var(--color-text-secondary);
-        font-size: 0.8125rem;
+        font-size: 0.875rem;
     }
 
     &__content {
@@ -131,15 +113,149 @@
 
     &__description {
         margin: 0;
-        color: var(--color-text-secondary);
-        font-size: 0.875rem;
-        line-height: 1.6;
+        color: var(--color-text-primary);
+        font-size: 0.9375rem;
+        line-height: 1.5;
+        white-space: pre-line;
     }
 
     &__badges {
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
+    }
+
+    &__gallery-trigger {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0;
+        border: none;
+        background: none;
+        color: var(--color-primary);
+        font: inherit;
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__parking {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        padding: 12px;
+        border-radius: 12px;
+        background-color: var(--color-background);
+    }
+
+    &__section-title {
+        margin: 0;
+        color: var(--color-text-primary);
+        font-size: 0.9375rem;
+        font-weight: 700;
+    }
+
+    &__parking-status {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--color-text-primary);
+        font-size: 0.875rem;
+        font-weight: 600;
+    }
+
+    &__parking-info {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        margin: 0;
+        color: var(--color-text-secondary);
+        font-size: 0.8125rem;
+        line-height: 1.5;
+
+        svg {
+            flex-shrink: 0;
+        }
+    }
+
+    &__parking-details {
+        margin: 0;
+        color: var(--color-text-secondary);
+        font-size: 0.8125rem;
+        line-height: 1.5;
+    }
+}
+
+.place-gallery {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 16px;
+    background-color: rgba(0, 0, 0, 0.94);
+
+    &__image {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: 8px;
+    }
+
+    &__close,
+    &__navigation {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.15);
+        color: white;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+    }
+
+    &__close {
+        top: 20px;
+        right: 20px;
+        width: 44px;
+        height: 44px;
+    }
+
+    &__navigation {
+        top: 50%;
+        width: 44px;
+        height: 44px;
+        transform: translateY(-50%);
+
+        &--previous {
+            left: 12px;
+        }
+
+        &--next {
+            right: 12px;
+        }
+    }
+
+    &__counter {
+        position: absolute;
+        bottom: 16px;
+        left: 50%;
+        margin: 0;
+        color: white;
+        font-size: 0.875rem;
+        transform: translateX(-50%);
     }
 }
 
@@ -156,13 +272,29 @@
         }
 
         &--intermediate {
-            height: 420px;
-            max-height: 60vh;
+            height: 450px;
         }
 
         &--expanded {
-            height: 700px;
-            max-height: 85vh;
+            height: 85vh;
+            max-height: 850px;
+        }
+    }
+
+    .place-gallery {
+        padding: 72px 80px;
+
+        &__navigation {
+            width: 52px;
+            height: 52px;
+
+            &--previous {
+                left: 24px;
+            }
+
+            &--next {
+                right: 24px;
+            }
         }
     }
 }
