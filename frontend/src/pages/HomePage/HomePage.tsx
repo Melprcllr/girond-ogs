@@ -14,13 +14,12 @@ import {
     MapPin,
     Trees,
     ShieldAlert,
-    ClipboardList,
-    Menu,
-    X,
+    ClipboardList
 } from "lucide-react";
 
 import type { Place } from "../../types/Place";
 import { filterPlaces } from "../../utils/filterPlaces";
+import SiteNavigation from "../../components/organisms/SiteNavigation/SiteNavigation";
 
 import "./HomePage.scss";
 
@@ -167,39 +166,6 @@ function HomePage() {
         }
     }, [filteredPlaces, selectedPlaceId]);
 
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    const menuRef = useRef<HTMLElement>(null);
-
-    useEffect(() => {
-        if (!isMenuOpen) {
-            return;
-        }
-
-        const handleClickOutside = (event: PointerEvent) => {
-            if (
-                menuRef.current &&
-                !menuRef.current.contains(event.target as Node)
-            ) {
-                setIsMenuOpen(false);
-            }
-        };
-
-        const handleEscape = (event: KeyboardEvent) => {
-            if (event.key === "Escape") {
-                setIsMenuOpen(false);
-            }
-        };
-
-        document.addEventListener("pointerdown", handleClickOutside);
-        document.addEventListener("keydown", handleEscape);
-
-        return () => {
-            document.removeEventListener("pointerdown", handleClickOutside);
-            document.removeEventListener("keydown", handleEscape);
-        };
-    }, [isMenuOpen]);
-
     return (
         <main className="home-page">
             <header className="home-page__header">
@@ -220,73 +186,8 @@ function HomePage() {
                     />
                 </div>
 
-                <button
-                    className="home-page__menu-button"
-                    type="button"
-                    aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-                    aria-expanded={isMenuOpen}
-                    aria-controls="home-page-menu"
-                    onClick={() => setIsMenuOpen((current) => !current)}
-                >
-                    {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
+                <SiteNavigation />
             </header>
-
-            <div
-                className={`home-page__menu-overlay ${isMenuOpen ? "home-page__menu-overlay--open" : ""
-                    }`}
-                aria-hidden={!isMenuOpen}
-            >
-                <nav
-                    ref={menuRef}
-                    id="home-page-menu"
-                    className={`home-page__menu ${isMenuOpen ? "home-page__menu--open" : ""
-                        }`}
-                    aria-label="Menu principal"
-                >
-                    <div className="home-page__menu-header">
-                        <span className="home-page__menu-title">
-                            Girond'ogs
-                        </span>
-
-                        <button
-                            className="home-page__menu-close"
-                            type="button"
-                            aria-label="Fermer le menu"
-                            onClick={() => setIsMenuOpen(false)}
-                        >
-                            <X size={22} />
-                        </button>
-                    </div>
-
-                    <div className="home-page__menu-links">
-                        <a href="/" onClick={() => setIsMenuOpen(false)}>
-                            Accueil
-                        </a>
-
-                        <a
-                            href="/gironde-avec-un-chien"
-                            onClick={() => setIsMenuOpen(false)}
-                        >
-                            La Gironde avec un chien
-                        </a>
-
-                        <a
-                            href="/a-propos"
-                            onClick={() => setIsMenuOpen(false)}
-                        >
-                            À propos de Girond'ogs
-                        </a>
-
-                        <a
-                            href="/contact"
-                            onClick={() => setIsMenuOpen(false)}
-                        >
-                            Contact et signalement
-                        </a>
-                    </div>
-                </nav>
-            </div>
 
             <section className="home-page__map">
                 <PlacesMap
