@@ -1,8 +1,400 @@
-.alerts-page,
-.about-page,
-.contact-page {
+.about-page {
     min-height: 100vh;
-    padding: 100px 24px 40px;
+    padding: 88px 24px 64px;
     background-color: #F3EFE5;
     color: #315C49;
+
+    &__content {
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+}
+
+/* INTRODUCTION */
+
+.about-hero {
+    margin-bottom: 100px;
+
+    &__image-wrapper {
+        width: 100%;
+        height: 440px;
+        overflow: hidden;
+        border-radius: 24px;
+    }
+
+    &__image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 65%;
+    }
+
+    &__content-wrapper {
+        position: relative;
+        z-index: 1;
+        width: calc(100% - 32px);
+        margin: -65px auto 0;
+    }
+
+    &__content {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 36px 48px;
+        border-radius: 20px;
+        background-color: #F3EFE5;
+        box-shadow: 0 12px 32px rgba(49, 92, 73, 0.10);
+        color: #315C49;
+    }
+
+    &__eyebrow {
+        display: block;
+        margin-bottom: 16px;
+        color: #D98758;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+    }
+
+    h1 {
+        max-width: 900px;
+        margin: 0 0 20px;
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        line-height: 1.12;
+    }
+
+    p {
+        max-width: 900px;
+        margin: 0;
+        color: #526B5B;
+        font-size: 1.1rem;
+        line-height: 1.7;
+    }
+}
+
+/* SECTIONS */
+
+.about-section {
+    margin-bottom: 100px;
+
+    h2 {
+        margin: 0 0 24px;
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+        line-height: 1.2;
+    }
+
+    p {
+        margin: 0 0 16px;
+        color: #526B5B;
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+
+    &__eyebrow {
+        color: #D98758;
+    }
+
+    &--split {
+        display: grid;
+        grid-template-columns: 1fr 0.85fr;
+        align-items: center;
+        gap: 64px;
+    }
+
+    &--reverse {
+        grid-template-columns: 0.85fr 1fr;
+    }
+
+    &__text {
+        max-width: 580px;
+    }
+
+    &__image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 24px;
+        object-fit: cover;
+        object-position: center 50%;
+    }
+
+    &--questions {
+        padding: 56px;
+        border-radius: 24px;
+        background-color: #E8E4D8;
+    }
+
+    &__intro {
+        max-width: 700px;
+        margin-bottom: 32px;
+    }
+
+    &__closing {
+        margin-top: 28px !important;
+        font-weight: 600;
+        color: #315C49 !important;
+    }
+}
+
+/* QUESTIONS */
+
+.about-questions {
+    &__quotes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 32px;
+
+        span {
+            padding: 12px 18px;
+            border-radius: 30px;
+            background-color: #F3EFE5;
+            color: #315C49;
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 28px;
+    }
+}
+
+.about-question {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 76px;
+    padding: 16px;
+    border-radius: 14px;
+    background-color: #F3EFE5;
+    color: #315C49;
+    line-height: 1.5;
+
+    &__icon {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background-color: #DCE4D8;
+        color: #315C49;
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+}
+
+/* COMMUNAUTÉ */
+
+.about-community {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 64px;
+    border-radius: 24px;
+    background-color: #315C49;
+    color: #F3EFE5;
+
+    &__eyebrow {
+        color: #E6B18B;
+    }
+
+    h2 {
+        max-width: 650px;
+        margin: 0 0 24px;
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+        line-height: 1.2;
+    }
+
+    p {
+        max-width: 720px;
+        margin: 0 0 18px;
+        color: rgba(243, 239, 229, 0.88);
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+
+    strong {
+        color: #FFFFFF;
+    }
+
+    &__signature {
+        margin-top: 32px !important;
+        color: #FFFFFF !important;
+        font-size: 1.2rem !important;
+        font-weight: 600;
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        max-width: 100%;
+        box-sizing: border-box;
+        margin: 32px auto 0;
+        padding: 15px 24px;
+        border-radius: 12px;
+        background-color: #F3EFE5;
+        color: #315C49;
+        font-size: 1rem;
+        font-weight: 700;
+        text-align: center;
+        text-decoration: none;
+        transition:
+            background-color 0.2s ease,
+            color 0.2s ease,
+            transform 0.2s ease;
+    
+        &:hover {
+            background-color: #D98758;
+            color: #FFFFFF;
+            transform: translateY(-2px);
+        }
+    
+        &:focus-visible {
+            outline: 3px solid #E6B18B;
+            outline-offset: 4px;
+        }
+    }
+
+}
+
+/* RESPONSIVE - TABLETTE */
+
+@media (max-width: 800px) {
+    .about-page {
+        padding: 80px 20px 40px;
+    }
+
+    .about-hero {
+        margin-bottom: 72px;
+
+        &__image-wrapper {
+            height: 360px;
+        }
+
+        &__content-wrapper {
+            width: calc(100% - 24px);
+            margin-top: -50px;
+        }
+
+        &__content {
+            padding: 28px 32px;
+        }
+    }
+
+    .about-section {
+        margin-bottom: 72px;
+
+        &--split,
+        &--reverse {
+            grid-template-columns: 1fr;
+            gap: 28px;
+        }
+
+        &--reverse {
+            .about-section__image {
+                order: 2;
+            }
+
+            .about-section__text {
+                order: 1;
+            }
+        }
+
+        &__image {
+            height: 340px;
+        }
+
+        &--questions {
+            padding: 32px;
+        }
+    }
+
+    .about-community {
+        padding: 40px;
+    }
+}
+
+/* RESPONSIVE - MOBILE */
+
+@media (max-width: 520px) {
+    .about-page {
+        padding: 76px 16px 32px;
+    }
+
+    .about-hero {
+        margin-bottom: 56px;
+
+        &__image-wrapper {
+            height: 190px;
+            border-radius: 18px;
+        }
+
+        &__image {
+            object-position: center 70%;
+        }
+
+        &__content-wrapper {
+            width: 100%;
+            margin-top: -35px;
+        }
+
+        &__content {
+            padding: 24px 22px;
+            border-radius: 16px;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 7vw, 2.2rem);
+        }
+
+        p {
+            font-size: 1rem;
+        }
+    }
+
+    .about-section {
+        margin-bottom: 56px;
+
+        &__image {
+            height: 260px;
+            border-radius: 16px;
+        }
+
+        &--questions {
+            padding: 24px 18px;
+            border-radius: 18px;
+        }
+    }
+
+    .about-questions {
+        &__quotes {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        &__grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .about-community {
+        padding: 32px 22px;
+        border-radius: 18px;
+
+
+        &__button {
+            display: flex;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+    }
 }
