@@ -1,3 +1,4 @@
+
 .home-page {
     position: relative;
     width: 100%;
@@ -12,7 +13,7 @@
         left: 16px;
         right: 76px;
         z-index: 1100;
-    
+
         display: flex;
         align-items: flex-start;
         gap: 12px;
@@ -118,6 +119,115 @@
         background-color: #FFFFFF;
         border-radius: 12px;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+    }
+}
+
+
+/* Ordinateurs portables et écrans intermédiaires */
+@media (min-width: 1200px) and (max-width: 1919px) {
+    .home-page {
+        &__header {
+            left: 24px;
+            right: 88px;
+        }
+
+        &__search {
+            flex: 0 1 480px;
+            padding: 12px 16px;
+        }
+
+        &__filter-area {
+            left: 0;
+            right: 0;
+            align-items: center;
+            gap: 14px;
+        }
+
+        &__filter-panel {
+            justify-content: center;
+        }
+
+        &__filters {
+            width: auto;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        &__filter-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+
+            svg {
+                width: 25px;
+                height: 25px;
+            }
+        }
+    }
+}
+
+
+/* Très grands écrans */
+@media (min-width: 1920px) {
+    .home-page {
+        &__header {
+            top: 24px;
+            left: 32px;
+            right: 100px;
+        }
+
+        &__search {
+            flex: 0 1 560px;
+            padding: 14px 18px;
+
+            .search-bar__input-wrapper {
+                min-height: 54px;
+            }
+        }
+
+        &__filter-area {
+            bottom: 36px;
+            left: 0;
+            right: 0;
+            align-items: center;
+            gap: 18px;
+        }
+
+        &__filter-panel {
+            justify-content: center;
+
+            .map-filter-panel {
+                width: min(440px, calc(100vw - 48px));
+                padding: 22px;
+            }
+
+            .distance-filter {
+                width: min(440px, calc(100vw - 48px));
+                padding: 22px;
+            }
+        }
+
+        &__filters {
+            width: auto;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        &__filter-button {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+
+            svg {
+                width: 27px;
+                height: 27px;
+            }
+        }
+
+        .distance-filter {
+            width: min(440px, calc(100vw - 48px));
+            padding: 22px;
+        }
     }
 }
 

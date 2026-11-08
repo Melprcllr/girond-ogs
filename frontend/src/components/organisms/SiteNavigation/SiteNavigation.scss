@@ -145,3 +145,74 @@
         }
     }
 }
+
+/* Bouton burger plus visible sur desktop */
+@media (min-width: 768px) {
+    .site-navigation {
+        top: 24px;
+        right: 24px;
+
+        &__menu-button {
+            width: 56px;
+            height: 56px;
+
+            svg {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+}
+
+/* Adaptation réservée aux très grands écrans */
+@media (min-width: 1920px) {
+    .site-navigation {
+        top: 32px;
+        right: 32px;
+
+        &__menu-button {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+
+            svg {
+                width: 36px;
+                height: 36px;
+            }
+        }
+
+        &__menu {
+            width: min(520px, 40vw);
+            padding: 40px;
+        }
+
+        &__menu-header {
+            padding-bottom: 36px;
+        }
+
+        &__menu-title {
+            font-size: 28px;
+        }
+
+        &__menu-close {
+            width: 52px;
+            height: 52px;
+
+            svg {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        &__menu-links {
+            gap: 16px;
+            padding-top: 36px;
+
+            a {
+                padding: 22px 20px;
+                border-radius: 12px;
+                font-size: 20px;
+            }
+        }
+    }
+}
