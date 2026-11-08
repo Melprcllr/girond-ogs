@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
     ChevronDown,
@@ -25,6 +25,8 @@ interface PlaceBottomSheetProps {
 
 type SheetState = "collapsed" | "intermediate" | "expanded";
 
+const VERY_LARGE_SCREEN_QUERY = "(min-width: 1920px)";
+
 function PlaceBottomSheet({
     place,
     onClose,
@@ -32,10 +34,36 @@ function PlaceBottomSheet({
     const [sheetState, setSheetState] =
         useState<SheetState>("collapsed");
 
+    const [isVeryLargeScreen, setIsVeryLargeScreen] =
+        useState(false);
+
     const [activePhotoIndex, setActivePhotoIndex] =
         useState<number | null>(null);
 
     const navigate = useNavigate();
+
+// Détection des très grands écrans.
+useEffect(() => {
+    // Certains environnements de test ne disposent pas de matchMedia.
+    if (typeof window.matchMedia !== "function") {
+        setIsVeryLargeScreen(false);
+        return;
+    }
+
+    const mediaQuery = window.matchMedia(VERY_LARGE_SCREEN_QUERY);
+
+    const handleScreenChange = (event: MediaQueryListEvent) => {
+        setIsVeryLargeScreen(event.matches);
+    };
+
+    setIsVeryLargeScreen(mediaQuery.matches);
+
+    mediaQuery.addEventListener("change", handleScreenChange);
+
+    return () => {
+        mediaQuery.removeEventListener("change", handleScreenChange);
+    };
+}, []);
 
     // Main image first, followed by additional gallery images.
     const galleryImages = [
@@ -83,8 +111,15 @@ function PlaceBottomSheet({
 
     const handleExpand = () => {
         setSheetState((current) => {
+            if (isVeryLargeScreen) {
+                return current === "expanded"
+                    ? "collapsed"
+                    : "expanded";
+            }
+
             if (current === "collapsed") return "intermediate";
             if (current === "intermediate") return "expanded";
+
             return "collapsed";
         });
     };
