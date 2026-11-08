@@ -1,11 +1,22 @@
 
 import { describe, it, expect } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import { places } from "../../../data/places";
+
 import ContactForm from "./ContactForm";
+
+function renderContactForm(initialEntry = "/contact") {
+    return render(
+        <MemoryRouter initialEntries={[initialEntry]}>
+            <ContactForm />
+        </MemoryRouter>
+    );
+}
 
 describe("ContactForm", () => {
     it("affiche le champ de sélection du motif", () => {
-        render(<ContactForm />);
+        renderContactForm();
 
         expect(
             screen.getByLabelText(/^Votre demande concerne/)
@@ -13,7 +24,7 @@ describe("ContactForm", () => {
     });
 
     it("propose les six motifs de contact", () => {
-        render(<ContactForm />);
+        renderContactForm();
 
         expect(
             screen.getByRole("option", { name: "Une question" })
@@ -47,19 +58,21 @@ describe("ContactForm", () => {
     });
 
     it("affiche les champs communs", () => {
-        render(<ContactForm />);
+        renderContactForm();
 
         expect(screen.getByLabelText(/^Prénom/)).toBeInTheDocument();
+
         expect(
             screen.getByLabelText(/^Adresse e-mail/)
         ).toBeInTheDocument();
+
         expect(
             screen.getByLabelText(/^Votre message/)
         ).toBeInTheDocument();
     });
 
     it("affiche le champ de proposition de lieu uniquement pour ce motif", () => {
-        render(<ContactForm />);
+        renderContactForm();
 
         expect(
             screen.queryByLabelText(/^Nom du lieu/)
@@ -76,7 +89,7 @@ describe("ContactForm", () => {
     });
 
     it("affiche la section de signalement uniquement pour ce motif", () => {
-        render(<ContactForm />);
+        renderContactForm();
 
         expect(
             screen.queryByText("Le lieu concerné")
@@ -93,7 +106,7 @@ describe("ContactForm", () => {
     });
 
     it("conserve les champs communs lors d'un changement de motif", () => {
-        render(<ContactForm />);
+        renderContactForm();
 
         fireEvent.change(screen.getByLabelText(/^Prénom/), {
             target: { value: "Mélissa" },
@@ -139,7 +152,7 @@ describe("ContactForm", () => {
     });
 
     it("réinitialise les champs spécifiques lorsqu'on change de motif", () => {
-        render(<ContactForm />);
+        renderContactForm();
 
         const reasonSelect = screen.getByLabelText(
             /^Votre demande concerne/
@@ -165,10 +178,43 @@ describe("ContactForm", () => {
     });
 
     it("affiche le bouton d'envoi", () => {
-        render(<ContactForm />);
+        renderContactForm();
 
         expect(
             screen.getByRole("button", { name: "Envoyer mon message" })
         ).toBeInTheDocument();
+    });
+
+    it("préremplit le formulaire lorsqu'un lieu est transmis dans la navigation", () => {
+        const placeToReport = places[0];
+    
+        render(
+            <MemoryRouter
+                initialEntries={[
+                    {
+                        pathname: "/contact",
+                        state: {
+                            reason: "report",
+                            commune: placeToReport.commune,
+                            placeId: placeToReport.id,
+                        },
+                    },
+                ]}
+            >
+                <ContactForm />
+            </MemoryRouter>
+        );
+    
+        expect(
+            screen.getByLabelText(/^Votre demande concerne/)
+        ).toHaveValue("report");
+    
+        expect(
+            screen.getByLabelText(/Commune/)
+        ).toHaveValue(placeToReport.commune);
+    
+        expect(
+            screen.getByLabelText(/Lieu à signaler/)
+        ).toHaveValue(placeToReport.id);
     });
 });

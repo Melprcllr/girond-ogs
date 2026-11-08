@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
     ChevronDown,
     ChevronUp,
@@ -9,7 +10,9 @@ import {
     MapPin,
     ParkingSquare,
     Images,
+    Flag,
 } from "lucide-react";
+
 import type { Place } from "../../../types/Place";
 import Badge from "../../atoms/Badge/Badge";
 
@@ -32,6 +35,8 @@ function PlaceBottomSheet({
     const [activePhotoIndex, setActivePhotoIndex] =
         useState<number | null>(null);
 
+    const navigate = useNavigate();
+
     // Main image first, followed by additional gallery images.
     const galleryImages = [
         place.imageUrl,
@@ -43,7 +48,7 @@ function PlaceBottomSheet({
             current === null
                 ? 0
                 : (current - 1 + galleryImages.length) %
-                galleryImages.length
+                  galleryImages.length
         );
     };
 
@@ -81,6 +86,16 @@ function PlaceBottomSheet({
             if (current === "collapsed") return "intermediate";
             if (current === "intermediate") return "expanded";
             return "collapsed";
+        });
+    };
+
+    const handleReport = () => {
+        navigate("/contact", {
+            state: {
+                reason: "report",
+                commune: place.commune,
+                placeId: place.id,
+            },
         });
     };
 
@@ -240,6 +255,17 @@ function PlaceBottomSheet({
                                 ))}
                             </div>
                         )}
+
+                        <button
+                            type="button"
+                            className="place-bottom-sheet__report"
+                            onClick={handleReport}
+                        >
+                            <Flag size={17} aria-hidden="true" />
+                            <span>
+                                Signaler une information sur ce lieu
+                            </span>
+                        </button>
                     </div>
                 )}
             </section>
