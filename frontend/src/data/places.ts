@@ -150,6 +150,10 @@ export const places: Place[] = [
             "/images/places/domaine-du-pinsan-gallery-04.jpg",
             "/images/places/domaine-du-pinsan-gallery-05.jpg",
             "/images/places/domaine-du-pinsan-gallery-06.jpg",
+            "/images/places/domaine-du-pinsan-gallery-07.jpg",
+            "/images/places/domaine-du-pinsan-gallery-08.jpg",
+            "/images/places/domaine-du-pinsan-gallery-09.jpg",
+            "/images/places/domaine-du-pinsan-gallery-10.jpg",
         ],
 
         latitude: 44.86991979131604,
@@ -204,8 +208,7 @@ export const places: Place[] = [
             "/images/places/graviere-saint-jean-d-illac-gallery-01.jpg",
             "/images/places/graviere-saint-jean-d-illac-gallery-02.jpg",
             "/images/places/graviere-saint-jean-d-illac-gallery-03.jpg",
-            "/images/places/graviere-saint-jean-d-illac-gallery-04.jpg",
-            "/images/places/graviere-saint-jean-d-illac-gallery-05.jpg",
+            "/images/places/graviere-saint-jean-d-illac-gallery-05.jpeg",
             "/images/places/graviere-saint-jean-d-illac-gallery-06.jpg",
             "/images/places/graviere-saint-jean-d-illac-gallery-07.jpg",
             "/images/places/graviere-saint-jean-d-illac-gallery-08.jpg",
@@ -314,63 +317,5 @@ export const places: Place[] = [
     },
 
     // 
-    {
-        id: "bois-de-tanais",
-        name: "Bois de Tanaïs",
-        commune: "Blanquefort",
-        postalCode: "33290",
-        description:
-            "Le Bois de Tanaïs offre un bel espace de promenade composé d'une partie aménagée en parc et de nombreux chemins qui se prolongent dans les bois et les espaces environnants. \n\nAvec ses différents itinéraires et ses paysages variés, chacun peut profiter d'une balade à son rythme.\n\nSitué à proximité d'un centre équestre et de plusieurs pâtures, le bois permet également de croiser des chevaux au cours de la promenade. \n\nLe lieu est particulièrement fréquenté le week-end, avec de nombreuses familles et des propriétaires de chiens.",
-        imageUrl: "/images/places/bois-de-tanais.jpg",
-
-        gallery: [
-            "/images/places/bois-de-tanais-gallery-01.jpg",
-            "/images/places/bois-de-tanais-gallery-02.webp",
-            "/images/places/bois-de-tanais-gallery-03.webp",
-            "/images/places/bois-de-tanais-gallery-04.jpeg",
-            "/images/places/bois-de-tanais-gallery-05.JPG",
-            "/images/places/bois-de-tanais-gallery-06.jpg",
-            "/images/places/bois-de-tanais-gallery-07.webp",
-            "/images/places/bois-de-tanais-gallery-08.jpeg",
-        ],
-
-        latitude: 44.92933889217298,
-        longitude: -0.6560676459570883,
-
-        specificities: [
-            "Plusieurs possibilités de boucles et de chemins pour varier les promenades",
-            "Possibilité de croiser des chevaux sur les chemins ou à proximité des pâtures",
-            "Forte affluence certains week-ends, avec de nombreux chiens et enfants",
-        ],
-
-        parking: {
-            available: true,
-            address: "Avenue de Tanaïs, 33290 Blanquefort",
-            details: "Parking principal situé à proximité de la salle de réception de Tanaïs.",
-        },
-
-        characteristics: {
-            vineyards: true,
-            forest: true,
-            beach: false,
-            shadedAreas: true,
-            water: true,
-            pineTrees: true,
-        },
-
-        regulations: {
-            dogsOnLeash: true,
-            dogsProhibited: false,
-        },
-
-        risks: {
-            processionaryCaterpillars: true,
-            farmAnimals: true,
-            cyanobacteria: true,
-        },
-
-        sources: [],
-        lastVerifiedAt: "2026-11-05",
-    },
 
 ];
