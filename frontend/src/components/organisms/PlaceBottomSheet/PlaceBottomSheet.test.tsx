@@ -1,6 +1,8 @@
 
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { MemoryRouter, useLocation } from "react-router-dom";
+
 import PlaceBottomSheet from "./PlaceBottomSheet";
 import type { Place } from "../../../types/Place";
 
@@ -37,14 +39,35 @@ const mockPlace: Place = {
     },
 };
 
+function renderPlaceBottomSheet(onClose = vi.fn()) {
+    return render(
+        <MemoryRouter>
+            <PlaceBottomSheet
+                place={mockPlace}
+                onClose={onClose}
+            />
+        </MemoryRouter>
+    );
+}
+
+// Permet de vérifier les informations transmises à la navigation.
+function LocationDisplay() {
+    const location = useLocation();
+
+    return (
+        <pre data-testid="navigation-state">
+            {JSON.stringify(location.state)}
+        </pre>
+    );
+}
+
 describe("PlaceBottomSheet", () => {
     it("affiche les informations principales du lieu à l'ouverture", () => {
-        render(
-            <PlaceBottomSheet place={mockPlace} onClose={vi.fn()} />
-        );
+        renderPlaceBottomSheet();
 
         expect(screen.getByText("Lac de Lacanau")).toBeInTheDocument();
         expect(screen.getByText("Lacanau · 33680")).toBeInTheDocument();
+
         expect(
             screen.getByRole("img", {
                 name: "Vue du lieu Lac de Lacanau",
@@ -57,9 +80,7 @@ describe("PlaceBottomSheet", () => {
     });
 
     it("passe de l'état réduit à l'état intermédiaire", () => {
-        render(
-            <PlaceBottomSheet place={mockPlace} onClose={vi.fn()} />
-        );
+        renderPlaceBottomSheet();
 
         fireEvent.click(
             screen.getByRole("button", { name: "Agrandir la fiche" })
@@ -69,15 +90,11 @@ describe("PlaceBottomSheet", () => {
             screen.getByText("Un joli lac entouré de nature.")
         ).toBeInTheDocument();
 
-        expect(
-            screen.getByText("Forêt")
-        ).toBeInTheDocument();
+        expect(screen.getByText("Forêt")).toBeInTheDocument();
     });
 
     it("passe de l'état intermédiaire à l'état déployé", () => {
-        const { container } = render(
-            <PlaceBottomSheet place={mockPlace} onClose={vi.fn()} />
-        );
+        const { container } = renderPlaceBottomSheet();
 
         fireEvent.click(
             screen.getByRole("button", { name: "Agrandir la fiche" })
@@ -97,9 +114,7 @@ describe("PlaceBottomSheet", () => {
     });
 
     it("revient à l'état réduit après un troisième clic", () => {
-        const { container } = render(
-            <PlaceBottomSheet place={mockPlace} onClose={vi.fn()} />
-        );
+        const { container } = renderPlaceBottomSheet();
 
         const expandButton = () =>
             screen.getByRole("button", { name: "Agrandir la fiche" });
@@ -117,15 +132,14 @@ describe("PlaceBottomSheet", () => {
     });
 
     it("affiche les réglementations et les risques identifiés", () => {
-        render(
-            <PlaceBottomSheet place={mockPlace} onClose={vi.fn()} />
-        );
+        renderPlaceBottomSheet();
 
         fireEvent.click(
             screen.getByRole("button", { name: "Agrandir la fiche" })
         );
 
         expect(screen.getByText("Chiens attachés")).toBeInTheDocument();
+
         expect(
             screen.getByText("Chenilles processionnaires")
         ).toBeInTheDocument();
@@ -134,9 +148,7 @@ describe("PlaceBottomSheet", () => {
     it("appelle onClose lorsque l'utilisateur ferme la fiche", () => {
         const onClose = vi.fn();
 
-        render(
-            <PlaceBottomSheet place={mockPlace} onClose={onClose} />
-        );
+        renderPlaceBottomSheet(onClose);
 
         fireEvent.click(
             screen.getByRole("button", { name: "Fermer la fiche" })
@@ -156,10 +168,12 @@ describe("PlaceBottomSheet", () => {
         };
 
         render(
-            <PlaceBottomSheet
-                place={placeWithParking}
-                onClose={vi.fn()}
-            />
+            <MemoryRouter>
+                <PlaceBottomSheet
+                    place={placeWithParking}
+                    onClose={vi.fn()}
+                />
+            </MemoryRouter>
         );
 
         fireEvent.click(
@@ -168,9 +182,11 @@ describe("PlaceBottomSheet", () => {
 
         expect(screen.getByText("Stationnement")).toBeInTheDocument();
         expect(screen.getByText("Parking disponible")).toBeInTheDocument();
+
         expect(
             screen.getByText("13 rue Jean Macé, 33320 Eysines")
         ).toBeInTheDocument();
+
         expect(
             screen.getByText("Environ 10 places disponibles.")
         ).toBeInTheDocument();
@@ -185,10 +201,12 @@ describe("PlaceBottomSheet", () => {
         };
 
         render(
-            <PlaceBottomSheet
-                place={placeWithoutParking}
-                onClose={vi.fn()}
-            />
+            <MemoryRouter>
+                <PlaceBottomSheet
+                    place={placeWithoutParking}
+                    onClose={vi.fn()}
+                />
+            </MemoryRouter>
         );
 
         fireEvent.click(
@@ -201,15 +219,66 @@ describe("PlaceBottomSheet", () => {
     });
 
     it("n'affiche pas la section stationnement lorsque l'information est inconnue", () => {
+        renderPlaceBottomSheet();
+
+        fireEvent.click(
+            screen.getByRole("button", { name: "Agrandir la fiche" })
+        );
+
+        expect(
+            screen.queryByText("Stationnement")
+        ).not.toBeInTheDocument();
+    });
+
+    it("affiche le bouton de signalement lorsque la fiche est agrandie", () => {
+        renderPlaceBottomSheet();
+
+        expect(
+            screen.queryByRole("button", {
+                name: /Signaler une information sur ce lieu/,
+            })
+        ).not.toBeInTheDocument();
+
+        fireEvent.click(
+            screen.getByRole("button", { name: "Agrandir la fiche" })
+        );
+
+        expect(
+            screen.getByRole("button", {
+                name: /Signaler une information sur ce lieu/,
+            })
+        ).toBeInTheDocument();
+    });
+
+    it("transmet le lieu à signaler lors du clic sur le bouton", () => {
         render(
-            <PlaceBottomSheet place={mockPlace} onClose={vi.fn()} />
+            <MemoryRouter>
+                <PlaceBottomSheet
+                    place={mockPlace}
+                    onClose={vi.fn()}
+                />
+                <LocationDisplay />
+            </MemoryRouter>
         );
 
         fireEvent.click(
             screen.getByRole("button", { name: "Agrandir la fiche" })
         );
 
-        expect(screen.queryByText("Stationnement")).not.toBeInTheDocument();
-    });
+        fireEvent.click(
+            screen.getByRole("button", {
+                name: /Signaler une information sur ce lieu/,
+            })
+        );
 
+        expect(
+            screen.getByTestId("navigation-state")
+        ).toHaveTextContent(
+            JSON.stringify({
+                reason: "report",
+                commune: "Lacanau",
+                placeId: "lac-lacanau",
+            })
+        );
+    });
 });

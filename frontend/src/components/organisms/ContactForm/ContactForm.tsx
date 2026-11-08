@@ -1,4 +1,6 @@
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import Input from "../../atoms/Input/Input";
 import Select from "../../atoms/Select/Select";
@@ -39,6 +41,12 @@ interface AvailableCommune {
     postalCodes: string[];
 }
 
+interface ContactNavigationState {
+    reason?: ContactReason;
+    commune?: string;
+    placeId?: string;
+}
+
 // Normalise le texte pour permettre une recherche sans tenir compte des accents.
 function normalizeSearch(value: string): string {
     return value
@@ -53,7 +61,8 @@ const availableCommunes = places.reduce<AvailableCommune[]>(
     (communes, place) => {
         const existingCommune = communes.find(
             (commune) =>
-                normalizeSearch(commune.name) === normalizeSearch(place.commune),
+                normalizeSearch(commune.name) ===
+                normalizeSearch(place.commune)
         );
 
         if (existingCommune) {
@@ -69,10 +78,12 @@ const availableCommunes = places.reduce<AvailableCommune[]>(
 
         return communes;
     },
-    [],
+    []
 );
 
 function ContactForm() {
+    const location = useLocation();
+
     const [reason, setReason] = useState<ContactReason | "">("");
 
     // Informations communes
@@ -97,7 +108,7 @@ function ContactForm() {
                   return (
                       normalizeSearch(commune.name).includes(search) ||
                       commune.postalCodes.some((postalCode) =>
-                          postalCode.includes(search),
+                          postalCode.includes(search)
                       )
                   );
               })
@@ -107,7 +118,7 @@ function ContactForm() {
         ? places.filter(
               (place) =>
                   normalizeSearch(place.commune) ===
-                  normalizeSearch(selectedCommune),
+                  normalizeSearch(selectedCommune)
           )
         : [];
 
@@ -143,6 +154,33 @@ function ContactForm() {
         // Le traitement et l'envoi seront ajoutés lors de la connexion au backend.
     };
 
+    // Préremplit le formulaire lorsqu'on arrive depuis la fiche d'un lieu.
+    useEffect(() => {
+        const navigationState =
+            location.state as ContactNavigationState | null;
+
+        if (
+            navigationState?.reason !== "report" ||
+            !navigationState.placeId
+        ) {
+            return;
+        }
+
+        const placeToReport = places.find(
+            (place) => place.id === navigationState.placeId
+        );
+
+        if (!placeToReport) {
+            return;
+        }
+
+        setReason("report");
+        setCommuneQuery(placeToReport.commune);
+        setSelectedCommune(placeToReport.commune);
+        setSelectedPlaceId(placeToReport.id);
+        setReportType("");
+    }, [location.key, location.state]);
+
     return (
         <form className="contact-form" onSubmit={handleSubmit}>
             <div className="contact-form__field">
@@ -152,7 +190,7 @@ function ContactForm() {
                     value={reason}
                     onChange={(event) =>
                         handleReasonChange(
-                            event.target.value as ContactReason | "",
+                            event.target.value as ContactReason | ""
                         )
                     }
                     required
@@ -202,9 +240,7 @@ function ContactForm() {
                         {communeSuggestions.length > 0 && (
                             <ul className="contact-form__suggestions">
                                 {communeSuggestions.map((commune) => (
-                                    <li
-                                        key={normalizeSearch(commune.name)}
-                                    >
+                                    <li key={normalizeSearch(commune.name)}>
                                         <button
                                             type="button"
                                             onClick={() =>
@@ -234,7 +270,8 @@ function ContactForm() {
                     {selectedCommune && (
                         <div className="contact-form__selected-commune">
                             <span>
-                                Commune sélectionnée : <strong>{selectedCommune}</strong>
+                                Commune sélectionnée :{" "}
+                                <strong>{selectedCommune}</strong>
                             </span>
 
                             <button
@@ -255,7 +292,7 @@ function ContactForm() {
                                     (place) => ({
                                         label: place.name,
                                         value: place.id,
-                                    }),
+                                    })
                                 )}
                                 value={selectedPlaceId}
                                 onChange={(event) => {
