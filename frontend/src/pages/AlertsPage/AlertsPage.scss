@@ -1,8 +1,371 @@
-.alerts-page,
-.about-page,
-.contact-page {
+
+.alerts-page {
     min-height: 100vh;
-    padding: 100px 24px 40px;
+    padding: 110px 24px 80px;
     background-color: #F3EFE5;
     color: #315C49;
+
+    &__content {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    &__header {
+        max-width: 800px;
+        margin: 0 auto 56px;
+        text-align: center;
+    }
+
+    &__eyebrow {
+        display: inline-block;
+        margin-bottom: 14px;
+        color: #C46F42;
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+    }
+
+    &__header h1 {
+        margin: 0;
+        font-family: var(--font-heading);
+        font-size: clamp(2.3rem, 5vw, 3.8rem);
+        line-height: 1.15;
+    }
+
+    &__header p {
+        max-width: 680px;
+        margin: 20px auto 0;
+        color: var(--color-text-secondary);
+        font-size: 1.05rem;
+        line-height: 1.8;
+    }
+
+    &__list {
+        margin-top: 72px;
+    }
+
+
+    &__quick-nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 0 auto 42px;
+        padding: 0 12px;
+    }
+
+&__quick-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 19px;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    color: #315C49;
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 14px rgba(49, 92, 73, 0.1);
+    }
+
+    &:focus-visible {
+        outline: 3px solid #315C49;
+        outline-offset: 3px;
+    }
+
+    &--chasse {
+        background-color: #F0E5D3;
+        border-color: #E5D2B5;
+    }
+
+    &--chenilles {
+        background-color: #E3EBDD;
+        border-color: #CFDDC7;
+    }
+
+    &--epillets {
+        background-color: #F4EDCF;
+        border-color: #E8DDAF;
+    }
+
+    &--cyanobacteries {
+        background-color: #DDECE7;
+        border-color: #C6DDD5;
+    }
+}
+
+
+    &__section-heading {
+        max-width: 700px;
+        margin: 0 auto 36px;
+        text-align: center;
+
+        > span {
+            color: #C46F42;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            margin: 10px 0 0;
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            line-height: 1.2;
+        }
+
+        p {
+            margin: 14px 0 0;
+            color: var(--color-text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.7;
+        }
+    }
+
+    // Chronologie des alertes
+
+    &__timeline {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    &__timeline-entry {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    &__timeline-item {
+        width: 100%;
+        padding: 18px;
+        border: 2px solid transparent;
+        border-radius: 28px;
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+
+        > * {
+            width: 100%;
+        }
+
+        // Chasse : ocre doux
+
+        &--chasse {
+            background-color: #F0E5D3;
+            border-color: #E5D2B5;
+        }
+
+        // Chenilles : vert sauge
+
+        &--chenilles-processionnaires {
+            background-color: #E3EBDD;
+            border-color: #CFDDC7;
+        }
+
+        // Épillets : jaune paille
+
+        &--epillets {
+            background-color: #F4EDCF;
+            border-color: #E8DDAF;
+        }
+
+        // Cyanobactéries : vert d'eau
+
+        &--cyanobacteries {
+            background-color: #DDECE7;
+            border-color: #C6DDD5;
+        }
+    }
+
+    &__timeline-connector {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        height: 76px;
+        padding: 8px 0;
+
+        span {
+            display: block;
+            width: 8px;
+            height: 8px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background-color: #A9B9A3;
+        }
+    }
+
+    &__disclaimer {
+        max-width: 850px;
+        margin: 40px auto 0;
+        color: var(--color-text-secondary);
+        font-size: 0.85rem;
+        line-height: 1.7;
+        text-align: center;
+    }
+}
+
+// Écrans intermédiaires
+
+@media (min-width: 901px) {
+    .alerts-page {
+        &__timeline-item {
+            width: 96%;
+        }
+
+        &__timeline-entry:nth-child(even) {
+            .alerts-page__timeline-item {
+                transform: translateX(2%);
+            }
+        }
+
+        &__timeline-entry:nth-child(odd) {
+            .alerts-page__timeline-item {
+                transform: translateX(-2%);
+            }
+        }
+    }
+}
+
+// Tablettes et mobiles
+
+@media (max-width: 900px) {
+    .alerts-page {
+        &__timeline-item {
+            padding: 12px;
+            border-radius: 22px;
+        }
+
+        &__timeline-connector {
+            height: 64px;
+            gap: 8px;
+
+            span {
+                width: 7px;
+                height: 7px;
+            }
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .alerts-page {
+        padding: 100px 16px 56px;
+
+        &__header {
+            margin-bottom: 36px;
+        }
+
+        &__header p {
+            font-size: 0.96rem;
+        }
+
+        &__list {
+            margin-top: 48px;
+        }
+
+        &__section-heading {
+            margin-bottom: 26px;
+        }
+
+        &__timeline-item {
+            width: 100%;
+            padding: 9px;
+            border-radius: 18px;
+        }
+
+        &__timeline-connector {
+            height: 54px;
+            gap: 7px;
+
+            span {
+                width: 6px;
+                height: 6px;
+            }
+        }
+
+        &__disclaimer {
+            margin-top: 28px;
+            text-align: left;
+        }
+
+        &__quick-nav {
+            gap: 9px;
+            margin-bottom: 30px;
+        }
+        
+        &__quick-link {
+            padding: 10px 14px;
+            font-size: 0.82rem;
+        }
+
+    }
+}
+
+// Très grands écrans
+
+@media (min-width: 1920px) {
+    .alerts-page {
+        padding-top: 130px;
+
+        &__content {
+            max-width: 1500px;
+        }
+
+        &__header {
+            max-width: 950px;
+            margin-bottom: 70px;
+        }
+
+        &__header p {
+            font-size: 1.15rem;
+        }
+
+        &__list {
+            margin-top: 90px;
+        }
+
+        &__timeline-item {
+            width: 94%;
+            padding: 24px;
+            border-radius: 32px;
+        }
+
+        &__timeline-connector {
+            height: 90px;
+            gap: 11px;
+
+            span {
+                width: 9px;
+                height: 9px;
+            }
+        }
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.alert-card {
+    scroll-margin-top: 110px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
 }
