@@ -1,32 +1,84 @@
-# React + TypeScript + Vite
+# Girond'ogs – Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+## Overview
 
-Currently, two official plugins are available:
+The frontend of Girond'ogs is a responsive web application built with React and TypeScript.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+It provides an interactive interface to explore dog-friendly walking spots across Gironde, France.
 
-## React Compiler
+## Tech stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- TypeScript
+- Vite
+- React Router
+- Leaflet / React Leaflet
+- Sass
+- Vitest
+- React Testing Library
 
-## Expanding the Oxlint configuration
+## Project structure
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+The frontend follows an atomic design approach to organize reusable UI components.
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```text
+src/
+├── components/
+│   ├── atoms/
+│   ├── molecules/
+│   ├── organisms/
+│   └── templates/
+├── pages/
+├── data/
+├── assets/
+└── ...
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Getting started
+
+### Requirements
+
+- Node.js
+- npm
+
+### Installation
+
+From the `frontend/` directory:
+
+```bash
+npm install
+```
+
+### Development server
+
+```bash
+npm run dev
+```
+
+The application is available at:
+
+`http://localhost:5173`
+
+### Tests
+
+```bash
+npm test
+```
+
+### Production build
+
+```bash
+npm run build
+```
+
+## Backend connection
+
+The frontend communicates with the Girond'ogs REST API.
+
+The API base URL can be configured using the `VITE_API_URL` environment variable.
+
+If this variable is not defined, the application uses `http://localhost:3000` by default.
+
+## Project status
+
+In development.
