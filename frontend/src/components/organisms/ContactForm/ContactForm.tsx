@@ -47,6 +47,10 @@ interface ContactNavigationState {
     placeId?: string;
 }
 
+interface ContactFormProps {
+    onSuccess: () => void;
+}
+
 // Normalise le texte pour permettre une recherche sans tenir compte des accents.
 function normalizeSearch(value: string): string {
     return value
@@ -81,7 +85,7 @@ const availableCommunes = places.reduce<AvailableCommune[]>(
     []
 );
 
-function ContactForm() {
+function ContactForm({ onSuccess }: ContactFormProps) {
     const location = useLocation();
 
     const [reason, setReason] = useState<ContactReason | "">("");
@@ -101,10 +105,7 @@ function ContactForm() {
     const [reportType, setReportType] = useState("");
 
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState<{
-        type: "success" | "error";
-        message: string;
-    } | null>(null);
+    const [submitError, setSubmitError] = useState<string | null>(null);
 
     const communeSuggestions =
         communeQuery.trim().length >= 2 && !selectedCommune
@@ -162,7 +163,7 @@ function ContactForm() {
         if (!reason) return;
 
         setIsSubmitting(true);
-        setSubmitStatus(null);
+        setSubmitError(null);
 
         const contactData = {
             reason,
@@ -197,18 +198,14 @@ function ContactForm() {
                 );
             }
 
-            setSubmitStatus({
-                type: "success",
-                message: result.message,
-            });
+            // La page parente affiche maintenant l'écran de confirmation.
+            onSuccess();
         } catch (error) {
-            setSubmitStatus({
-                type: "error",
-                message:
-                    error instanceof Error
-                        ? error.message
-                        : "Impossible de transmettre votre demande.",
-            });
+            setSubmitError(
+                error instanceof Error
+                    ? error.message
+                    : "Impossible de transmettre votre demande."
+            );
         } finally {
             setIsSubmitting(false);
         }
@@ -410,25 +407,27 @@ function ContactForm() {
                 />
             </div>
 
+            {submitError && (
+                <p
+                    className="contact-form__feedback contact-form__feedback--error"
+                    role="alert"
+                    aria-live="polite"
+                >
+                    {submitError}
+                </p>
+            )}
+
             <div className="contact-form__actions">
                 <button
                     type="submit"
                     className="contact-form__submit"
                     disabled={isSubmitting}
                 >
-                    {isSubmitting ? "Transmission en cours..." : "Envoyer mon message"}
+                    {isSubmitting
+                        ? "Transmission en cours..."
+                        : "Envoyer mon message"}
                 </button>
             </div>
-
-            {submitStatus && (
-                <p
-                    className={`contact-form__feedback contact-form__feedback--${submitStatus.type}`}
-                    role={submitStatus.type === "error" ? "alert" : "status"}
-                    aria-live="polite"
-                >
-                    {submitStatus.message}
-                </p>
-            )}
 
             <p className="contact-form__required">
                 * Champs obligatoires

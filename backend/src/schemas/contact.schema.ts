@@ -1,4 +1,3 @@
-
 import { z } from "zod";
 
 const optionalText = z
@@ -75,5 +74,8 @@ const contactSchema = z
             }
         }
     });
+
+// Type TypeScript déduit automatiquement du schéma Zod.
+export type ContactFormData = z.infer<typeof contactSchema>;
 
 export default contactSchema;

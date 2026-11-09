@@ -1,10 +1,12 @@
 
 import { Router } from "express";
+
 import contactSchema from "../schemas/contact.schema.js";
+import { sendContactEmail } from "../services/email.service.js";
 
 const router = Router();
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
     const result = contactSchema.safeParse(req.body);
 
     if (!result.success) {
@@ -18,14 +20,26 @@ router.post("/", (req, res) => {
         });
     }
 
-    // L'envoi d'email sera ajouté dans une prochaine étape.
-    // Pour le moment, les données sont uniquement validées.
+    try {
+        await sendContactEmail(result.data);
 
-    return res.status(200).json({
-        success: true,
-        message:
-            "Votre demande a été reçue et validée. L'envoi des emails n'est pas encore activé.",
-    });
+        return res.status(200).json({
+            success: true,
+            message:
+                "Votre demande a bien été envoyée. Merci pour votre message !",
+        });
+    } catch (error) {
+        console.error(
+            "Erreur lors de l'envoi de l'email de contact :",
+            error
+        );
+
+        return res.status(500).json({
+            success: false,
+            message:
+                "Une erreur est survenue lors de l'envoi de votre demande. Veuillez réessayer ultérieurement.",
+        });
+    }
 });
 
 export default router;
