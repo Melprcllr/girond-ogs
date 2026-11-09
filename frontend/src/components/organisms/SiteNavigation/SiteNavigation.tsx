@@ -1,15 +1,42 @@
 
 import { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 import "./SiteNavigation.scss";
 
 function SiteNavigation() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+
     const navigationRef = useRef<HTMLDivElement>(null);
 
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const isHomePage = location.pathname === "/";
+    const showCompactHeader = !isHomePage && isScrolled;
+
+    // Affichage du bandeau après 100 px de défilement
+    // Uniquement sur les pages intérieures
+    useEffect(() => {
+        if (isHomePage) {
+            setIsScrolled(false);
+            return;
+        }
+
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 100);
+        };
+
+        handleScroll();
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, [isHomePage]);
 
     // Fermeture avec un clic extérieur ou la touche Échap
     useEffect(() => {
@@ -56,7 +83,25 @@ function SiteNavigation() {
     };
 
     return (
-        <div className="site-navigation" ref={navigationRef}>
+        <div
+            className={`site-navigation ${
+                !isHomePage ? "site-navigation--inner-page" : ""
+            } ${showCompactHeader ? "site-navigation--scrolled" : ""}`}
+            ref={navigationRef}
+        >
+            {(!isHomePage || showCompactHeader) && (
+                <Link
+                    to="/"
+                    className="site-navigation__logo"
+                    aria-label="Girond'ogs - Retour à l'accueil"
+                >
+                    <img
+                        src="/logo/logo-girondogs.svg"
+                        alt="Girond'ogs"
+                    />
+                </Link>
+            )}
+
             <button
                 className="site-navigation__menu-button"
                 type="button"
