@@ -1,0 +1,207 @@
+
+.emergency-contact {
+    padding: 32px;
+    border: 1px solid rgba(217, 135, 88, 0.3);
+    border-radius: 20px;
+    background-color: #FFFEFA;
+    box-shadow: 0 10px 30px rgba(49, 92, 73, 0.06);
+
+    color: #315C49;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 24px;
+    }
+
+    &__icon {
+        width: 54px;
+        height: 54px;
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 16px;
+        background-color: rgba(217, 135, 88, 0.14);
+        color: #C46F42;
+    }
+
+    &__eyebrow {
+        color: #C46F42;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    }
+
+    h2 {
+        margin: 5px 0 0;
+        font-family: var(--font-heading);
+        font-size: clamp(1.4rem, 3vw, 1.9rem);
+        line-height: 1.25;
+    }
+
+    &__warning {
+        padding: 20px 22px;
+        border-radius: 14px;
+        background-color: #FBF0E8;
+
+        strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #9D512E;
+            font-size: 1rem;
+        }
+
+        p {
+            margin: 0;
+            color: #684B3D;
+            font-size: 0.93rem;
+            line-height: 1.7;
+        }
+    }
+
+    &__warning-reminder {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-top: 14px !important;
+        font-weight: 800;
+        color: #A94F2D !important;
+    }
+
+    &__services {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 22px;
+    }
+
+    &__service {
+        min-width: 0;
+        padding: 20px;
+        border: 1px solid rgba(49, 92, 73, 0.12);
+        border-radius: 14px;
+        background-color: #FFFFFF;
+    }
+
+    &__service-heading {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 9px;
+
+        h3 {
+            margin: 0;
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            line-height: 1.35;
+        }
+    }
+
+    &__availability {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: #315C49;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+
+    &__city {
+        display: block;
+        margin-top: 5px;
+        color: var(--color-text-secondary);
+        font-size: 0.85rem;
+    }
+
+    &__phone,
+    &__address {
+        display: flex;
+        align-items: flex-start;
+        gap: 9px;
+        color: #315C49;
+        text-decoration: none;
+        line-height: 1.5;
+
+        svg {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        &:focus-visible {
+            outline: 2px solid #D98758;
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+    }
+
+    &__phone {
+        margin-top: 17px;
+        font-size: 1rem;
+        font-weight: 800;
+
+        &:hover {
+            color: #D98758;
+        }
+    }
+
+    &__address {
+        margin-top: 12px;
+        color: var(--color-text-secondary);
+        font-size: 0.82rem;
+
+        &:hover {
+            color: #D98758;
+        }
+    }
+
+    &__footer {
+        margin: 20px 0 0;
+        color: var(--color-text-secondary);
+        font-size: 0.8rem;
+        line-height: 1.6;
+        text-align: center;
+    }
+}
+
+@media (max-width: 900px) {
+    .emergency-contact {
+        &__services {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .emergency-contact {
+        padding: 22px 18px;
+        border-radius: 16px;
+
+        &__header {
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        &__icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+        }
+
+        &__warning {
+            padding: 17px;
+        }
+
+        &__service {
+            padding: 17px;
+        }
+
+        &__footer {
+            text-align: left;
+        }
+    }
+}
