@@ -100,26 +100,32 @@ function ContactForm() {
     const [selectedPlaceId, setSelectedPlaceId] = useState("");
     const [reportType, setReportType] = useState("");
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<{
+        type: "success" | "error";
+        message: string;
+    } | null>(null);
+
     const communeSuggestions =
         communeQuery.trim().length >= 2 && !selectedCommune
             ? availableCommunes.filter((commune) => {
-                  const search = normalizeSearch(communeQuery);
+                const search = normalizeSearch(communeQuery);
 
-                  return (
-                      normalizeSearch(commune.name).includes(search) ||
-                      commune.postalCodes.some((postalCode) =>
-                          postalCode.includes(search)
-                      )
-                  );
-              })
+                return (
+                    normalizeSearch(commune.name).includes(search) ||
+                    commune.postalCodes.some((postalCode) =>
+                        postalCode.includes(search)
+                    )
+                );
+            })
             : [];
 
     const placesInSelectedCommune = selectedCommune
         ? places.filter(
-              (place) =>
-                  normalizeSearch(place.commune) ===
-                  normalizeSearch(selectedCommune)
-          )
+            (place) =>
+                normalizeSearch(place.commune) ===
+                normalizeSearch(selectedCommune)
+        )
         : [];
 
     const handleReasonChange = (value: ContactReason | "") => {
@@ -148,10 +154,64 @@ function ContactForm() {
         setReportType("");
     };
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (
+        event: React.FormEvent<HTMLFormElement>
+    ) => {
         event.preventDefault();
 
-        // Le traitement et l'envoi seront ajoutés lors de la connexion au backend.
+        if (!reason) return;
+
+        setIsSubmitting(true);
+        setSubmitStatus(null);
+
+        const contactData = {
+            reason,
+            firstName,
+            email,
+            message,
+            proposedPlace:
+                reason === "new-place" ? proposedPlace : undefined,
+            commune: reason === "report" ? selectedCommune : undefined,
+            selectedPlaceId:
+                reason === "report" ? selectedPlaceId : undefined,
+            reportType: reason === "report" ? reportType : undefined,
+        };
+
+        try {
+            const response = await fetch(
+                `${import.meta.env.VITE_API_URL ?? "http://localhost:3000"}/api/contact`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(contactData),
+                }
+            );
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(
+                    result.message ?? "Une erreur est survenue."
+                );
+            }
+
+            setSubmitStatus({
+                type: "success",
+                message: result.message,
+            });
+        } catch (error) {
+            setSubmitStatus({
+                type: "error",
+                message:
+                    error instanceof Error
+                        ? error.message
+                        : "Impossible de transmettre votre demande.",
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     // Préremplit le formulaire lorsqu'on arrive depuis la fiche d'un lieu.
@@ -351,10 +411,24 @@ function ContactForm() {
             </div>
 
             <div className="contact-form__actions">
-                <button type="submit" className="contact-form__submit">
-                    Envoyer mon message
+                <button
+                    type="submit"
+                    className="contact-form__submit"
+                    disabled={isSubmitting}
+                >
+                    {isSubmitting ? "Transmission en cours..." : "Envoyer mon message"}
                 </button>
             </div>
+
+            {submitStatus && (
+                <p
+                    className={`contact-form__feedback contact-form__feedback--${submitStatus.type}`}
+                    role={submitStatus.type === "error" ? "alert" : "status"}
+                    aria-live="polite"
+                >
+                    {submitStatus.message}
+                </p>
+            )}
 
             <p className="contact-form__required">
                 * Champs obligatoires
