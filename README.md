@@ -26,7 +26,7 @@ The platform provides practical information about each location, helping users f
 - **Safety information:** Identify potential risks such as pine trees, processionary caterpillars, farm animals and stagnant water.
 - **Dog access regulations:** Check leash requirements, dog access restrictions and local regulations.
 - **Location details:** Access practical information about each walking spot.
-- **Favorites:** Save preferred locations for easy access.
+- **Contact form:** Submit questions, suggestions, new walking spot proposals and reports through a dedicated contact form.
 
 ## 🛠️ Tech stack
 
@@ -41,22 +41,23 @@ The platform provides practical information about each location, helping users f
 - Node.js
 - Express
 - TypeScript
-
-### Database
-- PostgreSQL
+- Zod (request validation)
+- CORS
+- dotenv
 
 ### Testing & quality
 - Vitest
 - React Testing Library
+- Supertest
 - ESLint
 
 ## 🏗️ Architecture
 
 The project follows a separated frontend/backend architecture:
 
-- **Frontend:** Handles the user interface, map interactions, search and filtering.
-- **Backend:** Exposes a REST API and handles business logic.
-- **Database:** Stores walking locations and their associated information.
+- **Frontend:** Handles the user interface, map interactions, search, filtering and user interactions.
+- **Backend:** Exposes a REST API, validates incoming data and handles business logic.
+- **Database:** Will store walking locations and their associated information.
 
 ## 🚧 Project status
 
@@ -95,7 +96,7 @@ La plateforme propose des informations pratiques sur chaque lieu afin de permett
 - **Informations de vigilance :** Identifier les risques potentiels comme les pins, les chenilles processionnaires, les animaux d'élevage et les eaux stagnantes.
 - **Réglementation canine :** Consulter les obligations de tenue en laisse, les restrictions d'accès aux chiens et les réglementations locales.
 - **Fiches des lieux :** Accéder aux informations pratiques de chaque lieu de balade.
-- **Favoris :** Enregistrer ses lieux préférés pour les retrouver facilement.
+- **Formulaire de contact :** Envoyer des questions, suggestions, propositions de nouveaux lieux et signalements grâce à un formulaire dédié.
 
 ## 🛠️ Technologies utilisées
 
@@ -110,22 +111,23 @@ La plateforme propose des informations pratiques sur chaque lieu afin de permett
 - Node.js
 - Express
 - TypeScript
-
-### Base de données
-- PostgreSQL
+- Zod (validation des données)
+- CORS
+- dotenv
 
 ### Tests et qualité
 - Vitest
 - React Testing Library
+- Supertest
 - ESLint
 
 ## 🏗️ Architecture
 
 Le projet repose sur une architecture séparant le frontend et le backend :
 
-- **Frontend :** Gère l'interface utilisateur, les interactions avec la carte, la recherche et les filtres.
-- **Backend :** Expose une API REST et gère la logique métier.
-- **Base de données :** Stocke les lieux de balade et les informations qui leur sont associées.
+- **Frontend :** Gère l'interface utilisateur, les interactions avec la carte, la recherche, les filtres et les interactions utilisateur.
+- **Backend :** Expose une API REST, valide les données reçues et gère la logique métier.
+- **Base de données :** Stockera les lieux de balade et les informations qui leur sont associées.
 
 ## 🚧 État du projet
 
