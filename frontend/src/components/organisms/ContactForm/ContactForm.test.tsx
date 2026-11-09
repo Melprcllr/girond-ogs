@@ -9,7 +9,7 @@ import ContactForm from "./ContactForm";
 function renderContactForm(initialEntry = "/contact") {
     return render(
         <MemoryRouter initialEntries={[initialEntry]}>
-            <ContactForm />
+            <ContactForm onSuccess={() => {}} />
         </MemoryRouter>
     );
 }
@@ -201,7 +201,7 @@ describe("ContactForm", () => {
                     },
                 ]}
             >
-                <ContactForm />
+                <ContactForm onSuccess={() => {}} />
             </MemoryRouter>
         );
     
