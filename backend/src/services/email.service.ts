@@ -39,11 +39,36 @@ export const sendContactEmail = async (
 ): Promise<void> => {
     const apiKey = process.env.RESEND_API_KEY;
     const from = process.env.RESEND_FROM_EMAIL;
-    const to = process.env.CONTACT_RECIPIENT_EMAIL;
+    const emailMode = process.env.EMAIL_MODE;
+    const contactRecipient = process.env.CONTACT_RECIPIENT_EMAIL;
+    const testRecipient = process.env.EMAIL_TEST_RECIPIENT;
 
-    if (!apiKey || !from || !to) {
+    if (!apiKey || !from) {
         throw new Error("La configuration de Resend est incomplète.");
     }
+
+    if (emailMode !== "redirect" && emailMode !== "live") {
+        throw new Error("Le mode d'envoi des emails est invalide ou manquant.");
+    }
+
+    if (emailMode === "redirect" && !testRecipient) {
+        throw new Error("L'adresse de réception des emails de test est manquante.");
+    }
+
+    if (emailMode === "live" && !contactRecipient) {
+        throw new Error("L'adresse de réception des emails est manquante.");
+    }
+
+    const isRedirectMode = emailMode === "redirect";
+
+    // En préproduction, les deux emails sont redirigés vers la boîte de test.
+    const adminRecipient = isRedirectMode
+        ? testRecipient!
+        : contactRecipient!;
+
+    const confirmationRecipient = isRedirectMode
+        ? testRecipient!
+        : data.email;
 
     const resend = new Resend(apiKey);
 
@@ -182,19 +207,19 @@ Merci de contribuer à faire vivre Girond'ogs !
 À bientôt sur Girond'ogs.
     `.trim();
 
-    // Les deux e-mails sont envoyés indépendamment l'un de l'autre.
+    // Les deux emails sont envoyés indépendamment l'un de l'autre.
     const [adminResult, confirmationResult] = await Promise.all([
         resend.emails.send({
             from,
-            to,
-            replyTo: data.email,
+            to: adminRecipient,
+            ...(isRedirectMode ? {} : { replyTo: data.email }),
             subject: `Girond'ogs – ${reasonLabels[data.reason]} de ${data.firstName}`,
             html: adminHtml,
             text: adminText,
         }),
         resend.emails.send({
             from,
-            to: data.email,
+            to: confirmationRecipient,
             subject: "Girond'ogs – Confirmation de votre demande",
             html: confirmationHtml,
             text: confirmationText,
