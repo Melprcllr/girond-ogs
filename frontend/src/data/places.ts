@@ -140,7 +140,7 @@ export const places: Place[] = [
         commune: "Eysines",
         postalCode: "33320",
         description:
-    "50 hectares d'espace naturel en plein cœur d'Eysines, dont 22 hectares de boisements. Le domaine offre de nombreux sentiers pédestres traversant les espaces boisés, des pelouses, des aires de pique-nique et des espaces de loisirs.\n\nEntre promenade à l'ombre des arbres et activités sportives, c'est un lieu agréable pour profiter d'un grand espace de verdure en ville. \n\n⚠️ Depuis le 22 janvier 2026, un arrêté municipal de la Ville d’Eysines impose de tenir les chiens en laisse sur l'ensemble du Domaine du Pinsan.\n\n",
+            "50 hectares d'espace naturel en plein cœur d'Eysines, dont 22 hectares de boisements. Le domaine offre de nombreux sentiers pédestres traversant les espaces boisés, des pelouses, des aires de pique-nique et des espaces de loisirs.\n\nEntre promenade à l'ombre des arbres et activités sportives, c'est un lieu agréable pour profiter d'un grand espace de verdure en ville. \n\n⚠️ Depuis le 22 janvier 2026, un arrêté municipal de la Ville d’Eysines impose de tenir les chiens en laisse sur l'ensemble du Domaine du Pinsan.\n\n",
         imageUrl: "/images/places/domaine-du-pinsan-gallery-07.jpg",
 
         gallery: [
@@ -151,9 +151,9 @@ export const places: Place[] = [
             "/images/places/domaine-du-pinsan-gallery-05.jpg",
             "/images/places/domaine-du-pinsan-gallery-06.jpg",
             "/images/places/domaine-du-pinsan-gallery-07.jpg",
-            "/images/places/domaine-du-pinsan-gallery-08.jpg",
-            "/images/places/domaine-du-pinsan-gallery-09.jpg",
-            "/images/places/domaine-du-pinsan-gallery-10.jpg",
+            "/images/places/domaine-du-pinsan-gallery-08.jpeg",
+            "/images/places/domaine-du-pinsan-gallery-09.jpeg",
+            "/images/places/domaine-du-pinsan-gallery-10.jpeg",
         ],
 
         latitude: 44.86991979131604,
@@ -201,7 +201,7 @@ export const places: Place[] = [
         commune: "Saint-Jean-d'Illac",
         postalCode: "33127",
         description:
-                    "Un espace en pleine nature agréable pour se promener au milieu des paysages boisés entre la gravière et la Jalle. \n\nLes chemins serpentent à travers la forêt et offrent une belle variété de terrains : larges pistes forestières, sentiers plus étroits, chemins sablonneux et pare-feux. Le parcours présente quelques variations de relief, avec des passages en hauteur qui permettent de prendre du recul et de profiter de jolis points de vue sur la gravière. \n\nIl est possible de faire le tour du plan d'eau, de privilégier les chemins forestiers ou de varier les parcours en alternant entre sous-bois et grands chemins dégagés. Un lieu agréable pour varier les sorties et profiter d'un environnement naturel.",
+            "Un espace en pleine nature agréable pour se promener au milieu des paysages boisés entre la gravière et la Jalle. \n\nLes chemins serpentent à travers la forêt et offrent une belle variété de terrains : larges pistes forestières, sentiers plus étroits, chemins sablonneux et pare-feux. Le parcours présente quelques variations de relief, avec des passages en hauteur qui permettent de prendre du recul et de profiter de jolis points de vue sur la gravière. \n\nIl est possible de faire le tour du plan d'eau, de privilégier les chemins forestiers ou de varier les parcours en alternant entre sous-bois et grands chemins dégagés. Un lieu agréable pour varier les sorties et profiter d'un environnement naturel.",
         imageUrl: "/images/places/graviere-saint-jean-d-illac.jpg",
 
         gallery: [
@@ -316,6 +316,127 @@ export const places: Place[] = [
         lastVerifiedAt: "2026-11-05",
     },
 
-    // 
+    // La forêt de Migelane, Martillac
+    {
+        id: "foret-de-migelane",
+        name: "Foret Départementale de Migelane",
+        commune: "Martillac",
+        postalCode: "33650",
+        description:
+            "La forêt de Migelane est un vaste espace naturel de 268 hectares entre chemins forestiers et clairières, ses différents sentiers traversent des paysages variés. Avec quatre boucles de 1,4km à 6,5km, elle offre plusieurs possibilités de promenades, pour une sortie tranquille ou une balade plus longue avec son chien. Ce cadre naturel permet de profiter d'une balade au calme, entre sous-bois espaces plus ouverts, un des itinéraires mène aussi à une petite gravière.",
+        imageUrl: "/images/places/foret-de-migelane.jpg",
+
+        gallery: [
+            "/images/places/foret-de-migelane-gallery-01.webp",
+            "/images/places/foret-de-migelane-gallery-02.webp",
+            "/images/places/foret-de-migelane-gallery-03.webp",
+            "/images/places/foret-de-migelane-gallery-04.webp",
+            "/images/places/foret-de-migelane-gallery-05.webp",
+            "/images/places/foret-de-migelane-gallery-06.webp",
+            "/images/places/foret-de-migelane-gallery-07.webp",
+            "/images/places/foret-de-migelane-gallery-08.webp",
+            "/images/places/foret-de-migelane-gallery-09.webp",
+            "/images/places/foret-de-migelane-gallery-10.webp",
+            "/images/places/foret-de-migelane-gallery-11.webp",
+            "/images/places/foret-de-migelane-gallery-12.webp",
+            "/images/places/foret-de-migelane-gallery-13.webp",
+            "/images/places/foret-de-migelane-gallery-14.webp",
+            "/images/places/foret-de-migelane-gallery-15.webp",
+            "/images/places/foret-de-migelane-gallery-16.webp",
+            "/images/places/foret-de-migelane-gallery-17.webp",
+            "/images/places/foret-de-migelane-gallery-18.webp",
+        ],
+
+        latitude: 44.700735494262524,
+        longitude: -0.5781310342481588,
+
+        specificities: [
+            "Présence d'une gravière accessible depuis l'un des itinéraires",
+            "Site fréquenté par des promeneurs et des familles, particulièrement le week-end",
+        ],
+
+        parking: {
+            available: true,
+            address: "Au bord de la D111, 33650 Martillac",
+            details: "Parking principal situé au bord de la Départementale, entrée directe de la forêt.",
+        },
+
+        characteristics: {
+            vineyards: false,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: true,
+            pineTrees: true,
+        },
+
+        regulations: {
+            dogsOnLeash: false,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: true,
+            farmAnimals: false,
+            cyanobacteria: true,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-05",
+    },
+
+    // Le Bourgailh, Pessac
+    {
+        id: "le-bourgailh",
+        name: "Le Bourgailh",
+        commune: "Pessac",
+        postalCode: "33600",
+        description:
+            "La forêt du Bourgailh est un vaste espace naturel  ",
+        imageUrl: "/images/places/foret-de-migelane.jpg",
+
+        gallery: [
+            "/images/places/foret-de-migelane-gallery-01.webp",
+        ],
+
+        latitude: 44.802499053248134,
+        longitude: -0.6886524770721357,
+
+        specificities: [
+            "Plusieurs belvédères tout au long du parcours",
+            "Parc à chien au niveau de la rue Lino Ventura",
+            "Présence d'un skate parc, d'aires de jeux pour enfants, d'un pumtrack, et d'un bassin de rétention des eaux",
+            "Site fréquenté par des joggeurs, cyclistes, et des familles, particulièrement le week-end",
+        ],
+
+        parking: {
+            available: true,
+            address: "Avenue de Beutre, 33600 Pessac",
+            details: "Parking principal donnant accès au grand belvédère. Il y a beaucoup d'entrées tout le long du parc. \nUn autre départ connu se fait au niveau du bassin de rétention des eaux au 3 Rue du Château du Bourgailh.",
+        },
+
+        characteristics: {
+            vineyards: false,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: true,
+            pineTrees: true,
+        },
+
+        regulations: {
+            dogsOnLeash: true,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: true,
+            farmAnimals: false,
+            cyanobacteria: false,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-11",
+    },
 
 ];
