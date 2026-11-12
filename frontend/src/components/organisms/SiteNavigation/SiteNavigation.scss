@@ -1,12 +1,51 @@
-
 .site-navigation {
     position: fixed;
     top: 16px;
-    right: 16px;
-    left: auto;
+    right: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
     z-index: 2100;
 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    transition:
+        top 0.3s ease,
+        padding 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+
+        &__logo {
+            position: absolute;
+            top: 50%;
+            left: 16px;
+            transform: translateY(-50%);
+        
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        
+            width: 220px;
+            height: 80px;
+            max-width: calc(100vw - 100px);
+            flex: none;
+            min-width: 0;
+        
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                object-position: left center;
+            }
+        }
+
     &__menu-button {
+        margin-left: auto;
         width: 48px;
         height: 48px;
         flex-shrink: 0;
@@ -23,54 +62,59 @@
         cursor: pointer;
 
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+
+        transition:
+            width 0.3s ease,
+            height 0.3s ease,
+            border-radius 0.3s ease;
     }
 
     &__menu-overlay {
         position: fixed;
         inset: 0;
         z-index: 2000;
-    
+
         display: flex;
         justify-content: flex-end;
         align-items: stretch;
-    
+
         background-color: rgba(0, 0, 0, 0);
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
-    
+
         transition:
             opacity 0.3s ease,
             visibility 0s linear 0.3s;
-    
+
         &--open {
             background-color: rgba(0, 0, 0, 0.35);
             opacity: 1;
             visibility: visible;
             pointer-events: auto;
-    
+
             transition:
                 opacity 0.3s ease,
                 visibility 0s;
         }
     }
-    
+
     &__menu {
         position: relative;
         width: min(360px, 85vw);
         height: 100%;
         box-sizing: border-box;
         padding: 24px;
-    
+
         display: flex;
         flex-direction: column;
-    
+
         background-color: #FFFFFF;
         box-shadow: -4px 0 16px rgba(0, 0, 0, 0.12);
-    
+
         transform: translateX(100%);
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
+
         &--open {
             transform: translateX(0);
         }
@@ -146,11 +190,29 @@
     }
 }
 
-/* Bouton burger plus visible sur desktop */
+/* Adaptation desktop */
 @media (min-width: 768px) {
     .site-navigation {
-        top: 24px;
+        top: 1rem;
         right: 24px;
+        left: 24px;
+        width: auto;
+        padding: 0;
+
+        &__logo {
+            position: static;
+            transform: none;
+
+            width: 560px;
+            height: 175px;
+            max-width: calc(100vw - 120px);
+            flex-basis: 560px;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
 
         &__menu-button {
             width: 56px;
@@ -164,11 +226,24 @@
     }
 }
 
-/* Adaptation réservée aux très grands écrans */
+/* Adaptation très grands écrans */
 @media (min-width: 1920px) {
     .site-navigation {
         top: 32px;
         right: 32px;
+        left: 32px;
+
+        &__logo {
+            width: 680px;
+            height: 210px;
+            max-width: calc(100vw - 140px);
+            flex-basis: 680px;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
 
         &__menu-button {
             width: 64px;
@@ -212,6 +287,106 @@
                 padding: 22px 20px;
                 border-radius: 12px;
                 font-size: 20px;
+            }
+        }
+    }
+}
+
+/* Positionnement spécifique aux pages intérieures */
+.site-navigation--inner-page {
+    top: 4px;
+
+    @media (min-width: 768px) {
+        top: -30px;
+    }
+
+    @media (min-width: 1920px) {
+        top: 8px;
+    }
+}
+
+/* Bandeau affiché après le défilement */
+.site-navigation.site-navigation--scrolled {
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    padding: 0 16px;
+
+    background-color: #F3EFE5;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.10);
+
+    .site-navigation__logo {
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        transform: translateY(-50%);
+        transition: none;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 220px;
+        height: 80px;
+        max-width: calc(100vw - 100px);
+        flex: 0 1 220px;
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: left center;
+        }
+    }
+
+    .site-navigation__menu-button {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+    }
+
+    @media (min-width: 768px) {
+        height: 76px;
+        padding: 0 24px;
+
+        .site-navigation__logo {
+            left: 24px;
+            width: 560px;
+            height: 175px;
+            max-width: calc(100vw - 120px);
+        }
+
+        .site-navigation__menu-button {
+            width: 56px;
+            height: 56px;
+
+            svg {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+
+    @media (min-width: 1920px) {
+        height: 88px;
+        padding: 0 32px;
+
+        .site-navigation__logo {
+            left: 32px;
+            width: 680px;
+            height: 210px;
+            max-width: calc(100vw - 140px);
+        }
+
+        .site-navigation__menu-button {
+            width: 64px;
+            height: 64px;
+
+            svg {
+                width: 36px;
+                height: 36px;
             }
         }
     }
