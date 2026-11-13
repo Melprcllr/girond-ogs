@@ -1,0 +1,105 @@
+
+name: Deploy preproduction
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: girondogs-preproduction-deploy
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build frontend and backend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Install backend dependencies
+        working-directory: backend
+        run: npm ci
+
+      - name: Build backend
+        working-directory: backend
+        run: npm run build
+
+      - name: Install frontend dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Build frontend
+        working-directory: frontend
+        run: npm run build:staging
+        env:
+          VITE_API_URL: https://api-test.girondogs.fr
+
+      - name: Upload backend build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-dist
+          path: backend/dist/
+
+      - name: Upload frontend build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-dist
+          path: frontend/dist/
+
+  deploy:
+    name: FTPS dry run
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download backend build
+        uses: actions/download-artifact@v4
+        with:
+          name: backend-dist
+          path: backend-dist/
+
+      - name: Download frontend build
+        uses: actions/download-artifact@v4
+        with:
+          name: frontend-dist
+          path: frontend-dist/
+
+      - name: Simulate backend deployment
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME_BACKEND }}
+          password: ${{ secrets.FTP_PASSWORD_BACKEND }}
+          protocol: ftps
+          port: 21
+          local-dir: backend-dist/
+          server-dir: dist/
+          dry-run: true
+          dangerous-clean-slate: false
+          security: strict
+
+      - name: Simulate frontend deployment
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME_FRONTEND }}
+          password: ${{ secrets.FTP_PASSWORD_FRONTEND }}
+          protocol: ftps
+          port: 21
+          local-dir: frontend-dist/
+          server-dir: ./
+          dry-run: true
+          dangerous-clean-slate: false
+          security: strict
+          exclude: |
+            **/.well-known/**
+            **/cgi-bin/**
