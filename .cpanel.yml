@@ -2,7 +2,7 @@
 deployment:
   tasks:
     - . /home2/royu4379/nodevenv/girondogs-api-test/24/bin/activate && cd /home2/royu4379/repositories/girondogs-preprod/backend && npm --prefix "$PWD" ci --include=dev && npm run build
-    - . /home2/royu4379/nodevenv/girondogs-api-test/24/bin/activate && cd /home2/royu4379/repositories/girondogs-preprod/frontend && npm --prefix "$PWD" ci --include=dev && VITE_API_URL=https://api-test.girondogs.fr npm run build:staging
+    - . /home2/royu4379/nodevenv/girondogs-api-test/24/bin/activate && cd /home2/royu4379/repositories/girondogs-preprod/frontend && npm --prefix "$PWD" ci --include=dev && ROLLDOWN_WORKER_THREADS=2 RAYON_NUM_THREADS=2 VITE_API_URL=https://api-test.girondogs.fr npm run build:staging
     - /usr/bin/rsync -a --delete /home2/royu4379/repositories/girondogs-preprod/backend/dist/ /home2/royu4379/girondogs-api-test/dist/
     - /usr/bin/rsync -a --delete --exclude='.well-known/' --exclude='cgi-bin/' /home2/royu4379/repositories/girondogs-preprod/frontend/dist/ /home2/royu4379/test.girondogs.fr/
     - /usr/bin/touch /home2/royu4379/girondogs-api-test/tmp/restart.txt
