@@ -1,4 +1,3 @@
-
 name: Deploy preproduction
 
 on:
@@ -56,7 +55,7 @@ jobs:
           path: frontend/dist/
 
   deploy:
-    name: FTPS dry run
+    name: SSH deployment dry run
     needs: build
     runs-on: ubuntu-latest
 
@@ -73,33 +72,50 @@ jobs:
           name: frontend-dist
           path: frontend-dist/
 
-      - name: Simulate backend deployment
-        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME_BACKEND }}
-          password: ${{ secrets.FTP_PASSWORD_BACKEND }}
-          protocol: ftps
-          port: 21
-          local-dir: backend-dist/
-          server-dir: dist/
-          dry-run: true
-          dangerous-clean-slate: false
-          security: strict
+      - name: Configure SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d "$HOME/.ssh"
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$HOME/.ssh/girondogs_preprod_deploy"
+          chmod 600 "$HOME/.ssh/girondogs_preprod_deploy"
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > "$HOME/.ssh/known_hosts"
+          chmod 600 "$HOME/.ssh/known_hosts"
 
-      - name: Simulate frontend deployment
-        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME_FRONTEND }}
-          password: ${{ secrets.FTP_PASSWORD_FRONTEND }}
-          protocol: ftps
-          port: 21
-          local-dir: frontend-dist/
-          server-dir: ./
-          dry-run: true
-          dangerous-clean-slate: false
-          security: strict
-          exclude: |
-            **/.well-known/**
-            **/cgi-bin/**
+      - name: Verify SSH and preproduction directories
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+        run: |
+          ssh -i "$HOME/.ssh/girondogs_preprod_deploy" \
+            -o IdentitiesOnly=yes \
+            -o StrictHostKeyChecking=yes \
+            -o BatchMode=yes \
+            "$SSH_USER@$SSH_HOST" \
+            'test -d /home2/royu4379/test.girondogs.fr &&
+             test -d /home2/royu4379/girondogs-api-test/dist &&
+             test -d /home2/royu4379/girondogs-api-test/tmp &&
+             command -v rsync'
+
+      - name: Simulate backend transfer
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+        run: |
+          rsync -azn --delete --itemize-changes \
+            -e "ssh -i $HOME/.ssh/girondogs_preprod_deploy -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o BatchMode=yes" \
+            backend-dist/ \
+            "$SSH_USER@$SSH_HOST:/home2/royu4379/girondogs-api-test/dist/"
+
+      - name: Simulate frontend transfer
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+        run: |
+          rsync -azn --delete --itemize-changes \
+            --exclude='/.well-known/' \
+            --exclude='/cgi-bin/' \
+            -e "ssh -i $HOME/.ssh/girondogs_preprod_deploy -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o BatchMode=yes" \
+            frontend-dist/ \
+            "$SSH_USER@$SSH_HOST:/home2/royu4379/test.girondogs.fr/"

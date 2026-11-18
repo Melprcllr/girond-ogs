@@ -84,9 +84,8 @@ function SiteNavigation() {
 
     return (
         <div
-            className={`site-navigation ${
-                !isHomePage ? "site-navigation--inner-page" : ""
-            } ${showCompactHeader ? "site-navigation--scrolled" : ""}`}
+            className={`site-navigation ${!isHomePage ? "site-navigation--inner-page" : ""
+                } ${showCompactHeader ? "site-navigation--scrolled" : ""}`}
             ref={navigationRef}
         >
             {(!isHomePage || showCompactHeader) && (
@@ -114,17 +113,15 @@ function SiteNavigation() {
             </button>
 
             <div
-                className={`site-navigation__menu-overlay ${
-                    isMenuOpen ? "site-navigation__menu-overlay--open" : ""
-                }`}
+                className={`site-navigation__menu-overlay ${isMenuOpen ? "site-navigation__menu-overlay--open" : ""
+                    }`}
                 aria-hidden={!isMenuOpen}
                 onClick={closeMenu}
             >
                 <nav
                     id="site-navigation-menu"
-                    className={`site-navigation__menu ${
-                        isMenuOpen ? "site-navigation__menu--open" : ""
-                    }`}
+                    className={`site-navigation__menu ${isMenuOpen ? "site-navigation__menu--open" : ""
+                        }`}
                     aria-label="Menu principal"
                     onClick={(event) => event.stopPropagation()}
                 >
@@ -184,6 +181,35 @@ function SiteNavigation() {
                             Contact et signalement
                         </Link>
                     </div>
+
+                    <div className="site-navigation__menu-footer">
+                        <div className="site-navigation__menu-footer-links">
+                            <Link
+                                to="/mentions-legales"
+                                onClick={(event) => {
+                                    event.preventDefault();
+                                    closeMenuAndNavigate("/mentions-legales");
+                                }}
+                            >
+                                Mentions légales
+                            </Link>
+
+                            <Link
+                                to="/politique-confidentialite"
+                                onClick={(event) => {
+                                    event.preventDefault();
+                                    closeMenuAndNavigate("/politique-confidentialite");
+                                }}
+                            >
+                                Politique de confidentialité
+                            </Link>
+                        </div>
+
+                        <p className="site-navigation__menu-signature">
+                            Imaginé et développé par Mel-webdev ♡
+                        </p>
+                    </div>
+
                 </nav>
             </div>
         </div>
