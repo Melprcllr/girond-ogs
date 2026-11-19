@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 
 import type { Place } from "../../types/Place";
-import { filterPlaces } from "../../utils/filterPlaces";
+import { filterPlaces } from "../../utils/FilterPlaces/filterPlaces";
 import SiteNavigation from "../../components/organisms/SiteNavigation/SiteNavigation";
 
 import "./HomePage.scss";

@@ -1,7 +1,7 @@
 
 import { describe, it, expect } from "vitest";
-import { filterPlaces } from "./filterPlaces";
-import type { Place } from "../types/Place";
+import { filterPlaces } from "../../utils/FilterPlaces/filterPlaces";
+import type { Place } from "../../types/Place";
 
 const mockPlaces: Place[] = [
     {

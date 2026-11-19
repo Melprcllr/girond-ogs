@@ -10,10 +10,12 @@ import LegalNoticePage from "./pages/LegalNoticePage/LegalNoticePage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage/PrivacyPolicyPage";
 import PWAInstallPrompt from "./components/organisms/PWAInstallPrompt/PWAInstallPrompt";
 import FAQPage from "./pages/FAQPage/FAQPage";
+import ScrollToTop from "./utils/ScrollToTop/ScrollToTop";
 
 function App() {
     return (
         <BrowserRouter>
+            <ScrollToTop />
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/alertes" element={<AlertsPage />} />
