@@ -1,7 +1,7 @@
 
-import type { Place } from "../types/Place";
-import { calculateDistance } from "./calculateDistance";
-import type { Coordinates } from "./calculateDistance";
+import type { Place } from "../../types/Place";
+import { calculateDistance } from "../CalculateDistance/calculateDistance";
+import type { Coordinates } from "../CalculateDistance/calculateDistance";
 
 interface FilterPlacesOptions {
     environments: (keyof Place["characteristics"])[];
