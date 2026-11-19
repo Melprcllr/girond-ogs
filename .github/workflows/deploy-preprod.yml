@@ -83,6 +83,12 @@ jobs:
           printf '%s\n' "$SSH_KNOWN_HOSTS" > "$HOME/.ssh/known_hosts"
           chmod 600 "$HOME/.ssh/known_hosts"
 
+      - name: Display GitHub Actions public IP
+        run: |
+          echo "GitHub Actions public IP:"
+          curl -4 https://api.ipify.org
+          echo
+
       - name: Verify SSH and preproduction directories
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }}
