@@ -1,0 +1,113 @@
+
+.faq-accordion {
+    overflow: hidden;
+    border: 1px solid #e2e5df;
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+
+    &--open {
+        border-color: var(--color-secondary);
+        box-shadow: var(--shadow-sm);
+    }
+
+    &__heading {
+        margin: 0;
+    }
+
+    &__trigger {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--spacing-4);
+
+        width: 100%;
+        padding: 20px;
+
+        border: 0;
+        background: transparent;
+        color: var(--color-text-primary);
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #fafbf8;
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--color-primary);
+            outline-offset: -3px;
+        }
+    }
+
+    &__question {
+        font-weight: 600;
+        line-height: 1.5;
+    }
+
+    &__icon {
+        flex-shrink: 0;
+        color: var(--color-primary);
+        transition: transform 0.2s ease;
+    }
+
+    &--open &__icon {
+        transform: rotate(180deg);
+    }
+
+    &__content {
+        border-top: 1px solid #edf0eb;
+
+        &[hidden] {
+            display: none;
+        }
+    }
+
+    &__answer {
+        padding: 18px 20px 22px;
+        color: var(--color-text-secondary);
+        line-height: 1.75;
+
+        p + p {
+            margin-top: 12px;
+        }
+
+        ul {
+            margin: 12px 0;
+            padding-left: 22px;
+        }
+
+        li + li {
+            margin-top: 6px;
+        }
+
+        a {
+            color: var(--color-primary);
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .faq-accordion {
+        &__trigger {
+            padding: 16px;
+        }
+
+        &__answer {
+            padding: 14px 16px 18px;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .faq-accordion,
+    .faq-accordion__icon {
+        transition: none;
+    }
+}

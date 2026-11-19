@@ -107,4 +107,53 @@ describe("SiteNavigation", () => {
             );
         });
     });
+
+    it("affiche les liens principaux avec leurs bonnes destinations", () => {
+        renderSiteNavigation();
+
+        fireEvent.click(
+            screen.getByRole("button", { name: "Ouvrir le menu" })
+        );
+
+        expect(screen.getByRole("link", { name: /Carte/ })).toHaveAttribute(
+            "href",
+            "/"
+        );
+
+        expect(screen.getByRole("link", { name: /Alertes/ })).toHaveAttribute(
+            "href",
+            "/alertes"
+        );
+
+        expect(
+            screen.getByRole("link", { name: /À propos de Girond'ogs/ })
+        ).toHaveAttribute("href", "/a-propos");
+
+        expect(screen.getByRole("link", { name: /FAQ/ })).toHaveAttribute(
+            "href",
+            "/faq"
+        );
+
+        expect(screen.getByRole("link", { name: /Contact/ })).toHaveAttribute(
+            "href",
+            "/contact"
+        );
+    });
+
+    it("identifie la page actuelle dans le menu", () => {
+        render(
+            <MemoryRouter initialEntries={["/alertes"]}>
+                <SiteNavigation />
+                <LocationDisplay />
+            </MemoryRouter>
+        );
+
+        fireEvent.click(
+            screen.getByRole("button", { name: "Ouvrir le menu" })
+        );
+
+        expect(
+            screen.getByRole("link", { name: /Alertes/ })
+        ).toHaveAttribute("aria-current", "page");
+    });
 });
