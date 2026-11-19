@@ -1,0 +1,177 @@
+.pwa-install-prompt {
+    position: fixed;
+    z-index: 1900;
+    right: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    left: 16px;
+
+    width: auto;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 18px;
+
+    box-sizing: border-box;
+
+    background-color: var(--color-surface);
+    border: 1px solid rgb(49 92 73 / 12%);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 20px rgb(0 0 0 / 14%);
+
+    animation: pwa-prompt-appear 0.35s ease both;
+
+    &__logo {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+    &__close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 32px;
+        height: 32px;
+        padding: 0;
+
+        border: none;
+        border-radius: var(--radius-full);
+        background: transparent;
+        color: var(--color-text-secondary);
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--color-background);
+            color: var(--color-primary);
+        }
+    }
+
+    &__content {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding-right: 20px;
+    }
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 44px;
+        height: 44px;
+        flex: 0 0 44px;
+
+        border-radius: var(--radius-md);
+        background-color: var(--color-background);
+        color: var(--color-primary);
+    }
+
+    &__text {
+        min-width: 0;
+        flex: 1;
+    }
+
+    &__title {
+        margin: 0 0 6px;
+
+        color: var(--color-primary);
+        font-family: var(--font-heading);
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1.4;
+    }
+
+    &__description {
+        margin: 0;
+
+        color: var(--color-text-secondary);
+        font-family: var(--font-body);
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    &__install {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        min-height: 40px;
+        margin-top: 12px;
+        padding: 0 16px;
+
+        border: none;
+        border-radius: var(--radius-md);
+        background-color: var(--color-primary);
+        color: var(--color-text-inverse);
+
+        font-family: var(--font-body);
+        font-size: 13px;
+        font-weight: 600;
+
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background-color: #254936;
+        }
+    }
+
+    &__instructions {
+        color: var(--color-text-secondary);
+        font-family: var(--font-body);
+        font-size: 13px;
+        line-height: 1.5;
+
+        p {
+            margin: 0 0 8px;
+        }
+
+        ol {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        li {
+            padding-left: 2px;
+        }
+
+        svg {
+            display: inline-block;
+            vertical-align: -3px;
+            color: var(--color-primary);
+        }
+
+        strong {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+    }
+}
+
+@keyframes pwa-prompt-appear {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pwa-install-prompt {
+        animation: none;
+    }
+}

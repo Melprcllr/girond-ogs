@@ -8,6 +8,7 @@ import AboutPage from "./pages/AboutPage/AboutPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
 import LegalNoticePage from "./pages/LegalNoticePage/LegalNoticePage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage/PrivacyPolicyPage";
+import PWAInstallPrompt from "./components/organisms/PWAInstallPrompt/PWAInstallPrompt";
 
 function App() {
     return (
@@ -24,6 +25,8 @@ function App() {
                     element={<PrivacyPolicyPage />}
                 />
             </Routes>
+
+            <PWAInstallPrompt />
         </BrowserRouter>
     );
 }
