@@ -9,6 +9,7 @@ import ContactPage from "./pages/ContactPage/ContactPage";
 import LegalNoticePage from "./pages/LegalNoticePage/LegalNoticePage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage/PrivacyPolicyPage";
 import PWAInstallPrompt from "./components/organisms/PWAInstallPrompt/PWAInstallPrompt";
+import FAQPage from "./pages/FAQPage/FAQPage";
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                     path="/politique-confidentialite"
                     element={<PrivacyPolicyPage />}
                 />
+                <Route path="/faq" element={<FAQPage />} />
             </Routes>
 
             <PWAInstallPrompt />

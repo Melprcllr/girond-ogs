@@ -1,7 +1,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import {
+    Bell,
+    CircleHelp,
+    Info,
+    Mail,
+    Map,
+    Menu,
+    X,
+} from "lucide-react";
 
 import "./SiteNavigation.scss";
 
@@ -143,42 +151,62 @@ function SiteNavigation() {
                     <div className="site-navigation__menu-links">
                         <Link
                             to="/"
+                            aria-current={location.pathname === "/" ? "page" : undefined}
                             onClick={(event) => {
                                 event.preventDefault();
                                 closeMenuAndNavigate("/");
                             }}
                         >
-                            Accueil
+                            <Map size={20} aria-hidden="true" />
+                            <span>Carte</span>
                         </Link>
 
                         <Link
                             to="/alertes"
+                            aria-current={location.pathname === "/alertes" ? "page" : undefined}
                             onClick={(event) => {
                                 event.preventDefault();
                                 closeMenuAndNavigate("/alertes");
                             }}
                         >
-                            Les alertes
+                            <Bell size={20} aria-hidden="true" />
+                            <span>Alertes</span>
                         </Link>
 
                         <Link
                             to="/a-propos"
+                            aria-current={location.pathname === "/a-propos" ? "page" : undefined}
                             onClick={(event) => {
                                 event.preventDefault();
                                 closeMenuAndNavigate("/a-propos");
                             }}
                         >
-                            À propos de Girond'ogs
+                            <Info size={20} aria-hidden="true" />
+                            <span>À propos de Girond'ogs</span>
+                        </Link>
+
+                        <Link
+                            to="/faq"
+                            aria-current={location.pathname === "/faq" ? "page" : undefined}
+                            onClick={(event) => {
+                                event.preventDefault();
+                                closeMenuAndNavigate("/faq");
+                            }}
+                        >
+                            <CircleHelp size={20} aria-hidden="true" />
+                            <span>FAQ</span>
                         </Link>
 
                         <Link
                             to="/contact"
+                            aria-current={location.pathname === "/contact" ? "page" : undefined}
                             onClick={(event) => {
                                 event.preventDefault();
                                 closeMenuAndNavigate("/contact");
                             }}
                         >
-                            Contact et signalement
+                            <Mail size={20} aria-hidden="true" />
+                            <span>Contact</span>
                         </Link>
                     </div>
 
@@ -209,7 +237,6 @@ function SiteNavigation() {
                             Imaginé et développé par Mel-webdev ♡
                         </p>
                     </div>
-
                 </nav>
             </div>
         </div>

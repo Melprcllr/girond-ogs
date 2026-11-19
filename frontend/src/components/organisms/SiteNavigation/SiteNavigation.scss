@@ -165,6 +165,10 @@
         padding-top: 24px;
 
         a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
             padding: 14px 12px;
             border-radius: 8px;
 
@@ -177,9 +181,20 @@
                 background-color 0.2s ease,
                 color 0.2s ease;
 
+            svg {
+                flex-shrink: 0;
+                color: #315C49;
+            }
+
             &:hover {
                 background-color: #F3EFE5;
                 color: #315C49;
+            }
+
+            &[aria-current="page"] {
+                background-color: #F3EFE5;
+                color: #315C49;
+                font-weight: 600;
             }
 
             &:focus-visible {
@@ -188,6 +203,7 @@
             }
         }
     }
+
 
 
     &__menu-footer {
