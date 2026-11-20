@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: girondogs-preproduction-deploy
@@ -12,7 +12,8 @@ concurrency:
 
 jobs:
   build:
-    name: Build frontend and backend
+    name: Build and publish preproduction artifacts
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
     steps:
@@ -24,104 +25,58 @@ jobs:
         with:
           node-version: 24
 
+      # Backend
       - name: Install backend dependencies
         working-directory: backend
         run: npm ci
+
+      - name: Run backend tests
+        working-directory: backend
+        run: npm test
 
       - name: Build backend
         working-directory: backend
         run: npm run build
 
+      # Frontend
       - name: Install frontend dependencies
         working-directory: frontend
         run: npm ci
 
-      - name: Build frontend
+      - name: Run frontend lint
+        working-directory: frontend
+        run: npm run lint
+
+      - name: Run frontend tests
+        working-directory: frontend
+        run: npm run test -- --run
+
+      - name: Build frontend staging
         working-directory: frontend
         run: npm run build:staging
-        env:
-          VITE_API_URL: https://api-test.girondogs.fr
 
-      - name: Upload backend build artifact
-        uses: actions/upload-artifact@v4
+      # Prepare deployment branch
+      - name: Prepare deployment files
+        run: |
+          mkdir -p deploy/backend deploy/frontend
+
+          cp -a backend/dist deploy/backend/
+          cp -a frontend/dist deploy/frontend/
+
+          cat > deploy/.cpanel.yml <<'EOF'
+          ---
+          deployment:
+            tasks:
+              - /usr/bin/rsync -a --delete /home2/royu4379/repositories/girondogs-preprod/backend/dist/ /home2/royu4379/girondogs-api-test/dist/
+              - /usr/bin/rsync -a --delete --exclude='.well-known/' --exclude='cgi-bin/' /home2/royu4379/repositories/girondogs-preprod/frontend/dist/ /home2/royu4379/test.girondogs.fr/
+              - /usr/bin/touch /home2/royu4379/girondogs-api-test/tmp/restart.txt
+          EOF
+
+      # Publish artifacts
+      - name: Publish preproduction branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          name: backend-dist
-          path: backend/dist/
-
-      - name: Upload frontend build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: frontend-dist
-          path: frontend/dist/
-
-  deploy:
-    name: SSH deployment dry run
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Download backend build
-        uses: actions/download-artifact@v4
-        with:
-          name: backend-dist
-          path: backend-dist/
-
-      - name: Download frontend build
-        uses: actions/download-artifact@v4
-        with:
-          name: frontend-dist
-          path: frontend-dist/
-
-      - name: Configure SSH
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
-        run: |
-          install -m 700 -d "$HOME/.ssh"
-          printf '%s\n' "$SSH_PRIVATE_KEY" > "$HOME/.ssh/girondogs_preprod_deploy"
-          chmod 600 "$HOME/.ssh/girondogs_preprod_deploy"
-          printf '%s\n' "$SSH_KNOWN_HOSTS" > "$HOME/.ssh/known_hosts"
-          chmod 600 "$HOME/.ssh/known_hosts"
-
-      - name: Display GitHub Actions public IP
-        run: |
-          echo "GitHub Actions public IP:"
-          curl -4 https://api.ipify.org
-          echo
-
-      - name: Verify SSH and preproduction directories
-        env:
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_USER: ${{ secrets.SSH_USER }}
-        run: |
-          ssh -i "$HOME/.ssh/girondogs_preprod_deploy" \
-            -o IdentitiesOnly=yes \
-            -o StrictHostKeyChecking=yes \
-            -o BatchMode=yes \
-            "$SSH_USER@$SSH_HOST" \
-            'test -d /home2/royu4379/test.girondogs.fr &&
-             test -d /home2/royu4379/girondogs-api-test/dist &&
-             test -d /home2/royu4379/girondogs-api-test/tmp &&
-             command -v rsync'
-
-      - name: Simulate backend transfer
-        env:
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_USER: ${{ secrets.SSH_USER }}
-        run: |
-          rsync -azn --delete --itemize-changes \
-            -e "ssh -i $HOME/.ssh/girondogs_preprod_deploy -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o BatchMode=yes" \
-            backend-dist/ \
-            "$SSH_USER@$SSH_HOST:/home2/royu4379/girondogs-api-test/dist/"
-
-      - name: Simulate frontend transfer
-        env:
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_USER: ${{ secrets.SSH_USER }}
-        run: |
-          rsync -azn --delete --itemize-changes \
-            --exclude='/.well-known/' \
-            --exclude='/cgi-bin/' \
-            -e "ssh -i $HOME/.ssh/girondogs_preprod_deploy -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o BatchMode=yes" \
-            frontend-dist/ \
-            "$SSH_USER@$SSH_HOST:/home2/royu4379/test.girondogs.fr/"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: preprod-build
+          publish_dir: ./deploy
+          commit_message: "deploy: publish preproduction artifacts"
