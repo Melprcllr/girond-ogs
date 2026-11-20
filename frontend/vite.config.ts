@@ -42,6 +42,33 @@ export default defineConfig({
                 globPatterns: [
                     "**/*.{js,css,html,ico,png,svg,webp,woff2}",
                 ],
+
+                globIgnores: [
+                    "**/images/**",
+                ],
+
+                runtimeCaching: [
+                    {
+                        urlPattern: ({ request }) =>
+                            request.destination === "image",
+
+                        handler: "CacheFirst",
+
+                        options: {
+                            cacheName: "girondogs-images",
+
+                            expiration: {
+                                maxEntries: 80,
+                                maxAgeSeconds: 30 * 24 * 60 * 60,
+                            },
+
+                            cacheableResponse: {
+                                statuses: [0, 200],
+                            },
+                        },
+                    },
+                ],
+
                 cleanupOutdatedCaches: true,
                 clientsClaim: true,
                 skipWaiting: true,
