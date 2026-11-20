@@ -41,7 +41,7 @@ describe("AlertsPage", () => {
 
         expect(
             screen.getByRole("heading", {
-                name: "Les chenilles processionnaires",
+                name: "Les chenilles processionnaires du pin",
             })
         ).toBeInTheDocument();
 

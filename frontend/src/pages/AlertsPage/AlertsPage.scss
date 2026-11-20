@@ -100,6 +100,11 @@
         background-color: #DDECE7;
         border-color: #C6DDD5;
     }
+
+    &--chaleurs {
+        background-color: #F8E5D5;
+        border-color: #EBC9AF;
+    }
 }
 
 
@@ -160,33 +165,40 @@
             width: 100%;
         }
 
-        // Chasse : ocre doux
+        // Chasse
 
         &--chasse {
             background-color: #F0E5D3;
             border-color: #E5D2B5;
         }
 
-        // Chenilles : vert sauge
+        // Chenilles
 
         &--chenilles-processionnaires {
             background-color: #E3EBDD;
             border-color: #CFDDC7;
         }
 
-        // Épillets : jaune paille
+        // Épillets
 
         &--epillets {
             background-color: #F4EDCF;
             border-color: #E8DDAF;
         }
 
-        // Cyanobactéries : vert d'eau
+        // Cyanobactéries
 
         &--cyanobacteries {
             background-color: #DDECE7;
             border-color: #C6DDD5;
         }
+        
+        // Fortes chaleurs et canicule
+        &--chaleurs {
+            background-color: #F8E5D5;
+            border-color: #EBC9AF;
+}
+
     }
 
     &__timeline-connector {
@@ -358,10 +370,6 @@
 
 html {
     scroll-behavior: smooth;
-}
-
-.alert-card {
-    scroll-margin-top: 110px;
 }
 
 @media (prefers-reduced-motion: reduce) {

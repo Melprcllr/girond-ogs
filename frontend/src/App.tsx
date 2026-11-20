@@ -11,11 +11,13 @@ import PrivacyPolicyPage from "./pages/PrivacyPolicyPage/PrivacyPolicyPage";
 import PWAInstallPrompt from "./components/organisms/PWAInstallPrompt/PWAInstallPrompt";
 import FAQPage from "./pages/FAQPage/FAQPage";
 import ScrollToTop from "./utils/ScrollToTop/ScrollToTop";
+import SeasonalAlertModal from "./components/organisms/SeasonalAlertModal/SeasonalAlertModal";
 
 function App() {
     return (
         <BrowserRouter>
             <ScrollToTop />
+            <SeasonalAlertModal />
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/alertes" element={<AlertsPage />} />
