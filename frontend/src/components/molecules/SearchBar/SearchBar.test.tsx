@@ -34,6 +34,13 @@ const towns: Town[] = [
         latitude: 44.75,
         longitude: -0.65,
     },
+    {
+        id: "listrac-medoc",
+        name: "Listrac-Médoc",
+        postalCodes: ["33480"],
+        latitude: 45.076,
+        longitude: -0.791,
+    },
 ];
 
 const renderSearchBar = (
@@ -88,6 +95,39 @@ describe("SearchBar", () => {
 
         expect(
             screen.getByRole("option", { name: /Canéjan/ })
+        ).toBeInTheDocument();
+    });
+
+    it.each([
+        "Listrac-Médoc",
+        "Listrac Medoc",
+        "ListracMedoc",
+        "Listrac - Médoc",
+        "Listrac--Medoc",
+        "listrac medoc",
+    ])("finds Listrac-Médoc with the query %s", (query) => {
+        renderSearchBar();
+
+        fireEvent.change(
+            screen.getByLabelText("Commune ou code postal"),
+            { target: { value: query } }
+        );
+
+        expect(
+            screen.getByRole("option", { name: /Listrac-Médoc/ })
+        ).toBeInTheDocument();
+    });
+
+    it("finds a town using only part of its name", () => {
+        renderSearchBar();
+
+        fireEvent.change(
+            screen.getByLabelText("Commune ou code postal"),
+            { target: { value: "Medoc" } }
+        );
+
+        expect(
+            screen.getByRole("option", { name: /Listrac-Médoc/ })
         ).toBeInTheDocument();
     });
 
