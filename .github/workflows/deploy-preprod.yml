@@ -53,6 +53,8 @@ jobs:
 
       - name: Build frontend staging
         working-directory: frontend
+        env:
+          VITE_API_URL: https://api-test.girondogs.fr
         run: npm run build:staging
 
       # Prepare deployment branch
