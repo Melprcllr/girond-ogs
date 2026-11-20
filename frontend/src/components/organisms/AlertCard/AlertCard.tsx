@@ -1,4 +1,3 @@
-
 import "./AlertCard.scss";
 
 export interface AlertCardImage {
