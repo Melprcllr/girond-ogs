@@ -10,6 +10,9 @@ import { places } from "../../../data/places";
 
 import "./ContactForm.scss";
 
+const MIN_MESSAGE_LENGTH = 10;
+const MAX_MESSAGE_LENGTH = 5000;
+
 const contactReasons = [
     { label: "Une question", value: "question" },
     { label: "Une suggestion ou une amélioration", value: "suggestion" },
@@ -95,6 +98,29 @@ function ContactForm({ onSuccess }: ContactFormProps) {
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
 
+    // Validation du message
+    const [hasAttemptedMessageValidation, setHasAttemptedMessageValidation] =
+        useState(false);
+
+    const messageLength = message.trim().length;
+
+    const messageError =
+        messageLength < MIN_MESSAGE_LENGTH
+            ? `Votre message doit contenir au moins ${MIN_MESSAGE_LENGTH} caractères.`
+            : messageLength > MAX_MESSAGE_LENGTH
+                ? `Votre message ne doit pas dépasser ${MAX_MESSAGE_LENGTH} caractères.`
+                : undefined;
+
+    const missingCharacters = MIN_MESSAGE_LENGTH - messageLength;
+    const excessCharacters = messageLength - MAX_MESSAGE_LENGTH;
+
+    const messageCounterText =
+        messageLength < MIN_MESSAGE_LENGTH
+            ? `Encore ${missingCharacters} caractère${missingCharacters > 1 ? "s" : ""} minimum · ${messageLength} / ${MAX_MESSAGE_LENGTH}`
+            : messageLength > MAX_MESSAGE_LENGTH
+                ? `${excessCharacters} caractère${excessCharacters > 1 ? "s" : ""} en trop · ${messageLength} / ${MAX_MESSAGE_LENGTH}`
+                : `Minimum atteint · ${messageLength} / ${MAX_MESSAGE_LENGTH}`;
+
     // Proposition d'un nouveau lieu
     const [proposedPlace, setProposedPlace] = useState("");
 
@@ -161,6 +187,12 @@ function ContactForm({ onSuccess }: ContactFormProps) {
         event.preventDefault();
 
         if (!reason) return;
+
+        setHasAttemptedMessageValidation(true);
+
+        if (messageError) {
+            return;
+        }
 
         setIsSubmitting(true);
         setSubmitError(null);
@@ -400,11 +432,32 @@ function ContactForm({ onSuccess }: ContactFormProps) {
                     label="Votre message"
                     placeholder="Écrivez votre message ici..."
                     hint="Plus votre message est précis, plus nous pourrons vous répondre efficacement."
+                    error={
+                        hasAttemptedMessageValidation
+                            ? messageError
+                            : undefined
+                    }
                     value={message}
                     onChange={(event) => setMessage(event.target.value)}
                     rows={6}
+                    maxLength={MAX_MESSAGE_LENGTH}
                     required
                 />
+
+                <p
+                    className={`contact-form__message-counter ${
+                        messageLength >= MIN_MESSAGE_LENGTH &&
+                        messageLength <= MAX_MESSAGE_LENGTH
+                            ? "contact-form__message-counter--valid"
+                            : messageLength > MAX_MESSAGE_LENGTH
+                                ? "contact-form__message-counter--error"
+                                : ""
+                    }`}
+                    aria-live="polite"
+                    aria-atomic="true"
+                >
+                    {messageCounterText}
+                </p>
             </div>
 
             {submitError && (
