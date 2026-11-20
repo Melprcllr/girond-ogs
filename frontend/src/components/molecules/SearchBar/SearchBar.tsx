@@ -25,7 +25,7 @@ function normalizeText(value: string): string {
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "")
         .toLowerCase()
-        .trim();
+        .replace(/[^a-z0-9]/g, "");
 }
 
 function SearchBar({
