@@ -77,6 +77,8 @@ function AboutPage() {
                         className="about-section__image"
                         src="/images/aboutPage/kaido-plage.jpg"
                         alt="Un chien sur la plage qui court vers l'océan"
+                        loading="lazy"
+                        decoding="async"
                     />
                 </section>
 
@@ -151,6 +153,8 @@ function AboutPage() {
                         className="about-section__image"
                         src="/images/aboutPage/chiens-foret.jpeg"
                         alt="Deux chiens en promenade dans une foret de pins"
+                        loading="lazy"
+                        decoding="async"
                     />
 
                     <div className="about-section__text">

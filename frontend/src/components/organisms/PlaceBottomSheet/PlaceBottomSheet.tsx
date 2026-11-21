@@ -42,28 +42,28 @@ function PlaceBottomSheet({
 
     const navigate = useNavigate();
 
-// Détection des très grands écrans.
-useEffect(() => {
-    // Certains environnements de test ne disposent pas de matchMedia.
-    if (typeof window.matchMedia !== "function") {
-        setIsVeryLargeScreen(false);
-        return;
-    }
+    // Détection des très grands écrans.
+    useEffect(() => {
+        // Certains environnements de test ne disposent pas de matchMedia.
+        if (typeof window.matchMedia !== "function") {
+            setIsVeryLargeScreen(false);
+            return;
+        }
 
-    const mediaQuery = window.matchMedia(VERY_LARGE_SCREEN_QUERY);
+        const mediaQuery = window.matchMedia(VERY_LARGE_SCREEN_QUERY);
 
-    const handleScreenChange = (event: MediaQueryListEvent) => {
-        setIsVeryLargeScreen(event.matches);
-    };
+        const handleScreenChange = (event: MediaQueryListEvent) => {
+            setIsVeryLargeScreen(event.matches);
+        };
 
-    setIsVeryLargeScreen(mediaQuery.matches);
+        setIsVeryLargeScreen(mediaQuery.matches);
 
-    mediaQuery.addEventListener("change", handleScreenChange);
+        mediaQuery.addEventListener("change", handleScreenChange);
 
-    return () => {
-        mediaQuery.removeEventListener("change", handleScreenChange);
-    };
-}, []);
+        return () => {
+            mediaQuery.removeEventListener("change", handleScreenChange);
+        };
+    }, []);
 
     // Main image first, followed by additional gallery images.
     const galleryImages = [
@@ -76,7 +76,7 @@ useEffect(() => {
             current === null
                 ? 0
                 : (current - 1 + galleryImages.length) %
-                  galleryImages.length
+                galleryImages.length
         );
     };
 
@@ -174,6 +174,8 @@ useEffect(() => {
                             className="place-bottom-sheet__thumbnail"
                             src={place.imageUrl}
                             alt={`Vue du lieu ${place.name}`}
+                            loading="lazy"
+                            decoding="async"
                         />
                     )}
 
