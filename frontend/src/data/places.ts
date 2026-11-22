@@ -552,7 +552,7 @@ export const places: Place[] = [
     // Gravières bleues, Arsac
     {
         id: "gravieres-bleues-arsac",
-        name: "Gravières bleues, Arsac",
+        name: "Gravières bleues",
         commune: "Arsac",
         postalCode: "33460",
         description:
@@ -581,6 +581,289 @@ export const places: Place[] = [
 
         latitude: 45.00585955330243,
         longitude: -0.7051969263276138,
+
+        specificities: [
+            "Plusieurs chemins forestiers pour varier les promenades autour des plans d'eau",
+            "Plusieurs accès possibles au site, avec des entrées à respecter selon la signalisation",
+            "Présence de plans d'eau : baignade des chiens non confirmée",
+        ],
+
+        parking: {
+            available: false,
+            address: "Allée du Luquet au niveau du chemin du Pin, 33460 Arsac",
+            details: "Plusieurs accès possibles, attention à bien respecter les panneaux. Au niveau du 38 allée de la Dame Blanche, ou encore du côté de Margaux-Cantenac en partant de la forêt. \n✖ entrée interdite du côté de ma D208"
+
+        },
+
+        characteristics: {
+            vineyards: true,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: true,
+            pineTrees: true,
+        },
+
+        regulations: {
+            dogsOnLeash: false,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: true,
+            farmAnimals: false,
+            cyanobacteria: true,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
+    },
+
+    // Les Sources, Cestas
+    {
+        id: "les-sources-cestas",
+        name: "Les Sources Ferrugineuses",
+        commune: "Cestas",
+        postalCode: "33610",
+        description:
+            "Les Sources de Cestas proposent un riche environnement boisé : les chemins traversent des sous-bois et longent de petits cours d'eau. \n\nLe secteur permet de profiter d'une balade au calme et à l'ombre des arbres, particulièrement appréciable pendant les journées chaudes. Plusieurs chemins permettent de parcourir les espaces naturels et de prolonger la sortie dans les bois environnants.",
+        imageUrl: "/images/places/les-sources-cestas.jpeg",
+
+        gallery: [
+            "/images/places/les-sources-cestas-gallery-01.jpg",
+            "/images/places/les-sources-cestas-gallery-02.JPG",
+            "/images/places/les-sources-cestas-gallery-03.webp",
+            "/images/places/les-sources-cestas-gallery-04.webp",
+            "/images/places/les-sources-cestas-gallery-05.jpeg",
+            "/images/places/les-sources-cestas-gallery-06.webp",
+            "/images/places/les-sources-cestas-gallery-07.webp",
+            "/images/places/les-sources-cestas-gallery-08.webp",
+            "/images/places/les-sources-cestas-gallery-09.webp",
+            "/images/places/les-sources-cestas-gallery-10.webp",
+            "/images/places/les-sources-cestas-gallery-11.webp",
+            "/images/places/les-sources-cestas-gallery-12.webp",
+            "/images/places/les-sources-cestas-gallery-13.webp",
+            "/images/places/les-sources-cestas-gallery-14.jpeg",
+            "/images/places/les-sources-cestas-gallery-15.webp",
+            "/images/places/les-sources-cestas-gallery-16.jpg",
+            "/images/places/les-sources-cestas-gallery-17.jpeg",
+            "/images/places/les-sources-cestas-gallery-18.jpeg",
+        ],
+
+        latitude: 44.758847463566106,
+        longitude: -0.7071085653010255,
+
+        specificities: [
+            "Chemins forestiers et passages le long de l'Estey des Sources",
+            "Petites aires de pique-nique avec tables et bancs",
+            "Possibilité de prolonger la promenade vers le secteur de Monsalut",
+        ],
+
+        parking: {
+            available: true,
+            address: "Salle des fêtes des sources, 33610 Cestas",
+            details: "Possibilité de partir du plan d'eau des Sources au niveau du Chemin du petit Trianon ou encore au 6 chemin des Fontanelles au niveau du bâtiment abandonné avec la possibilité de rejoindre la forêt communale de Cestas côté les Sources ou les Fontannelles."
+
+        },
+
+        characteristics: {
+            vineyards: false,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: true,
+            pineTrees: true,
+        },
+
+        regulations: {
+            dogsOnLeash: false,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: true,
+            farmAnimals: false,
+            cyanobacteria: true,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
+    },
+
+    // Domaine de la Burthe, Floirac
+    {
+        id: "la-burthe",
+        name: "Domaine de la Burthe",
+        commune: "Floirac",
+        postalCode: "33270",
+        description:
+            "Le Domaine de la Burthe offre des chemins majoritairement boisées sur les hauteurs de la rive droite. \n\nLe domaine possède plusieurs itinéraires et un parcours santé qui permettent de varier les sorties. C'est un lieu fréquenté par les promeneurs et les sportifs notamment pour les trails. \n\nPrésence d'un centre équestre et de chevaux dans des prés. \n\n 200m D+ et attention les chemins peuvent être glissants et boueux.",
+        imageUrl: "/images/places/la-burthe.png",
+
+        gallery: [
+            "/images/places/la-burthe-gallery-01.png",
+            "/images/places/la-burthe-gallery-02.webp",
+            "/images/places/la-burthe-gallery-03.jpg",
+            "/images/places/la-burthe-gallery-04.jpg",
+            "/images/places/la-burthe-gallery-05.webp",
+            "/images/places/la-burthe-gallery-06.webp",
+            "/images/places/la-burthe-gallery-07.webp",
+            "/images/places/la-burthe-gallery-08.webp",
+            "/images/places/la-burthe-gallery-09.webp",
+            "/images/places/la-burthe-gallery-10.webp",
+            "/images/places/la-burthe-gallery-11.webp",
+            "/images/places/la-burthe-gallery-12.webp",
+            "/images/places/la-burthe-gallery-13.webp",
+            "/images/places/la-burthe-gallery-14.webp",
+            "/images/places/la-burthe-gallery-15.webp",
+            "/images/places/la-burthe-gallery-16.webp",
+            "/images/places/la-burthe-gallery-17.webp",
+            "/images/places/la-burthe-gallery-18.webp",
+        ],
+
+        latitude: 44.8332229494398,
+        longitude: -0.504595704044235,
+
+        specificities: [
+            "Alternance de chemins forestiers et d'espaces ouverts",
+            "Équipements sportifs et espaces de loisirs sur le domaine",
+            "Présence d'activités équestres à proximité",
+        ],
+
+        parking: {
+            available: true,
+            address: "Domaine de la Burthe, 33270 Floirac",
+            details: "Grand parking principal au milieu des installations sportives donnant directment accès aux chemins forestiers."
+
+        },
+
+        characteristics: {
+            vineyards: false,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: true,
+            pineTrees: false,
+        },
+
+        regulations: {
+            dogsOnLeash: true,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: false,
+            farmAnimals: true,
+            cyanobacteria: true,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
+    },
+
+    // Monsalut, Cestas
+    {
+        id: "monsalut",
+        name: "Monsalut",
+        commune: "Cestas",
+        postalCode: "33610",
+        description:
+            "Les Gravières bleues d'Arsac offrent un cadre agréable de divers chemins forestiers, sous-bois et plans d'eau. \n\n Une multitude d'itinéraires permet de varier les promenades, en alternant passages ombragés en forêt et chemins ouverts avec une vue dégagée. Les sentiers sablonneux sont agréables à parcourir et permettent de profiter d'une sortie au calme, au cœur des paysages du Médoc.",
+        imageUrl: "/images/places/monsalut.jpg",
+
+        gallery: [
+            "/images/places/monsalut-gallery-01.jpeg",
+            "/images/places/monsalut-gallery-02.webp",
+            "/images/places/monsalut-gallery-03.jpg",
+            "/images/places/monsalut-gallery-04.webp",
+            "/images/places/monsalut-gallery-05.jpg",
+            "/images/places/monsalut-gallery-06.jpg",
+            "/images/places/monsalut-gallery-07.jpeg",
+            //            "/images/places/monsalut-gallery-08.webp",
+            "/images/places/monsalut-gallery-09.webp",
+            "/images/places/monsalut-gallery-10.webp",
+        ],
+
+        latitude: 44.76497522365304,
+        longitude: -0.7030696117474455,
+
+        specificities: [
+            "Plusieurs chemins forestiers pour varier les promenades autour des plans d'eau",
+            "Plusieurs accès possibles au site, avec des entrées à respecter selon la signalisation",
+            "Présence de plans d'eau : baignade des chiens non confirmée",
+        ],
+
+        parking: {
+            available: false,
+            address: "Allée du Luquet au niveau du chemin du Pin, 33460 Arsac",
+            details: "Plusieurs accès possibles, attention à bien respecter les panneaux. Au niveau du 38 allée de la Dame Blanche, ou encore du côté de Margaux-Cantenac en partant de la forêt. \n✖ entrée interdite du côté de ma D208"
+
+        },
+
+        characteristics: {
+            vineyards: true,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: true,
+            pineTrees: true,
+        },
+
+        regulations: {
+            dogsOnLeash: false,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: true,
+            farmAnimals: false,
+            cyanobacteria: true,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
+    },
+
+    // Paloumey, Ludon-Médoc
+    {
+        id: "paloumey",
+        name: "Étang de Paloumey",
+        commune: "Ludon-Médoc",
+        postalCode: "33290",
+        description:
+            "Les Gravières bleues d'Arsac offrent un cadre agréable de divers chemins forestiers, sous-bois et plans d'eau. \n\n Une multitude d'itinéraires permet de varier les promenades, en alternant passages ombragés en forêt et chemins ouverts avec une vue dégagée. Les sentiers sablonneux sont agréables à parcourir et permettent de profiter d'une sortie au calme, au cœur des paysages du Médoc.",
+        imageUrl: "/images/places/paloumey.webp",
+
+        gallery: [
+            "/images/places/paloumey-gallery-01.webp",
+            "/images/places/paloumey-gallery-02.webp",
+            "/images/places/paloumey-gallery-03.webp",
+            "/images/places/paloumey-gallery-04.webp",
+            "/images/places/paloumey-gallery-05.webp",
+            "/images/places/paloumey-gallery-06.webp",
+            "/images/places/paloumey-gallery-07.jpeg",
+            "/images/places/paloumey-gallery-08.jpeg",
+            "/images/places/paloumey-gallery-09.webp",
+            "/images/places/paloumey-gallery-10.webp",
+            "/images/places/paloumey-gallery-11.webp",
+            "/images/places/paloumey-gallery-12.webp",
+            "/images/places/paloumey-gallery-13.webp",
+            "/images/places/paloumey-gallery-14.webp",
+            "/images/places/paloumey-gallery-15.webp",
+            "/images/places/paloumey-gallery-16.webp",
+            "/images/places/paloumey-gallery-17.webp",
+            "/images/places/paloumey-gallery-18.webp",
+            "/images/places/paloumey-gallery-19.webp",
+            "/images/places/paloumey-gallery-20.webp",
+            "/images/places/paloumey-gallery-21.webp",
+            "/images/places/paloumey-gallery-22.webp",
+            "/images/places/paloumey-gallery-23.webp",
+            "/images/places/paloumey-gallery-24.jpg",
+            "/images/places/paloumey-gallery-25.jpg",
+        ],
+
+        latitude: 44.984275458780544,
+        longitude: -0.6251403105983353,
 
         specificities: [
             "Plusieurs chemins forestiers pour varier les promenades autour des plans d'eau",
