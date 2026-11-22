@@ -1,6 +1,6 @@
 
-import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, it, expect, vi } from "vitest";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import AlertsPage from "./AlertsPage";
 
@@ -11,6 +11,51 @@ describe("AlertsPage", () => {
                 <AlertsPage />
             </MemoryRouter>
         );
+
+            it("affiche le bouton retour en haut après avoir fait défiler la page", () => {
+        renderAlertsPage();
+
+        const button = screen.getByLabelText("Retourner en haut de la page");
+
+        expect(button).toHaveAttribute("aria-hidden", "true");
+
+        Object.defineProperty(window, "scrollY", {
+            configurable: true,
+            value: 400,
+        });
+
+        fireEvent.scroll(window);
+
+        expect(button).toHaveAttribute("aria-hidden", "false");
+    });
+
+    it("remonte en haut de la page au clic sur le bouton", () => {
+        const scrollToMock = vi
+            .spyOn(window, "scrollTo")
+            .mockImplementation(() => {});
+
+        renderAlertsPage();
+
+        Object.defineProperty(window, "scrollY", {
+            configurable: true,
+            value: 400,
+        });
+
+        fireEvent.scroll(window);
+
+        fireEvent.click(
+            screen.getByRole("button", {
+                name: "Retourner en haut de la page",
+            })
+        );
+
+        expect(scrollToMock).toHaveBeenCalledWith({
+            top: 0,
+            behavior: "smooth",
+        });
+
+        scrollToMock.mockRestore();
+    });
 
     it("affiche le titre principal", () => {
         renderAlertsPage();
