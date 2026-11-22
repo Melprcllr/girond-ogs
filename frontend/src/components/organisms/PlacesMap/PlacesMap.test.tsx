@@ -7,8 +7,19 @@ import type { Place } from "../../../types/Place";
 const mockSetView = vi.fn();
 
 vi.mock("react-leaflet", () => ({
-    MapContainer: ({ children }: { children: React.ReactNode }) => (
-        <div data-testid="map-container">{children}</div>
+    MapContainer: ({
+        children,
+        scrollWheelZoom,
+    }: {
+        children: React.ReactNode;
+        scrollWheelZoom?: boolean;
+    }) => (
+        <div
+            data-testid="map-container"
+            data-scroll-wheel-zoom={String(scrollWheelZoom)}
+        >
+            {children}
+        </div>
     ),
     TileLayer: () => <div data-testid="tile-layer" />,
     Marker: ({
@@ -130,7 +141,7 @@ describe("PlacesMap", () => {
 
     it("should call onPlaceClick when a marker is clicked", () => {
         const onPlaceClick = vi.fn();
-    
+
         render(
             <PlacesMap
                 places={mockPlaces}
@@ -138,9 +149,9 @@ describe("PlacesMap", () => {
                 distance={5}
             />
         );
-    
+
         fireEvent.click(screen.getByTestId("map-marker"));
-    
+
         expect(onPlaceClick).toHaveBeenCalledWith("lac-lacanau");
     });
 
@@ -152,7 +163,7 @@ describe("PlacesMap", () => {
                 distance={5}
             />
         );
-    
+
         expect(screen.queryByTestId("map-marker")).not.toBeInTheDocument();
     });
 
@@ -204,4 +215,20 @@ describe("PlacesMap", () => {
 
         expect(marker).toHaveAttribute("data-color", "#315C49");
     });
+
+    it("should enable scroll wheel zoom on the map", () => {
+        render(
+            <PlacesMap
+                places={mockPlaces}
+                onPlaceClick={vi.fn()}
+                distance={5}
+            />
+        );
+
+        expect(screen.getByTestId("map-container")).toHaveAttribute(
+            "data-scroll-wheel-zoom",
+            "true",
+        );
+    });
+
 });
