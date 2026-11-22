@@ -163,7 +163,7 @@ function PlacesMap({
             <MapContainer
                 center={[44.85, -0.57]}
                 zoom={8}
-                scrollWheelZoom={false}
+                scrollWheelZoom={true}
                 className="places-map__container"
                 zoomControl={false}
             >

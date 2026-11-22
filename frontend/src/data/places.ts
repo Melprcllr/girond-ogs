@@ -591,7 +591,7 @@ export const places: Place[] = [
         parking: {
             available: false,
             address: "Allée du Luquet au niveau du chemin du Pin, 33460 Arsac",
-            details: "Plusieurs accès possibles, attention à bien respecter les panneaux. Au niveau du 38 allée de la Dame Blanche, ou encore du côté de Margaux-Cantenac en partant de la forêt. \n✖ entrée interdite du côté de ma D208"
+            details: "Plusieurs accès possibles, attention à bien respecter les panneaux. Au niveau du 38 allée de la Dame Blanche, ou encore du côté de Margaux-Cantenac en partant de la forêt. \n✖ entrée interdite du côté de la D208"
 
         },
 
