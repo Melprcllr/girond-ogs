@@ -833,7 +833,7 @@ export const places: Place[] = [
         commune: "Ludon-Médoc",
         postalCode: "33290",
         description:
-            "Les Gravières bleues d'Arsac offrent un cadre agréable de divers chemins forestiers, sous-bois et plans d'eau. \n\n Une multitude d'itinéraires permet de varier les promenades, en alternant passages ombragés en forêt et chemins ouverts avec une vue dégagée. Les sentiers sablonneux sont agréables à parcourir et permettent de profiter d'une sortie au calme, au cœur des paysages du Médoc.",
+            "L'étang de Paloumey est une ancienne gravière devenue un espace naturel de promenade et de pêche à Ludon-Médoc. Entouré de bosquets et de végétation, il offre un cadre agréable au bord de l'eau et dans une petite forêt. \n\nLa signalisation sur place indique que les chiens doivent impérativement être tenus en laisse et l'accès à l'eau leur est interdit.",
         imageUrl: "/images/places/paloumey.webp",
 
         gallery: [
@@ -868,15 +868,17 @@ export const places: Place[] = [
         longitude: -0.6251403105983353,
 
         specificities: [
-            "Plusieurs chemins forestiers pour varier les promenades autour des plans d'eau",
-            "Plusieurs accès possibles au site, avec des entrées à respecter selon la signalisation",
-            "Présence de plans d'eau : baignade des chiens non confirmée",
+            "Chemin de promenade autour du plan d'eau",
+            "Plusieurs points de vue sur l'étang",
+            "Bancs aménagés pour faire une pause",
+            "Site fréquenté par les pêcheurs et les promeneurs",
+            "Accès à l'eau interdit aux chiens",
         ],
 
         parking: {
-            available: false,
-            address: "Allée du Luquet au niveau du chemin du Pin, 33460 Arsac",
-            details: "Plusieurs accès possibles, attention à bien respecter les panneaux. Au niveau du 38 allée de la Dame Blanche, ou encore du côté de Margaux-Cantenac en partant de la forêt. \n✖ entrée interdite du côté de ma D208"
+            available: true,
+            address: "En face du Poney Club de Paloumey, 33290 Ludon-Médoc",
+            details: "Le parking principal donne accès à l'étang et sinon il y a un parking au niveau de la crèche, rue de la Longua, avec un accès direct à la forêt."
 
         },
 
@@ -890,13 +892,13 @@ export const places: Place[] = [
         },
 
         regulations: {
-            dogsOnLeash: false,
+            dogsOnLeash: true,
             dogsProhibited: false,
         },
 
         risks: {
             processionaryCaterpillars: true,
-            farmAnimals: false,
+            farmAnimals: true,
             cyanobacteria: true,
         },
 
