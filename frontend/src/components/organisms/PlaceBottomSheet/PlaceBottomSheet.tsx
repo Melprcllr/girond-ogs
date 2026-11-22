@@ -223,49 +223,48 @@ function PlaceBottomSheet({
                             </div>
                         )}
 
-                        {place.parking.available !== null && (
-                            <section
-                                className="place-bottom-sheet__parking"
-                                aria-label="Stationnement"
-                            >
-                                <h3 className="place-bottom-sheet__section-title">
-                                    Stationnement
-                                </h3>
 
-                                <div className="place-bottom-sheet__parking-status">
-                                    <ParkingSquare
-                                        size={20}
-                                        aria-hidden="true"
-                                    />
+                        {(place.parking.available !== null ||
+                            place.parking.address ||
+                            place.parking.details) && (
+                                <section
+                                    className="place-bottom-sheet__parking"
+                                    aria-label="Stationnement"
+                                >
+                                    <h3 className="place-bottom-sheet__section-title">
+                                        Stationnement
+                                    </h3>
 
-                                    <span>
-                                        {place.parking.available
-                                            ? "Parking disponible"
-                                            : "Aucun parking disponible"}
-                                    </span>
-                                </div>
-
-                                {place.parking.available &&
-                                    place.parking.address && (
-                                        <p className="place-bottom-sheet__parking-info">
-                                            <MapPin
-                                                size={16}
+                                    {place.parking.available !== null && (
+                                        <div className="place-bottom-sheet__parking-status">
+                                            <ParkingSquare
+                                                size={20}
                                                 aria-hidden="true"
                                             />
+
                                             <span>
-                                                {place.parking.address}
+                                                {place.parking.available
+                                                    ? "Parking disponible"
+                                                    : "Pas de parking aménagé"}
                                             </span>
+                                        </div>
+                                    )}
+
+                                    {place.parking.address && (
+                                        <p className="place-bottom-sheet__parking-info">
+                                            <MapPin size={16} aria-hidden="true" />
+                                            <span>{place.parking.address}</span>
                                         </p>
                                     )}
 
-                                {place.parking.available &&
-                                    place.parking.details && (
+                                    {place.parking.details && (
                                         <p className="place-bottom-sheet__parking-details">
                                             {place.parking.details}
                                         </p>
                                     )}
-                            </section>
-                        )}
+                                </section>
+                            )}
+
 
                         {place.regulations.dogsOnLeash && (
                             <Badge variant="warning" size="small">
