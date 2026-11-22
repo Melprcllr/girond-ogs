@@ -192,11 +192,13 @@ describe("PlaceBottomSheet", () => {
         ).toBeInTheDocument();
     });
 
-    it("indique lorsqu'aucun parking n'est disponible", () => {
+
+    it("indique lorsqu'aucun parking aménagé n'est disponible", () => {
         const placeWithoutParking: Place = {
             ...mockPlace,
             parking: {
                 available: false,
+                details: "Stationnement possible le long de la route.",
             },
         };
 
@@ -214,9 +216,14 @@ describe("PlaceBottomSheet", () => {
         );
 
         expect(
-            screen.getByText("Aucun parking disponible")
+            screen.getByText("Pas de parking aménagé")
+        ).toBeInTheDocument();
+
+        expect(
+            screen.getByText("Stationnement possible le long de la route.")
         ).toBeInTheDocument();
     });
+
 
     it("n'affiche pas la section stationnement lorsque l'information est inconnue", () => {
         renderPlaceBottomSheet();
@@ -281,4 +288,35 @@ describe("PlaceBottomSheet", () => {
             })
         );
     });
+
+
+
+it("affiche l'adresse même lorsqu'aucun parking aménagé n'est disponible", () => {
+    const placeWithoutParking: Place = {
+        ...mockPlace,
+        parking: {
+            available: false,
+            address: "Rue Dilly Prolongée, 33130 Bègles",
+        },
+    };
+
+    render(
+        <MemoryRouter>
+            <PlaceBottomSheet
+                place={placeWithoutParking}
+                onClose={vi.fn()}
+            />
+        </MemoryRouter>
+    );
+
+    fireEvent.click(
+        screen.getByRole("button", { name: "Agrandir la fiche" })
+    );
+
+    expect(
+        screen.getByText("Rue Dilly Prolongée, 33130 Bègles")
+    ).toBeInTheDocument();
+});
+
+
 });

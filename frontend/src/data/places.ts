@@ -141,9 +141,10 @@ export const places: Place[] = [
         postalCode: "33320",
         description:
             "50 hectares d'espace naturel en plein cœur d'Eysines, dont 22 hectares de boisements. Le domaine offre de nombreux sentiers pédestres traversant les espaces boisés, des pelouses, des aires de pique-nique et des espaces de loisirs.\n\nEntre promenade à l'ombre des arbres et activités sportives, c'est un lieu agréable pour profiter d'un grand espace de verdure en ville. \n\n⚠️ Depuis le 22 janvier 2026, un arrêté municipal de la Ville d’Eysines impose de tenir les chiens en laisse sur l'ensemble du Domaine du Pinsan.\n\n",
-        imageUrl: "/images/places/domaine-du-pinsan-gallery-07.jpg",
+        imageUrl: "/images/places/domaine-du-pinsan.jpeg",
 
         gallery: [
+            "/images/places/domaine-du-pinsan-gallery-00.jpeg",
             "/images/places/domaine-du-pinsan-gallery-01.jpg",
             "/images/places/domaine-du-pinsan-gallery-02.jpg",
             "/images/places/domaine-du-pinsan-gallery-03.jpg",
@@ -154,6 +155,10 @@ export const places: Place[] = [
             "/images/places/domaine-du-pinsan-gallery-08.jpeg",
             "/images/places/domaine-du-pinsan-gallery-09.jpeg",
             "/images/places/domaine-du-pinsan-gallery-10.jpeg",
+            "/images/places/domaine-du-pinsan-gallery-11.jpeg",
+            "/images/places/domaine-du-pinsan-gallery-12.jpeg",
+            "/images/places/domaine-du-pinsan-gallery-13.jpg",
+            "/images/places/domaine-du-pinsan-gallery-14.jpeg",
         ],
 
         latitude: 44.86991979131604,
@@ -327,6 +332,7 @@ export const places: Place[] = [
         imageUrl: "/images/places/foret-de-migelane.jpg",
 
         gallery: [
+            "/images/places/foret-de-migelane-gallery-00.jpeg",
             "/images/places/foret-de-migelane-gallery-01.webp",
             "/images/places/foret-de-migelane-gallery-02.webp",
             "/images/places/foret-de-migelane-gallery-03.webp",
@@ -345,6 +351,7 @@ export const places: Place[] = [
             "/images/places/foret-de-migelane-gallery-16.webp",
             "/images/places/foret-de-migelane-gallery-17.webp",
             "/images/places/foret-de-migelane-gallery-18.webp",
+            "/images/places/foret-de-migelane-gallery-19.jpeg",
         ],
 
         latitude: 44.700735494262524,
@@ -392,11 +399,36 @@ export const places: Place[] = [
         commune: "Pessac",
         postalCode: "33600",
         description:
-            "La forêt du Bourgailh est un vaste espace naturel  ",
-        imageUrl: "/images/places/foret-de-migelane.jpg",
+            "La forêt du Bourgailh est un vaste espace naturel de 110 hectares situé à Pessac, qui offre un cadre agréable pour les promenades au cœur de la nature. \nComposée de différents espaces paysagers, elle propose une belle diversité de décors entre chemins forestiers, allées aménagées et zones plus ouvertes. \nIl y a plusieurs chemins permettant de varier les itinéraires. Au fil de la balade, on découvre différents aménagements en bois, des passerelles et plusieurs belvédères qui offrent des points de vue sur la forêt et ses paysages. \nTrès fréquentée par les familles, les promeneurs et les sportifs, notamment le week-end, la forêt du Bourgailh permet de profiter d'une grande diversité d'activités dans un environnement boisé, à proximité de la ville.",
+        imageUrl: "/images/places/foret-du-bourgailh.webp",
 
         gallery: [
-            "/images/places/foret-de-migelane-gallery-01.webp",
+            "/images/places/foret-du-bourgailh-gallery-00.jpeg",
+            "/images/places/foret-du-bourgailh-gallery-01.webp",
+            "/images/places/foret-du-bourgailh-gallery-02.webp",
+            "/images/places/foret-du-bourgailh-gallery-03.webp",
+            "/images/places/foret-du-bourgailh-gallery-04.webp",
+            "/images/places/foret-du-bourgailh-gallery-05.webp",
+            "/images/places/foret-du-bourgailh-gallery-06.webp",
+            "/images/places/foret-du-bourgailh-gallery-07.webp",
+            "/images/places/foret-du-bourgailh-gallery-08.webp",
+            "/images/places/foret-du-bourgailh-gallery-09.webp",
+            "/images/places/foret-du-bourgailh-gallery-10.webp",
+            "/images/places/foret-du-bourgailh-gallery-11.webp",
+            "/images/places/foret-du-bourgailh-gallery-12.webp",
+            "/images/places/foret-du-bourgailh-gallery-13.jpg",
+            "/images/places/foret-du-bourgailh-gallery-14.jpeg",
+            "/images/places/foret-du-bourgailh-gallery-15.jpg",
+            "/images/places/foret-du-bourgailh-gallery-16.jpg",
+            "/images/places/foret-du-bourgailh-gallery-17.webp",
+            "/images/places/foret-du-bourgailh-gallery-18.webp",
+            "/images/places/foret-du-bourgailh-gallery-19.webp",
+            "/images/places/foret-du-bourgailh-gallery-20.webp",
+            "/images/places/foret-du-bourgailh-gallery-21.jpg",
+            "/images/places/foret-du-bourgailh-gallery-22.jpg",
+            "/images/places/foret-du-bourgailh-gallery-23.jpg",
+            "/images/places/foret-du-bourgailh-gallery-24.jpg",
+
         ],
 
         latitude: 44.802499053248134,
@@ -404,7 +436,7 @@ export const places: Place[] = [
 
         specificities: [
             "Plusieurs belvédères tout au long du parcours",
-            "Parc à chien au niveau de la rue Lino Ventura",
+            "Parc canin au niveau de la rue Lino Ventura",
             "Présence d'un skate parc, d'aires de jeux pour enfants, d'un pumtrack, et d'un bassin de rétention des eaux",
             "Site fréquenté par des joggeurs, cyclistes, et des familles, particulièrement le week-end",
         ],
@@ -436,7 +468,442 @@ export const places: Place[] = [
         },
 
         sources: [],
-        lastVerifiedAt: "2026-11-11",
+        lastVerifiedAt: "2026-11-22",
+    },
+
+    // Mussonville, Bègles
+    {
+        id: "mussonville",
+        name: "Mussonville",
+        commune: "Bègles",
+        postalCode: "33130",
+        description:
+            "Le parc de Mussonville est un vaste espace naturel situé à Bègles, facilement accessible en tram. \nIl offre un cadre agréable pour les promenades, entre espaces boisés, plaines et cours d'eau. \nC'est un parc fréquenté, en fonction de l'horaire, on peut y croiser de nombreux congénères. La partie située du côté de l'entrée tram est davantage aménagée et les chiens doivent être attachés. Dans la partie forêt, les chiens sont tolérés détachés toujours en partageant l'espace avec les autres usagers.",
+        imageUrl: "/images/places/mussonville.webp",
+
+        gallery: [
+            "/images/places/mussonville-gallery-01.webp",
+            "/images/places/mussonville-gallery-02.webp",
+            "/images/places/mussonville-gallery-03.webp",
+            "/images/places/mussonville-gallery-04.webp",
+            "/images/places/mussonville-gallery-05.JPG",
+            "/images/places/mussonville-gallery-06.webp",
+            "/images/places/mussonville-gallery-07.webp",
+            "/images/places/mussonville-gallery-08.webp",
+            "/images/places/mussonville-gallery-09.webp",
+            "/images/places/mussonville-gallery-10.webp",
+            "/images/places/mussonville-gallery-11.webp",
+            "/images/places/mussonville-gallery-12.webp",
+            "/images/places/mussonville-gallery-13.webp",
+            "/images/places/mussonville-gallery-14.webp",
+            "/images/places/mussonville-gallery-15.webp",
+            "/images/places/mussonville-gallery-16.webp",
+            "/images/places/mussonville-gallery-17.webp",
+            "/images/places/mussonville-gallery-18.webp",
+            "/images/places/mussonville-gallery-19.webp",
+            "/images/places/mussonville-gallery-20.webp",
+            "/images/places/mussonville-gallery-21.webp",
+            "/images/places/mussonville-gallery-22.webp",
+            "/images/places/mussonville-gallery-23.webp",
+            "/images/places/mussonville-gallery-24.jpeg",
+        ],
+
+        latitude: 44.79305657456625,
+        longitude: -0.5603066463739168,
+
+        specificities: [
+            "Plusieurs sentiers forestiers pour varier les promenades",
+            "Possibilité de longer l'Eau Bourde sur la majeure partie du parc",
+            "Espace de jeux pour enfants clôturé dans la partie proche du tram",
+            "Plusieurs accès piétons au parc",
+        ],
+
+        parking: {
+            available: true,
+            address: "106 Rue Alexis Labro, 33130 Bègles",
+            details: "Plusieurs accès permettent de rejoindre le parc, notamment au niveau du tram, ou de l'impasse de la rue Dilly Prolongée et aussi au bout de la rue des Deux Esteys."
+
+        },
+
+        characteristics: {
+            vineyards: false,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: true,
+            pineTrees: false,
+        },
+
+        regulations: {
+            dogsOnLeash: true,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: false,
+            farmAnimals: false,
+            cyanobacteria: true,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
+    },
+
+    // Gravières bleues, Arsac
+    {
+        id: "gravieres-bleues-arsac",
+        name: "Gravières bleues",
+        commune: "Arsac",
+        postalCode: "33460",
+        description:
+            "Les Gravières bleues d'Arsac offrent un cadre agréable de divers chemins forestiers, sous-bois et plans d'eau. \n\n Une multitude d'itinéraires permet de varier les promenades, en alternant passages ombragés en forêt et chemins ouverts avec une vue dégagée. Les sentiers sablonneux sont agréables à parcourir et permettent de profiter d'une sortie au calme, au cœur des paysages du Médoc.",
+        imageUrl: "/images/places/gravieres-bleues-arsac.webp",
+
+        gallery: [
+            "/images/places/gravieres-bleues-arsac-gallery-01.webp",
+            "/images/places/gravieres-bleues-arsac-gallery-02.webp",
+            "/images/places/gravieres-bleues-arsac-gallery-03.jpeg",
+            "/images/places/gravieres-bleues-arsac-gallery-04.jpg",
+            "/images/places/gravieres-bleues-arsac-gallery-05.webp",
+            "/images/places/gravieres-bleues-arsac-gallery-06.webp",
+            "/images/places/gravieres-bleues-arsac-gallery-07.jpeg",
+            "/images/places/gravieres-bleues-arsac-gallery-08.jpg",
+            "/images/places/gravieres-bleues-arsac-gallery-09.jpeg",
+            "/images/places/gravieres-bleues-arsac-gallery-10.jpg",
+            "/images/places/gravieres-bleues-arsac-gallery-11.jpg",
+            "/images/places/gravieres-bleues-arsac-gallery-12.jpeg",
+            "/images/places/gravieres-bleues-arsac-gallery-13.webp",
+            "/images/places/gravieres-bleues-arsac-gallery-14.webp",
+            "/images/places/gravieres-bleues-arsac-gallery-15.jpeg",
+            "/images/places/gravieres-bleues-arsac-gallery-16.jpg",
+            "/images/places/gravieres-bleues-arsac-gallery-17.jpg",
+        ],
+
+        latitude: 45.00585955330243,
+        longitude: -0.7051969263276138,
+
+        specificities: [
+            "Plusieurs chemins forestiers pour varier les promenades autour des plans d'eau",
+            "Plusieurs accès possibles au site, avec des entrées à respecter selon la signalisation",
+            "Présence de plans d'eau : baignade des chiens non confirmée",
+        ],
+
+        parking: {
+            available: false,
+            address: "Allée du Luquet au niveau du chemin du Pin, 33460 Arsac",
+            details: "Plusieurs accès possibles, attention à bien respecter les panneaux. Au niveau du 38 allée de la Dame Blanche, ou encore du côté de Margaux-Cantenac en partant de la forêt. \n✖ entrée interdite du côté de ma D208"
+
+        },
+
+        characteristics: {
+            vineyards: true,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: true,
+            pineTrees: true,
+        },
+
+        regulations: {
+            dogsOnLeash: false,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: true,
+            farmAnimals: false,
+            cyanobacteria: true,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
+    },
+
+    // Les Sources, Cestas
+    {
+        id: "les-sources-cestas",
+        name: "Les Sources Ferrugineuses",
+        commune: "Cestas",
+        postalCode: "33610",
+        description:
+            "Les Sources de Cestas proposent un riche environnement boisé : les chemins traversent des sous-bois et longent de petits cours d'eau. \n\nLe secteur permet de profiter d'une balade au calme et à l'ombre des arbres, particulièrement appréciable pendant les journées chaudes. Plusieurs chemins permettent de parcourir les espaces naturels et de prolonger la sortie dans les bois environnants.",
+        imageUrl: "/images/places/les-sources-cestas.jpeg",
+
+        gallery: [
+            "/images/places/les-sources-cestas-gallery-01.jpg",
+            "/images/places/les-sources-cestas-gallery-02.JPG",
+            "/images/places/les-sources-cestas-gallery-03.webp",
+            "/images/places/les-sources-cestas-gallery-04.webp",
+            "/images/places/les-sources-cestas-gallery-05.jpeg",
+            "/images/places/les-sources-cestas-gallery-06.webp",
+            "/images/places/les-sources-cestas-gallery-07.webp",
+            "/images/places/les-sources-cestas-gallery-08.webp",
+            "/images/places/les-sources-cestas-gallery-09.webp",
+            "/images/places/les-sources-cestas-gallery-10.webp",
+            "/images/places/les-sources-cestas-gallery-11.webp",
+            "/images/places/les-sources-cestas-gallery-12.webp",
+            "/images/places/les-sources-cestas-gallery-13.webp",
+            "/images/places/les-sources-cestas-gallery-14.jpeg",
+            "/images/places/les-sources-cestas-gallery-15.webp",
+            "/images/places/les-sources-cestas-gallery-16.jpg",
+            "/images/places/les-sources-cestas-gallery-17.jpeg",
+            "/images/places/les-sources-cestas-gallery-18.jpeg",
+        ],
+
+        latitude: 44.758847463566106,
+        longitude: -0.7071085653010255,
+
+        specificities: [
+            "Chemins forestiers et passages le long de l'Estey des Sources",
+            "Petites aires de pique-nique avec tables et bancs",
+            "Possibilité de prolonger la promenade vers le secteur de Monsalut",
+        ],
+
+        parking: {
+            available: true,
+            address: "Salle des fêtes des sources, 33610 Cestas",
+            details: "Possibilité de partir du plan d'eau des Sources au niveau du Chemin du petit Trianon ou encore au 6 chemin des Fontanelles au niveau du bâtiment abandonné avec la possibilité de rejoindre la forêt communale de Cestas côté les Sources ou les Fontannelles."
+
+        },
+
+        characteristics: {
+            vineyards: false,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: true,
+            pineTrees: true,
+        },
+
+        regulations: {
+            dogsOnLeash: false,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: true,
+            farmAnimals: false,
+            cyanobacteria: true,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
+    },
+
+    // Domaine de la Burthe, Floirac
+    {
+        id: "la-burthe",
+        name: "Domaine de la Burthe",
+        commune: "Floirac",
+        postalCode: "33270",
+        description:
+            "Le Domaine de la Burthe offre des chemins majoritairement boisées sur les hauteurs de la rive droite. \n\nLe domaine possède plusieurs itinéraires et un parcours santé qui permettent de varier les sorties. C'est un lieu fréquenté par les promeneurs et les sportifs notamment pour les trails. \n\nPrésence d'un centre équestre et de chevaux dans des prés. \n\n 200m D+ et attention les chemins peuvent être glissants et boueux.",
+        imageUrl: "/images/places/la-burthe.png",
+
+        gallery: [
+            "/images/places/la-burthe-gallery-01.png",
+            "/images/places/la-burthe-gallery-02.webp",
+            "/images/places/la-burthe-gallery-03.jpg",
+            "/images/places/la-burthe-gallery-04.jpg",
+            "/images/places/la-burthe-gallery-05.webp",
+            "/images/places/la-burthe-gallery-06.webp",
+            "/images/places/la-burthe-gallery-07.webp",
+            "/images/places/la-burthe-gallery-08.webp",
+            "/images/places/la-burthe-gallery-09.webp",
+            "/images/places/la-burthe-gallery-10.webp",
+            "/images/places/la-burthe-gallery-11.webp",
+            "/images/places/la-burthe-gallery-12.webp",
+            "/images/places/la-burthe-gallery-13.webp",
+            "/images/places/la-burthe-gallery-14.webp",
+            "/images/places/la-burthe-gallery-15.webp",
+            "/images/places/la-burthe-gallery-16.webp",
+            "/images/places/la-burthe-gallery-17.webp",
+            "/images/places/la-burthe-gallery-18.webp",
+        ],
+
+        latitude: 44.8332229494398,
+        longitude: -0.504595704044235,
+
+        specificities: [
+            "Alternance de chemins forestiers et d'espaces ouverts",
+            "Équipements sportifs et espaces de loisirs sur le domaine",
+            "Présence d'activités équestres à proximité",
+        ],
+
+        parking: {
+            available: true,
+            address: "Domaine de la Burthe, 33270 Floirac",
+            details: "Grand parking principal au milieu des installations sportives donnant directment accès aux chemins forestiers."
+
+        },
+
+        characteristics: {
+            vineyards: false,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: true,
+            pineTrees: false,
+        },
+
+        regulations: {
+            dogsOnLeash: true,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: false,
+            farmAnimals: true,
+            cyanobacteria: true,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
+    },
+
+    // Monsalut, Cestas
+    {
+        id: "monsalut",
+        name: "Monsalut",
+        commune: "Cestas",
+        postalCode: "33610",
+        description:
+            "Le parc de Monsalut est un espace naturel spacieux apprécié pour ses deux étangs et ses chemins de promenade. Les deux étangs amènent une forte activité de pêche, l'espace doit être partagé. Sur ce lieu on trouve des sous-bois ombragés, des étendues vertes et des chemins le long des plans d'eau. \n\nUne boucle permet de faire le tour des étangs entre plaine et forêt, avec la possibilité de prolonger les chemins forestiers environnants en direction des Sources.",
+        imageUrl: "/images/places/monsalut.jpg",
+
+        gallery: [
+            "/images/places/monsalut-gallery-01.jpeg",
+            "/images/places/monsalut-gallery-02.webp",
+            "/images/places/monsalut-gallery-03.jpg",
+            "/images/places/monsalut-gallery-04.webp",
+            "/images/places/monsalut-gallery-05.jpg",
+            "/images/places/monsalut-gallery-06.jpg",
+            "/images/places/monsalut-gallery-07.jpeg",
+            //            "/images/places/monsalut-gallery-08.webp",
+            "/images/places/monsalut-gallery-09.webp",
+            "/images/places/monsalut-gallery-10.webp",
+        ],
+
+        latitude: 44.76497522365304,
+        longitude: -0.7030696117474455,
+
+        specificities: [
+            "Deux étangs entourés de végétation",
+            "Boucle d'environ 1,5 km autour des étangs",
+            "Tables de pique-nique autour du grand étang",
+            "Possibilité de prolonger la promenade vers les Sources Ferrugineuses",
+            "Baignade interdite dans les plans d'eau",
+        ],
+
+        parking: {
+            available: true,
+            address: "Chemin du lou Labat, 33610 Cestas",
+            details: "En plus du parking on peut se garer le long de la route au 24 Chem. de Caussat ou encore au 136 Chem. des Sources"
+
+        },
+
+        characteristics: {
+            vineyards: false,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: true,
+            pineTrees: true,
+        },
+
+        regulations: {
+            dogsOnLeash: false,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: true,
+            farmAnimals: false,
+            cyanobacteria: true,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
+    },
+
+    // Paloumey, Ludon-Médoc
+    {
+        id: "paloumey",
+        name: "Étang de Paloumey",
+        commune: "Ludon-Médoc",
+        postalCode: "33290",
+        description:
+            "L'étang de Paloumey est une ancienne gravière devenue un espace naturel de promenade et de pêche à Ludon-Médoc. Entouré de bosquets et de végétation, il offre un cadre agréable au bord de l'eau et dans une petite forêt. \n\nLa signalisation sur place indique que les chiens doivent impérativement être tenus en laisse et l'accès à l'eau leur est interdit.",
+        imageUrl: "/images/places/paloumey.webp",
+
+        gallery: [
+            "/images/places/paloumey-gallery-01.webp",
+            "/images/places/paloumey-gallery-02.webp",
+            "/images/places/paloumey-gallery-03.webp",
+            "/images/places/paloumey-gallery-04.webp",
+            "/images/places/paloumey-gallery-05.webp",
+            "/images/places/paloumey-gallery-06.webp",
+            "/images/places/paloumey-gallery-07.jpeg",
+            "/images/places/paloumey-gallery-08.jpeg",
+            "/images/places/paloumey-gallery-09.webp",
+            "/images/places/paloumey-gallery-10.webp",
+            "/images/places/paloumey-gallery-11.webp",
+            "/images/places/paloumey-gallery-12.webp",
+            "/images/places/paloumey-gallery-13.webp",
+            "/images/places/paloumey-gallery-14.webp",
+            "/images/places/paloumey-gallery-15.webp",
+            "/images/places/paloumey-gallery-16.webp",
+            "/images/places/paloumey-gallery-17.webp",
+            "/images/places/paloumey-gallery-18.webp",
+            "/images/places/paloumey-gallery-19.webp",
+            "/images/places/paloumey-gallery-20.webp",
+            "/images/places/paloumey-gallery-21.webp",
+            "/images/places/paloumey-gallery-22.webp",
+            "/images/places/paloumey-gallery-23.webp",
+            "/images/places/paloumey-gallery-24.jpg",
+            "/images/places/paloumey-gallery-25.jpg",
+        ],
+
+        latitude: 44.984275458780544,
+        longitude: -0.6251403105983353,
+
+        specificities: [
+            "Chemin de promenade autour du plan d'eau",
+            "Plusieurs points de vue sur l'étang",
+            "Bancs aménagés pour faire une pause",
+            "Site fréquenté par les pêcheurs et les promeneurs",
+            "Accès à l'eau interdit aux chiens",
+        ],
+
+        parking: {
+            available: true,
+            address: "En face du Poney Club de Paloumey, 33290 Ludon-Médoc",
+            details: "Le parking principal donne accès à l'étang et sinon il y a un parking au niveau de la crèche, rue de la Longua, avec un accès direct à la forêt."
+
+        },
+
+        characteristics: {
+            vineyards: true,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: true,
+            pineTrees: true,
+        },
+
+        regulations: {
+            dogsOnLeash: true,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: true,
+            farmAnimals: true,
+            cyanobacteria: true,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
     },
 
 ];
