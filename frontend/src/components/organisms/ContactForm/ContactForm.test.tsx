@@ -217,4 +217,27 @@ describe("ContactForm", () => {
             screen.getByLabelText(/Lieu à signaler/)
         ).toHaveValue(placeToReport.id);
     });
+
+    it("affiche un compteur de caractères avec un état visuel adapté", () => {
+        renderContactForm();
+
+        const messageField = screen.getByLabelText(/^Votre message/);
+
+        fireEvent.change(messageField, {
+            target: { value: "Bonjour" },
+        });
+
+        expect(
+            screen.getByText(/Encore 3 caractères minimum/)
+        ).toHaveClass("contact-form__message-counter");
+
+        fireEvent.change(messageField, {
+            target: { value: "Bonjour tout le monde" },
+        });
+
+        expect(
+            screen.getByText(/Minimum atteint/)
+        ).toHaveClass("contact-form__message-counter--valid");
+    });
+
 });

@@ -444,7 +444,7 @@ function ContactForm({ onSuccess }: ContactFormProps) {
                     required
                 />
 
-                <p
+                                <p
                     className={`contact-form__message-counter ${
                         messageLength >= MIN_MESSAGE_LENGTH &&
                         messageLength <= MAX_MESSAGE_LENGTH
