@@ -327,6 +327,7 @@ export const places: Place[] = [
         imageUrl: "/images/places/foret-de-migelane.jpg",
 
         gallery: [
+            "/images/places/foret-de-migelane-gallery-00.jpeg",
             "/images/places/foret-de-migelane-gallery-01.webp",
             "/images/places/foret-de-migelane-gallery-02.webp",
             "/images/places/foret-de-migelane-gallery-03.webp",
@@ -345,6 +346,7 @@ export const places: Place[] = [
             "/images/places/foret-de-migelane-gallery-16.webp",
             "/images/places/foret-de-migelane-gallery-17.webp",
             "/images/places/foret-de-migelane-gallery-18.webp",
+            "/images/places/foret-de-migelane-gallery-19.jpeg",
         ],
 
         latitude: 44.700735494262524,
@@ -393,10 +395,35 @@ export const places: Place[] = [
         postalCode: "33600",
         description:
             "La forêt du Bourgailh est un vaste espace naturel  ",
-        imageUrl: "/images/places/foret-de-migelane.jpg",
+        imageUrl: "/images/places/foret-du-bourgailh.webp",
 
         gallery: [
-            "/images/places/foret-de-migelane-gallery-01.webp",
+            "/images/places/foret-du-bourgailh-gallery-00.jpeg",
+            "/images/places/foret-du-bourgailh-gallery-01.webp",
+            "/images/places/foret-du-bourgailh-gallery-02.webp",
+            "/images/places/foret-du-bourgailh-gallery-03.webp",
+            "/images/places/foret-du-bourgailh-gallery-04.webp",
+            "/images/places/foret-du-bourgailh-gallery-05.webp",
+            "/images/places/foret-du-bourgailh-gallery-06.webp",
+            "/images/places/foret-du-bourgailh-gallery-07.webp",
+            "/images/places/foret-du-bourgailh-gallery-08.webp",
+            "/images/places/foret-du-bourgailh-gallery-09.webp",
+            "/images/places/foret-du-bourgailh-gallery-10.webp",
+            "/images/places/foret-du-bourgailh-gallery-11.webp",
+            "/images/places/foret-du-bourgailh-gallery-12.webp",
+            "/images/places/foret-du-bourgailh-gallery-13.jpg",
+            "/images/places/foret-du-bourgailh-gallery-14.jpeg",
+            "/images/places/foret-du-bourgailh-gallery-15.jpg",
+            "/images/places/foret-du-bourgailh-gallery-16.jpg",
+            "/images/places/foret-du-bourgailh-gallery-17.webp",
+            "/images/places/foret-du-bourgailh-gallery-18.webp",
+            "/images/places/foret-du-bourgailh-gallery-19.webp",
+            "/images/places/foret-du-bourgailh-gallery-20.webp",
+            "/images/places/foret-du-bourgailh-gallery-21.jpg",
+            "/images/places/foret-du-bourgailh-gallery-22.jpg",
+            "/images/places/foret-du-bourgailh-gallery-23.jpg",
+            "/images/places/foret-du-bourgailh-gallery-24.jpg",
+
         ],
 
         latitude: 44.802499053248134,
