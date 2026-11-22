@@ -768,7 +768,7 @@ export const places: Place[] = [
         commune: "Cestas",
         postalCode: "33610",
         description:
-            "Les Gravières bleues d'Arsac offrent un cadre agréable de divers chemins forestiers, sous-bois et plans d'eau. \n\n Une multitude d'itinéraires permet de varier les promenades, en alternant passages ombragés en forêt et chemins ouverts avec une vue dégagée. Les sentiers sablonneux sont agréables à parcourir et permettent de profiter d'une sortie au calme, au cœur des paysages du Médoc.",
+            "Le parc de Monsalut est un espace naturel spacieux apprécié pour ses deux étangs et ses chemins de promenade. Les deux étangs amènent une forte activité de pêche, l'espace doit être partagé. Sur ce lieu on trouve des sous-bois ombragés, des étendues vertes et des chemins le long des plans d'eau. \n\nUne boucle permet de faire le tour des étangs entre plaine et forêt, avec la possibilité de prolonger les chemins forestiers environnants en direction des Sources.",
         imageUrl: "/images/places/monsalut.jpg",
 
         gallery: [
@@ -788,20 +788,22 @@ export const places: Place[] = [
         longitude: -0.7030696117474455,
 
         specificities: [
-            "Plusieurs chemins forestiers pour varier les promenades autour des plans d'eau",
-            "Plusieurs accès possibles au site, avec des entrées à respecter selon la signalisation",
-            "Présence de plans d'eau : baignade des chiens non confirmée",
+            "Deux étangs entourés de végétation",
+            "Boucle d'environ 1,5 km autour des étangs",
+            "Tables de pique-nique autour du grand étang",
+            "Possibilité de prolonger la promenade vers les Sources Ferrugineuses",
+            "Baignade interdite dans les plans d'eau",
         ],
 
         parking: {
-            available: false,
-            address: "Allée du Luquet au niveau du chemin du Pin, 33460 Arsac",
-            details: "Plusieurs accès possibles, attention à bien respecter les panneaux. Au niveau du 38 allée de la Dame Blanche, ou encore du côté de Margaux-Cantenac en partant de la forêt. \n✖ entrée interdite du côté de ma D208"
+            available: true,
+            address: "Chemin du lou Labat, 33610 Cestas",
+            details: "En plus du parking on peut se garer le long de la route au 24 Chem. de Caussat ou encore au 136 Chem. des Sources"
 
         },
 
         characteristics: {
-            vineyards: true,
+            vineyards: false,
             forest: true,
             beach: false,
             shadedAreas: true,
