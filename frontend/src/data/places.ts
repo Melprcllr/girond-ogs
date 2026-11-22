@@ -833,7 +833,7 @@ export const places: Place[] = [
         commune: "Ludon-Médoc",
         postalCode: "33290",
         description:
-            "L'étang de Paloumey est une ancienne gravière devenue un espace naturel de promenade et de pêche à Ludon-Médoc. Entouré de bosquets et de végétation, il offre un cadre agréable au bord de l'eau et dans une petite forêt. \n\nLa signalisation sur place indique que les chiens doivent impérativement être tenus en laisse et l'accès à l'eau leur est interdit.",
+            "L'étang de Paloumey est une ancienne gravière devenue un espace naturel de promenade et de pêche à Ludon-Médoc. Entouré de bosquets et de végétation, il offre un cadre agréable au bord de l'eau et dans une petite forêt. \n\nLa signalisation sur place indique que les chiens doivent impérativement être attachés et l'accès à l'eau leur est interdit.",
         imageUrl: "/images/places/paloumey.webp",
 
         gallery: [
@@ -872,6 +872,277 @@ export const places: Place[] = [
             "Plusieurs points de vue sur l'étang",
             "Bancs aménagés pour faire une pause",
             "Site fréquenté par les pêcheurs et les promeneurs",
+            "Accès à l'eau interdit aux chiens",
+        ],
+
+        parking: {
+            available: true,
+            address: "En face du Poney Club de Paloumey, 33290 Ludon-Médoc",
+            details: "Le parking principal donne accès à l'étang et sinon il y a un parking au niveau de la crèche, rue de la Longua, avec un accès direct à la forêt."
+
+        },
+
+        characteristics: {
+            vineyards: true,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: true,
+            pineTrees: true,
+        },
+
+        regulations: {
+            dogsOnLeash: true,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: true,
+            farmAnimals: true,
+            cyanobacteria: true,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
+    },
+
+    // La forêt du Taillan, Le Taillan-Médoc
+    {
+        id: "foret-du-taillan",
+        name: "Forêt du Taillan",
+        commune: "Le Taillan-Médoc",
+        postalCode: "33320",
+        description:
+            "La forêt du Taillan offre un vaste réseau d'allées permettant de profiter d'une promenade au calme entre petits sentiers et plus larges chemins sabloneux.",
+        imageUrl: "/images/places/foret-du-taillan.webp",
+
+        gallery: [
+            "/images/places/foret-du-taillan-gallery-01.png",
+            "/images/places/foret-du-taillan-gallery-02.jpeg",
+            "/images/places/foret-du-taillan-gallery-03.webp",
+            "/images/places/foret-du-taillan-gallery-04.webp",
+            "/images/places/foret-du-taillan-gallery-05.jpeg",
+            "/images/places/foret-du-taillan-gallery-06.png",
+        ],
+
+        latitude: 44.91547179116187, 
+        longitude: -0.7017470966410057,
+
+        specificities: [
+            "Rare présence d'eau",
+            "Chemins forestiers variés et de sous-bois",
+            "Beaucoup de départs possibles pour des itinéraires différents",
+        ],
+
+        parking: {
+            available: true,
+            address: "Chemin du Pradigna, 33320 Le Taillan-Médoc",
+            details: "Plusieurs autres ''petits parkings'' au niveau du Chem. du Foin ou du 2 All. des Fleurs pour changer de départs d'itinéraires de balades."
+
+        },
+
+        characteristics: {
+            vineyards: false,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: false,
+            pineTrees: true,
+        },
+
+        regulations: {
+            dogsOnLeash: false,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: true,
+            farmAnimals: false,
+            cyanobacteria: false,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
+    },
+
+    // Plaine des Biges, Saint-Médard-en-Jalles
+    {
+        id: "foret-du-taillan",
+        name: "Forêt du Taillan",
+        commune: "Taillan-Médoc",
+        postalCode: "33320",
+        description:
+            " ..",
+        imageUrl: "/images/places/paloumey.webp",
+
+        gallery: [
+            "/images/places/paloumey-gallery-01.webp",
+            "/images/places/paloumey-gallery-02.webp",
+        ],
+
+        latitude: 44.91547179116187, 
+        longitude: -0.7017470966410057,
+
+        specificities: [
+            "Accès à l'eau interdit aux chiens",
+        ],
+
+        parking: {
+            available: true,
+            address: "En face du Poney Club de Paloumey, 33290 Ludon-Médoc",
+            details: "Le parking principal donne accès à l'étang et sinon il y a un parking au niveau de la crèche, rue de la Longua, avec un accès direct à la forêt."
+
+        },
+
+        characteristics: {
+            vineyards: true,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: true,
+            pineTrees: true,
+        },
+
+        regulations: {
+            dogsOnLeash: true,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: true,
+            farmAnimals: true,
+            cyanobacteria: true,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
+    },
+
+    // Parc Floral, Bordeaux
+    {
+        id: "foret-du-taillan",
+        name: "Forêt du Taillan",
+        commune: "Taillan-Médoc",
+        postalCode: "33320",
+        description:
+            " ..",
+        imageUrl: "/images/places/paloumey.webp",
+
+        gallery: [
+            "/images/places/paloumey-gallery-01.webp",
+            "/images/places/paloumey-gallery-02.webp",
+        ],
+
+        latitude: 44.91547179116187, 
+        longitude: -0.7017470966410057,
+
+        specificities: [
+            "Accès à l'eau interdit aux chiens",
+        ],
+
+        parking: {
+            available: true,
+            address: "En face du Poney Club de Paloumey, 33290 Ludon-Médoc",
+            details: "Le parking principal donne accès à l'étang et sinon il y a un parking au niveau de la crèche, rue de la Longua, avec un accès direct à la forêt."
+
+        },
+
+        characteristics: {
+            vineyards: true,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: true,
+            pineTrees: true,
+        },
+
+        regulations: {
+            dogsOnLeash: true,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: true,
+            farmAnimals: true,
+            cyanobacteria: true,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
+    },
+
+    // Domaine de Certes, Audenge
+    {
+        id: "foret-du-taillan",
+        name: "Forêt du Taillan",
+        commune: "Taillan-Médoc",
+        postalCode: "33320",
+        description:
+            " ..",
+        imageUrl: "/images/places/paloumey.webp",
+
+        gallery: [
+            "/images/places/paloumey-gallery-01.webp",
+            "/images/places/paloumey-gallery-02.webp",
+        ],
+
+        latitude: 44.91547179116187, 
+        longitude: -0.7017470966410057,
+
+        specificities: [
+            "Accès à l'eau interdit aux chiens",
+        ],
+
+        parking: {
+            available: true,
+            address: "En face du Poney Club de Paloumey, 33290 Ludon-Médoc",
+            details: "Le parking principal donne accès à l'étang et sinon il y a un parking au niveau de la crèche, rue de la Longua, avec un accès direct à la forêt."
+
+        },
+
+        characteristics: {
+            vineyards: true,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: true,
+            pineTrees: true,
+        },
+
+        regulations: {
+            dogsOnLeash: true,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: true,
+            farmAnimals: true,
+            cyanobacteria: true,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
+    },
+
+    // Citadelle de Blaye, Blaye
+    {
+        id: "foret-du-taillan",
+        name: "Forêt du Taillan",
+        commune: "Taillan-Médoc",
+        postalCode: "33320",
+        description:
+            " ..",
+        imageUrl: "/images/places/paloumey.webp",
+
+        gallery: [
+            "/images/places/paloumey-gallery-01.webp",
+            "/images/places/paloumey-gallery-02.webp",
+        ],
+
+        latitude: 44.91547179116187, 
+        longitude: -0.7017470966410057,
+
+        specificities: [
             "Accès à l'eau interdit aux chiens",
         ],
 
