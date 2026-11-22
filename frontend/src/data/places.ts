@@ -471,7 +471,7 @@ export const places: Place[] = [
         lastVerifiedAt: "2026-11-22",
     },
 
-      // Mussonville, Bègles
+    // Mussonville, Bègles
     {
         id: "mussonville",
         name: "Mussonville",
@@ -541,6 +541,76 @@ export const places: Place[] = [
 
         risks: {
             processionaryCaterpillars: false,
+            farmAnimals: false,
+            cyanobacteria: true,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
+    },
+
+    // Gravières bleues, Arsac
+    {
+        id: "gravieres-bleues-arsac",
+        name: "Gravières bleues, Arsac",
+        commune: "Arsac",
+        postalCode: "33460",
+        description:
+            "Les Gravières bleues d'Arsac offrent un cadre agréable de divers chemins forestiers, sous-bois et plans d'eau. \n\n Une multitude d'itinéraires permet de varier les promenades, en alternant passages ombragés en forêt et chemins ouverts avec une vue dégagée. Les sentiers sablonneux sont agréables à parcourir et permettent de profiter d'une sortie au calme, au cœur des paysages du Médoc.",
+        imageUrl: "/images/places/gravieres-bleues-arsac.webp",
+
+        gallery: [
+            "/images/places/gravieres-bleues-arsac-gallery-01.webp",
+            "/images/places/gravieres-bleues-arsac-gallery-02.webp",
+            "/images/places/gravieres-bleues-arsac-gallery-03.jpeg",
+            "/images/places/gravieres-bleues-arsac-gallery-04.jpg",
+            "/images/places/gravieres-bleues-arsac-gallery-05.webp",
+            "/images/places/gravieres-bleues-arsac-gallery-06.webp",
+            "/images/places/gravieres-bleues-arsac-gallery-07.jpeg",
+            "/images/places/gravieres-bleues-arsac-gallery-08.jpg",
+            "/images/places/gravieres-bleues-arsac-gallery-09.jpeg",
+            "/images/places/gravieres-bleues-arsac-gallery-10.jpg",
+            "/images/places/gravieres-bleues-arsac-gallery-11.jpg",
+            "/images/places/gravieres-bleues-arsac-gallery-12.jpeg",
+            "/images/places/gravieres-bleues-arsac-gallery-13.webp",
+            "/images/places/gravieres-bleues-arsac-gallery-14.webp",
+            "/images/places/gravieres-bleues-arsac-gallery-15.jpeg",
+            "/images/places/gravieres-bleues-arsac-gallery-16.jpg",
+            "/images/places/gravieres-bleues-arsac-gallery-17.jpg",
+        ],
+
+        latitude: 45.00585955330243,
+        longitude: -0.7051969263276138,
+
+        specificities: [
+            "Plusieurs chemins forestiers pour varier les promenades autour des plans d'eau",
+            "Plusieurs accès possibles au site, avec des entrées à respecter selon la signalisation",
+            "Présence de plans d'eau : baignade des chiens non confirmée",
+        ],
+
+        parking: {
+            available: false,
+            address: "Allée du Luquet au niveau du chemin du Pin, 33460 Arsac",
+            details: "Plusieurs accès possibles, attention à bien respecter les panneaux. Au niveau du 38 allée de la Dame Blanche, ou encore du côté de Margaux-Cantenac en partant de la forêt. \n✖ entrée interdite du côté de ma D208"
+
+        },
+
+        characteristics: {
+            vineyards: true,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: true,
+            pineTrees: true,
+        },
+
+        regulations: {
+            dogsOnLeash: false,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: true,
             farmAnimals: false,
             cyanobacteria: true,
         },
