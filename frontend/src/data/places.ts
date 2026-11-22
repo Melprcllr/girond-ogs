@@ -141,9 +141,10 @@ export const places: Place[] = [
         postalCode: "33320",
         description:
             "50 hectares d'espace naturel en plein cœur d'Eysines, dont 22 hectares de boisements. Le domaine offre de nombreux sentiers pédestres traversant les espaces boisés, des pelouses, des aires de pique-nique et des espaces de loisirs.\n\nEntre promenade à l'ombre des arbres et activités sportives, c'est un lieu agréable pour profiter d'un grand espace de verdure en ville. \n\n⚠️ Depuis le 22 janvier 2026, un arrêté municipal de la Ville d’Eysines impose de tenir les chiens en laisse sur l'ensemble du Domaine du Pinsan.\n\n",
-        imageUrl: "/images/places/domaine-du-pinsan-gallery-07.jpg",
+        imageUrl: "/images/places/domaine-du-pinsan.jpeg",
 
         gallery: [
+            "/images/places/domaine-du-pinsan-gallery-00.jpeg",
             "/images/places/domaine-du-pinsan-gallery-01.jpg",
             "/images/places/domaine-du-pinsan-gallery-02.jpg",
             "/images/places/domaine-du-pinsan-gallery-03.jpg",
@@ -154,6 +155,10 @@ export const places: Place[] = [
             "/images/places/domaine-du-pinsan-gallery-08.jpeg",
             "/images/places/domaine-du-pinsan-gallery-09.jpeg",
             "/images/places/domaine-du-pinsan-gallery-10.jpeg",
+            "/images/places/domaine-du-pinsan-gallery-11.jpeg",
+            "/images/places/domaine-du-pinsan-gallery-12.jpeg",
+            "/images/places/domaine-du-pinsan-gallery-13.jpg",
+            "/images/places/domaine-du-pinsan-gallery-14.jpeg",
         ],
 
         latitude: 44.86991979131604,
@@ -394,7 +399,7 @@ export const places: Place[] = [
         commune: "Pessac",
         postalCode: "33600",
         description:
-            "La forêt du Bourgailh est un vaste espace naturel  ",
+            "La forêt du Bourgailh est un vaste espace naturel de 110 hectares situé à Pessac, qui offre un cadre agréable pour les promenades au cœur de la nature. \nComposée de différents espaces paysagers, elle propose une belle diversité de décors entre chemins forestiers, allées aménagées et zones plus ouvertes. \nIl y a plusieurs chemins permettant de varier les itinéraires. Au fil de la balade, on découvre différents aménagements en bois, des passerelles et plusieurs belvédères qui offrent des points de vue sur la forêt et ses paysages. \nTrès fréquentée par les familles, les promeneurs et les sportifs, notamment le week-end, la forêt du Bourgailh permet de profiter d'une grande diversité d'activités dans un environnement boisé, à proximité de la ville.",
         imageUrl: "/images/places/foret-du-bourgailh.webp",
 
         gallery: [
@@ -431,7 +436,7 @@ export const places: Place[] = [
 
         specificities: [
             "Plusieurs belvédères tout au long du parcours",
-            "Parc à chien au niveau de la rue Lino Ventura",
+            "Parc canin au niveau de la rue Lino Ventura",
             "Présence d'un skate parc, d'aires de jeux pour enfants, d'un pumtrack, et d'un bassin de rétention des eaux",
             "Site fréquenté par des joggeurs, cyclistes, et des familles, particulièrement le week-end",
         ],
@@ -463,7 +468,85 @@ export const places: Place[] = [
         },
 
         sources: [],
-        lastVerifiedAt: "2026-11-11",
+        lastVerifiedAt: "2026-11-22",
+    },
+
+      // Mussonville, Bègles
+    {
+        id: "mussonville",
+        name: "Mussonville",
+        commune: "Bègles",
+        postalCode: "33130",
+        description:
+            "Le parc de Mussonville est un vaste espace naturel situé à Bègles, facilement accessible en tram. \nIl offre un cadre agréable pour les promenades, entre espaces boisés, plaines et cours d'eau. \nC'est un parc fréquenté, en fonction de l'horaire, on peut y croiser de nombreux congénères. La partie située du côté de l'entrée tram est davantage aménagée et les chiens doivent être attachés. Dans la partie forêt, les chiens sont tolérés détachés toujours en partageant l'espace avec les autres usagers.",
+        imageUrl: "/images/places/mussonville.webp",
+
+        gallery: [
+            "/images/places/mussonville-gallery-01.webp",
+            "/images/places/mussonville-gallery-02.webp",
+            "/images/places/mussonville-gallery-03.webp",
+            "/images/places/mussonville-gallery-04.webp",
+            "/images/places/mussonville-gallery-05.JPG",
+            "/images/places/mussonville-gallery-06.webp",
+            "/images/places/mussonville-gallery-07.webp",
+            "/images/places/mussonville-gallery-08.webp",
+            "/images/places/mussonville-gallery-09.webp",
+            "/images/places/mussonville-gallery-10.webp",
+            "/images/places/mussonville-gallery-11.webp",
+            "/images/places/mussonville-gallery-12.webp",
+            "/images/places/mussonville-gallery-13.webp",
+            "/images/places/mussonville-gallery-14.webp",
+            "/images/places/mussonville-gallery-15.webp",
+            "/images/places/mussonville-gallery-16.webp",
+            "/images/places/mussonville-gallery-17.webp",
+            "/images/places/mussonville-gallery-18.webp",
+            "/images/places/mussonville-gallery-19.webp",
+            "/images/places/mussonville-gallery-20.webp",
+            "/images/places/mussonville-gallery-21.webp",
+            "/images/places/mussonville-gallery-22.webp",
+            "/images/places/mussonville-gallery-23.webp",
+            "/images/places/mussonville-gallery-24.jpeg",
+        ],
+
+        latitude: 44.79305657456625,
+        longitude: -0.5603066463739168,
+
+        specificities: [
+            "Plusieurs sentiers forestiers pour varier les promenades",
+            "Possibilité de longer l'Eau Bourde sur la majeure partie du parc",
+            "Espace de jeux pour enfants clôturé dans la partie proche du tram",
+            "Plusieurs accès piétons au parc",
+        ],
+
+        parking: {
+            available: true,
+            address: "106 Rue Alexis Labro, 33130 Bègles",
+            details: "Plusieurs accès permettent de rejoindre le parc, notamment au niveau du tram, ou de l'impasse de la rue Dilly Prolongée et aussi au bout de la rue des Deux Esteys."
+
+        },
+
+        characteristics: {
+            vineyards: false,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: true,
+            pineTrees: false,
+        },
+
+        regulations: {
+            dogsOnLeash: true,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: false,
+            farmAnimals: false,
+            cyanobacteria: true,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
     },
 
 ];
