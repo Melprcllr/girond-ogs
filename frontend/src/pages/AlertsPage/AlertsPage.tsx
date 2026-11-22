@@ -1,6 +1,7 @@
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { ArrowUp } from "lucide-react";
 
 import SiteNavigation from "../../components/organisms/SiteNavigation/SiteNavigation";
 import EmergencyContact from "../../components/organisms/EmergencyContact/EmergencyContact";
@@ -9,8 +10,25 @@ import { alerts } from "../../data/alerts";
 
 import "./AlertsPage.scss";
 
+const SCROLL_THRESHOLD = 300;
+
 function AlertsPage() {
     const location = useLocation();
+    const [showBackToTop, setShowBackToTop] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setShowBackToTop(window.scrollY > SCROLL_THRESHOLD);
+        };
+
+        handleScroll();
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
 
     useEffect(() => {
         if (!location.hash) return;
@@ -30,6 +48,13 @@ function AlertsPage() {
             window.cancelAnimationFrame(frameId);
         };
     }, [location.hash]);
+
+    const handleBackToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    };
 
     return (
         <main className="alerts-page">
@@ -147,6 +172,20 @@ function AlertsPage() {
                     de santé animale.
                 </p>
             </div>
+
+
+            <button
+                type="button"
+                className={`alerts-page__back-to-top ${showBackToTop ? "alerts-page__back-to-top--visible" : ""
+                    }`}
+                onClick={handleBackToTop}
+                aria-label="Retourner en haut de la page"
+                aria-hidden={!showBackToTop}
+                tabIndex={showBackToTop ? 0 : -1}
+            >
+                <ArrowUp size={22} strokeWidth={2.5} aria-hidden="true" />
+            </button>
+
         </main>
     );
 }
