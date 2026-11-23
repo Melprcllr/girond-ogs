@@ -925,7 +925,7 @@ export const places: Place[] = [
             "/images/places/foret-du-taillan-gallery-06.png",
         ],
 
-        latitude: 44.91547179116187, 
+        latitude: 44.91547179116187,
         longitude: -0.7017470966410057,
 
         specificities: [
@@ -1000,13 +1000,13 @@ export const places: Place[] = [
             "/images/places/plaine-des-biges-gallery-22.jpg",
         ],
 
-        latitude: 44.887110425164614,  
+        latitude: 44.887110425164614,
         longitude: -0.7465048812103997,
 
         specificities: [
             "Chemins en partie ombragés",
             "Promenade possible le long de la Jalle",
-    ],
+        ],
 
         parking: {
             available: true,
@@ -1079,7 +1079,7 @@ export const places: Place[] = [
             "/images/places/parc-floral-gallery-26.jpeg",
         ],
 
-        latitude: 44.90401772082344, 
+        latitude: 44.90401772082344,
         longitude: -0.5611762138302415,
 
         specificities: [
@@ -1144,7 +1144,7 @@ export const places: Place[] = [
             "/images/places/domaine-de-certes-gallery-11.jpg",
         ],
 
-        latitude: 44.6926673927193, 
+        latitude: 44.6926673927193,
         longitude: -1.0219753187686735,
 
         specificities: [
@@ -1187,40 +1187,66 @@ export const places: Place[] = [
 
     // Citadelle de Blaye, Blaye
     {
-        id: "foret-du-taillan",
-        name: "Forêt du Taillan",
-        commune: "Taillan-Médoc",
-        postalCode: "33320",
+        id: "citadelle-de-blaye",
+        name: "Citadelle de Blaye",
+        commune: "Blaye",
+        postalCode: "33390",
         description:
-            " ..",
-        imageUrl: "/images/places/paloumey.webp",
+            "La Citadelle de Blaye offre un cadre original pour une promenade au cœur d'un ensemble historique dominant l'estuaire de la Gironde. On peut flâner dans les ruelles pavées, découvrir les remparts et profiter de beaux panoramas sur l'estuaire et les paysages environnants. La balade permet d'associer découverte du patrimoine et sortie en plein air, avec plusieurs espaces ouverts à parcourir librement. Le site est fréquenté par divers visiteurs et comprend des passages pavés comme une sortie semi-urbaine.",
+        imageUrl: "/images/places/citadelle-de-blaye.jpg",
 
         gallery: [
-            "/images/places/paloumey-gallery-01.webp",
-            "/images/places/paloumey-gallery-02.webp",
+            "/images/places/citadelle-de-blaye-gallery-00.webp",
+            "/images/places/citadelle-de-blaye-gallery-01.webp",
+            "/images/places/citadelle-de-blaye-gallery-02.webp",
+            "/images/places/citadelle-de-blaye-gallery-03.webp",
+            "/images/places/citadelle-de-blaye-gallery-04.webp",
+            "/images/places/citadelle-de-blaye-gallery-05.webp",
+            "/images/places/citadelle-de-blaye-gallery-06.webp",
+            "/images/places/citadelle-de-blaye-gallery-07.webp",
+            "/images/places/citadelle-de-blaye-gallery-08.webp",
+            "/images/places/citadelle-de-blaye-gallery-09.webp",
+            "/images/places/citadelle-de-blaye-gallery-10.webp",
+            "/images/places/citadelle-de-blaye-gallery-11.webp",
+            "/images/places/citadelle-de-blaye-gallery-12.webp",
+            "/images/places/citadelle-de-blaye-gallery-13.webp",
+            "/images/places/citadelle-de-blaye-gallery-14.jpeg",
+            "/images/places/citadelle-de-blaye-gallery-15.webp",
+            "/images/places/citadelle-de-blaye-gallery-16.webp",
+            "/images/places/citadelle-de-blaye-gallery-17.webp",
+            "/images/places/citadelle-de-blaye-gallery-18.webp",
+            "/images/places/citadelle-de-blaye-gallery-19.webp",
+            "/images/places/citadelle-de-blaye-gallery-20.webp",
+            "/images/places/citadelle-de-blaye-gallery-21.webp",
+            "/images/places/citadelle-de-blaye-gallery-22.jpg",
+            "/images/places/citadelle-de-blaye-gallery-23.jpg",
         ],
 
-        latitude: 44.91547179116187, 
-        longitude: -0.7017470966410057,
+        latitude: 45.12941491034799,
+        longitude: -0.666099145727996,
 
         specificities: [
-            "Accès à l'eau interdit aux chiens",
+            "Chiens autorisés tenus en laisse",
+            "Promenade dans un site historique classé au patrimoine mondial de l'UNESCO",
+            "Chemins pavés et passages parfois irréguliers",
+            "Fréquentation touristique variable selon la saison",
+            "Points de vue sur l'estuaire de la Gironde",
         ],
 
         parking: {
             available: true,
-            address: "En face du Poney Club de Paloumey, 33290 Ludon-Médoc",
-            details: "Le parking principal donne accès à l'étang et sinon il y a un parking au niveau de la crèche, rue de la Longua, avec un accès direct à la forêt."
+            address: "Rue Pierre Semard, 33390 Blaye",
+            details: "Parking en longueur à côté de la porte principale de la Citadelle."
 
         },
 
         characteristics: {
-            vineyards: true,
-            forest: true,
+            vineyards: false,
+            forest: false,
             beach: false,
-            shadedAreas: true,
-            water: true,
-            pineTrees: true,
+            shadedAreas: false,
+            water: false,
+            pineTrees: false,
         },
 
         regulations: {
@@ -1229,9 +1255,9 @@ export const places: Place[] = [
         },
 
         risks: {
-            processionaryCaterpillars: true,
-            farmAnimals: true,
-            cyanobacteria: true,
+            processionaryCaterpillars: false,
+            farmAnimals: false,
+            cyanobacteria: false,
         },
 
         sources: [],
@@ -1253,7 +1279,7 @@ export const places: Place[] = [
             "/images/places/paloumey-gallery-02.webp",
         ],
 
-        latitude: 44.91547179116187, 
+        latitude: 44.91547179116187,
         longitude: -0.7017470966410057,
 
         specificities: [
