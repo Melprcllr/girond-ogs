@@ -1266,40 +1266,63 @@ export const places: Place[] = [
 
     // Bois du Bouscat, Le Bouscat
     {
-        id: "foret-du-taillan",
-        name: "Forêt du Taillan",
-        commune: "Taillan-Médoc",
-        postalCode: "33320",
+        id: "bois-du-bouscat",
+        name: "Bois du Bouscat",
+        commune: "Le Bouscat",
+        postalCode: "33310",
         description:
-            " ..",
-        imageUrl: "/images/places/paloumey.webp",
+            "Espace boisé urbain avec des sentiers aménagés, des sous-bois, une clairière, et quelques installations artistiques. On peut profiter d'une balade à travers le bois, la boucle pédestre autour de l’hippodrome est interdite aux chiens même attachés (post Facebook ville du Bouscat du 21/11/26).  \n\nHoraires d'ouverture : en fonction de la saison varient entre 8h et 18h30-20h.",
+        imageUrl: "/images/places/bois-du-bouscat.webp",
 
         gallery: [
-            "/images/places/paloumey-gallery-01.webp",
-            "/images/places/paloumey-gallery-02.webp",
+            "/images/places/bois-du-bouscat-gallery-00.webp",
+            "/images/places/bois-du-bouscat-gallery-01.webp",
+            "/images/places/bois-du-bouscat-gallery-02.webp",
+            "/images/places/bois-du-bouscat-gallery-03.webp",
+            "/images/places/bois-du-bouscat-gallery-04.webp",
+            "/images/places/bois-du-bouscat-gallery-05.webp",
+            "/images/places/bois-du-bouscat-gallery-06.webp",
+            "/images/places/bois-du-bouscat-gallery-07.webp",
+            "/images/places/bois-du-bouscat-gallery-08.webp",
+            "/images/places/bois-du-bouscat-gallery-09.webp",
+            "/images/places/bois-du-bouscat-gallery-10.webp",
+            "/images/places/bois-du-bouscat-gallery-11.webp",
+            "/images/places/bois-du-bouscat-gallery-12.webp",
+            "/images/places/bois-du-bouscat-gallery-13.webp",
+            "/images/places/bois-du-bouscat-gallery-14.webp",
+            "/images/places/bois-du-bouscat-gallery-15.webp",
+            "/images/places/bois-du-bouscat-gallery-16.webp",
+            "/images/places/bois-du-bouscat-gallery-17.webp",
+            "/images/places/bois-du-bouscat-gallery-18.webp",
+            "/images/places/bois-du-bouscat-gallery-19.webp",
+            "/images/places/bois-du-bouscat-gallery-20.webp",
         ],
 
-        latitude: 44.91547179116187,
-        longitude: -0.7017470966410057,
+        latitude: 44.87372657077126,
+        longitude: -0.6205383084633089,
 
         specificities: [
-            "Accès à l'eau interdit aux chiens",
+            "Chiens autorisés",
+            "Sentiers boisés et ombragés",
+            "Présence de bancs, passerelles et œuvres artistiques",
+            "Mare et rucher sur le site",
+            "Fermeture possible les jours de courses hippiques",
         ],
 
         parking: {
-            available: true,
-            address: "En face du Poney Club de Paloumey, 33290 Ludon-Médoc",
-            details: "Le parking principal donne accès à l'étang et sinon il y a un parking au niveau de la crèche, rue de la Longua, avec un accès direct à la forêt."
+            available: false,
+            address: "On trouve des places le long du Bd du Maréchal Lyautey, 33310 Le Bouscat",
+            details: "Il existe plusieurs entrées piétonnes : Passage quartier Peseou, Entrée Lyautey, Passage quartier Champ de Courses et enfin Entrée Hippodrome."
 
         },
 
         characteristics: {
-            vineyards: true,
+            vineyards: false,
             forest: true,
             beach: false,
             shadedAreas: true,
-            water: true,
-            pineTrees: true,
+            water: false,
+            pineTrees: false,
         },
 
         regulations: {
@@ -1308,9 +1331,9 @@ export const places: Place[] = [
         },
 
         risks: {
-            processionaryCaterpillars: true,
-            farmAnimals: true,
-            cyanobacteria: true,
+            processionaryCaterpillars: false,
+            farmAnimals: false,
+            cyanobacteria: false,
         },
 
         sources: [],
