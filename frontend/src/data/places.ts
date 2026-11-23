@@ -967,35 +967,56 @@ export const places: Place[] = [
 
     // Plaine des Biges, Saint-Médard-en-Jalles
     {
-        id: "foret-du-taillan",
-        name: "Forêt du Taillan",
-        commune: "Taillan-Médoc",
-        postalCode: "33320",
+        id: "plaine-des-biges",
+        name: "La Plaine des Biges",
+        commune: "Saint-Médard-en-Jalles",
+        postalCode: "33160",
         description:
-            " ..",
-        imageUrl: "/images/places/paloumey.webp",
+            "La plaine des Biges est un coin de nature agréable entre espaces ouverts, chemins boisés et abords de la Jalle. Les sentiers permettent de profiter d'une balade dans un environnement verdoyant, avec quelques passages ombragés et une ambiance paisible loin des grands axes. Le secteur se prête aussi bien à une petite sortie qu'à une promenade plus longue en suivant les chemins qui longent le cours d'eau.",
+        imageUrl: "/images/places/plaine-des-biges.jpg",
 
         gallery: [
-            "/images/places/paloumey-gallery-01.webp",
-            "/images/places/paloumey-gallery-02.webp",
+            "/images/places/plaine-des-biges-gallery-00.jpg",
+            "/images/places/plaine-des-biges-gallery-02.jpeg",
+            "/images/places/plaine-des-biges-gallery-03.jpg",
+            "/images/places/plaine-des-biges-gallery-04.jpeg",
+            "/images/places/plaine-des-biges-gallery-05.jpg",
+            "/images/places/plaine-des-biges-gallery-06.jpeg",
+            "/images/places/plaine-des-biges-gallery-07.webp",
+            "/images/places/plaine-des-biges-gallery-08.jpg",
+            "/images/places/plaine-des-biges-gallery-09.webp",
+            "/images/places/plaine-des-biges-gallery-10.jpg",
+            "/images/places/plaine-des-biges-gallery-11.webp",
+            "/images/places/plaine-des-biges-gallery-12.webp",
+            "/images/places/plaine-des-biges-gallery-13.jpg",
+            "/images/places/plaine-des-biges-gallery-14.webp",
+            "/images/places/plaine-des-biges-gallery-15.jpg",
+            "/images/places/plaine-des-biges-gallery-16.jpg",
+            "/images/places/plaine-des-biges-gallery-17.jpg",
+            "/images/places/plaine-des-biges-gallery-18.jpg",
+            "/images/places/plaine-des-biges-gallery-19.jpg",
+            "/images/places/plaine-des-biges-gallery-20.jpg",
+            "/images/places/plaine-des-biges-gallery-21.jpg",
+            "/images/places/plaine-des-biges-gallery-22.jpg",
         ],
 
-        latitude: 44.91547179116187, 
-        longitude: -0.7017470966410057,
+        latitude: 44.887110425164614,  
+        longitude: -0.7465048812103997,
 
         specificities: [
-            "Accès à l'eau interdit aux chiens",
-        ],
+            "Chemins en partie ombragés",
+            "Promenade possible le long de la Jalle",
+    ],
 
         parking: {
             available: true,
-            address: "En face du Poney Club de Paloumey, 33290 Ludon-Médoc",
-            details: "Le parking principal donne accès à l'étang et sinon il y a un parking au niveau de la crèche, rue de la Longua, avec un accès direct à la forêt."
+            address: "All. Jules Védrines, 33160 Saint-Médard-en-Jalles",
+            details: "Grand parking face aux terrains de sport. Diverses entrées tout autour de la forêt."
 
         },
 
         characteristics: {
-            vineyards: true,
+            vineyards: false,
             forest: true,
             beach: false,
             shadedAreas: true,
@@ -1004,56 +1025,83 @@ export const places: Place[] = [
         },
 
         regulations: {
-            dogsOnLeash: true,
+            dogsOnLeash: false,
             dogsProhibited: false,
         },
 
         risks: {
             processionaryCaterpillars: true,
-            farmAnimals: true,
-            cyanobacteria: true,
+            farmAnimals: false,
+            cyanobacteria: false,
         },
 
         sources: [],
         lastVerifiedAt: "2026-11-22",
     },
 
-    // Parc Floral, Bordeaux
+    // Parc Floral - La Réserve écologique des Barails, Bordeaux
     {
-        id: "foret-du-taillan",
-        name: "Forêt du Taillan",
-        commune: "Taillan-Médoc",
-        postalCode: "33320",
+        id: "parc-floral",
+        name: "Réserve Écologique des Barails",
+        commune: "Bordeaux",
+        postalCode: "33300",
         description:
-            " ..",
-        imageUrl: "/images/places/paloumey.webp",
+            "La Réserve écologique des Barails, premier parc naturel et agricole de la Métropole, est issue de la fusion du parc floral et du Bois de Bordeaux. S’étendant au nord du quartier Bordeaux maritime, cette réserve naturelle s'étendant sur 6 000 hectares est un véritable refuge pour la biodiversité. \n\nLes horaires d'ouverture varient en fonction de la période entre 8h30 et 18h-21h. \n\nDans le respect de cet espace naturel préservé les chiens doivent être attachés. \n\nLa réserve se compose d'un bois, de prairies, de zones humides et de plans d'eaux. \n\nOn peut observer des animaux présents dans les espaces d'écopâturage et souvent des vaches au niveau du parking.",
+        imageUrl: "/images/places/parc-floral.webp",
 
         gallery: [
-            "/images/places/paloumey-gallery-01.webp",
-            "/images/places/paloumey-gallery-02.webp",
+            "/images/places/parc-floral-gallery-00.jpeg",
+            "/images/places/parc-floral-gallery-01.webp",
+            "/images/places/parc-floral-gallery-02.webp",
+            "/images/places/parc-floral-gallery-03.webp",
+            "/images/places/parc-floral-gallery-04.webp",
+            "/images/places/parc-floral-gallery-05.webp",
+            "/images/places/parc-floral-gallery-06.webp",
+            "/images/places/parc-floral-gallery-07.webp",
+            "/images/places/parc-floral-gallery-08.webp",
+            "/images/places/parc-floral-gallery-09.webp",
+            "/images/places/parc-floral-gallery-10.webp",
+            "/images/places/parc-floral-gallery-11.webp",
+            "/images/places/parc-floral-gallery-12.webp",
+            "/images/places/parc-floral-gallery-13.webp",
+            "/images/places/parc-floral-gallery-14.webp",
+            "/images/places/parc-floral-gallery-15.webp",
+            "/images/places/parc-floral-gallery-16.webp",
+            "/images/places/parc-floral-gallery-17.webp",
+            "/images/places/parc-floral-gallery-18.webp",
+            "/images/places/parc-floral-gallery-19.webp",
+            "/images/places/parc-floral-gallery-20.webp",
+            "/images/places/parc-floral-gallery-21.webp",
+            "/images/places/parc-floral-gallery-22.webp",
+            "/images/places/parc-floral-gallery-23.webp",
+            "/images/places/parc-floral-gallery-24.webp",
+            "/images/places/parc-floral-gallery-25.webp",
+            "/images/places/parc-floral-gallery-26.jpeg",
         ],
 
-        latitude: 44.91547179116187, 
-        longitude: -0.7017470966410057,
+        latitude: 44.90401772082344, 
+        longitude: -0.5611762138302415,
 
         specificities: [
-            "Accès à l'eau interdit aux chiens",
+            "Chiens tenus en laisse",
+            "Accès interdit aux espaces plantés",
+            "Présence de moutons et vaches en écopâturage",
+            "Zones de quiétude pour la faune inaccessibles au public",
         ],
 
         parking: {
             available: true,
-            address: "En face du Poney Club de Paloumey, 33290 Ludon-Médoc",
-            details: "Le parking principal donne accès à l'étang et sinon il y a un parking au niveau de la crèche, rue de la Longua, avec un accès direct à la forêt."
-
+            address: "Avenue du Golf, 33300 Bordeaux",
+            details: "Entrées : Cours Jules Ladoumègue et Allée du Bois (anciennement entrée du Bois de Bordeaux). Lors des matchs ou événements au stade l'entrée sud peut être fermée au profit de l'entrée nord."
         },
 
         characteristics: {
-            vineyards: true,
+            vineyards: false,
             forest: true,
             beach: false,
             shadedAreas: true,
             water: true,
-            pineTrees: true,
+            pineTrees: false,
         },
 
         regulations: {
@@ -1062,28 +1110,29 @@ export const places: Place[] = [
         },
 
         risks: {
-            processionaryCaterpillars: true,
+            processionaryCaterpillars: false,
             farmAnimals: true,
             cyanobacteria: true,
         },
 
         sources: [],
-        lastVerifiedAt: "2026-11-22",
+        lastVerifiedAt: "2026-11-23",
     },
 
-    // Domaine de Certes, Audenge
+    // Domaine de Certes et Graveyron, Audenge
     {
-        id: "foret-du-taillan",
-        name: "Forêt du Taillan",
-        commune: "Taillan-Médoc",
-        postalCode: "33320",
+        id: "domaine-de-certes",
+        name: "Domaine de Certes et Graveyron",
+        commune: "Audenge",
+        postalCode: "33980",
         description:
             " ..",
-        imageUrl: "/images/places/paloumey.webp",
+        imageUrl: "/images/places/domaine-de-certes.webp",
 
         gallery: [
-            "/images/places/paloumey-gallery-01.webp",
-            "/images/places/paloumey-gallery-02.webp",
+            "/images/places/domaine-de-certes-gallery-00.webp",
+            "/images/places/domaine-de-certes-gallery-01.webp",
+            "/images/places/domaine-de-certes-gallery-02.jpg",
         ],
 
         latitude: 44.91547179116187, 
@@ -1125,6 +1174,59 @@ export const places: Place[] = [
     },
 
     // Citadelle de Blaye, Blaye
+    {
+        id: "foret-du-taillan",
+        name: "Forêt du Taillan",
+        commune: "Taillan-Médoc",
+        postalCode: "33320",
+        description:
+            " ..",
+        imageUrl: "/images/places/paloumey.webp",
+
+        gallery: [
+            "/images/places/paloumey-gallery-01.webp",
+            "/images/places/paloumey-gallery-02.webp",
+        ],
+
+        latitude: 44.91547179116187, 
+        longitude: -0.7017470966410057,
+
+        specificities: [
+            "Accès à l'eau interdit aux chiens",
+        ],
+
+        parking: {
+            available: true,
+            address: "En face du Poney Club de Paloumey, 33290 Ludon-Médoc",
+            details: "Le parking principal donne accès à l'étang et sinon il y a un parking au niveau de la crèche, rue de la Longua, avec un accès direct à la forêt."
+
+        },
+
+        characteristics: {
+            vineyards: true,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: true,
+            pineTrees: true,
+        },
+
+        regulations: {
+            dogsOnLeash: true,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: true,
+            farmAnimals: true,
+            cyanobacteria: true,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
+    },
+
+    // Bois du Bouscat, Le Bouscat
     {
         id: "foret-du-taillan",
         name: "Forêt du Taillan",
