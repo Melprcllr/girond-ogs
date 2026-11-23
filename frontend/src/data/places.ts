@@ -1126,36 +1126,48 @@ export const places: Place[] = [
         commune: "Audenge",
         postalCode: "33980",
         description:
-            " ..",
+            "Le Domaine de Certes est un magnifique espace naturel du Bassin d'Arcachon, proposant plusieurs circuits de promenade au milieu des paysages de marais, de prairies humides et de bassins. \n\nLes chemins et les digues sont exposés au soleil et traversent une faune particulièrement riche, notamment de nombreux oiseaux. \n\nPlusieurs itinéraires permettent de profiter du domaine à son rythme, dans un environnement calme et dépaysant. Une belle sortie nature, la signalisation indique que les chiens doivent être attachés, il faut aussi veiller à rester sur les chemins et à ne pas déranger les animaux sauvages.",
         imageUrl: "/images/places/domaine-de-certes.webp",
 
         gallery: [
             "/images/places/domaine-de-certes-gallery-00.webp",
             "/images/places/domaine-de-certes-gallery-01.webp",
             "/images/places/domaine-de-certes-gallery-02.jpg",
+            "/images/places/domaine-de-certes-gallery-03.webp",
+            "/images/places/domaine-de-certes-gallery-04.webp",
+            "/images/places/domaine-de-certes-gallery-05.webp",
+            "/images/places/domaine-de-certes-gallery-06.webp",
+            "/images/places/domaine-de-certes-gallery-07.webp",
+            "/images/places/domaine-de-certes-gallery-08.jpg",
+            "/images/places/domaine-de-certes-gallery-09.jpg",
+            "/images/places/domaine-de-certes-gallery-10.jpg",
+            "/images/places/domaine-de-certes-gallery-11.jpg",
         ],
 
-        latitude: 44.91547179116187, 
-        longitude: -0.7017470966410057,
+        latitude: 44.6926673927193, 
+        longitude: -1.0219753187686735,
 
         specificities: [
-            "Accès à l'eau interdit aux chiens",
+            "Chiens tenus en laisse",
+            "Espace naturel protégé : faune et flore sensibles",
+            "Présence de nombreux oiseaux et animaux sauvages",
+            "Terrain exposé au soleil avec peu d'ombre sur certaines portions",
         ],
 
         parking: {
             available: true,
-            address: "En face du Poney Club de Paloumey, 33290 Ludon-Médoc",
-            details: "Le parking principal donne accès à l'étang et sinon il y a un parking au niveau de la crèche, rue de la Longua, avec un accès direct à la forêt."
+            address: "47 Av. de Certes, 33980 Audenge",
+            details: "En plus du parking principal au niveau du Château de Certes, il est possible de se garer au niveau des bassins de baignade d'Audenge, ou encore du côté de Lanton au niveau du sentier du littoral ou en partant de la plage Suzette."
 
         },
 
         characteristics: {
-            vineyards: true,
-            forest: true,
-            beach: false,
-            shadedAreas: true,
+            vineyards: false,
+            forest: false,
+            beach: true,
+            shadedAreas: false,
             water: true,
-            pineTrees: true,
+            pineTrees: false,
         },
 
         regulations: {
@@ -1164,7 +1176,7 @@ export const places: Place[] = [
         },
 
         risks: {
-            processionaryCaterpillars: true,
+            processionaryCaterpillars: false,
             farmAnimals: true,
             cyanobacteria: true,
         },
