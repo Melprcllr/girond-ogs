@@ -192,6 +192,137 @@ describe("PlaceBottomSheet", () => {
         ).toBeInTheDocument();
     });
 
+    const placeWithGallery: Place = {
+        ...mockPlace,
+        gallery: [
+            "/images/demoPlaces/lac-lacanau-2.jpg",
+            "/images/demoPlaces/lac-lacanau-3.jpg",
+        ],
+    };
+
+    it("passe à la photo suivante lors d'un swipe vers la gauche", () => {
+        render(
+            <MemoryRouter>
+                <PlaceBottomSheet
+                    place={placeWithGallery}
+                    onClose={vi.fn()}
+                />
+            </MemoryRouter>
+        );
+
+        fireEvent.click(
+            screen.getByRole("button", { name: "Agrandir la fiche" })
+        );
+
+        fireEvent.click(
+            screen.getByRole("button", {
+                name: /Voir toutes les photos/,
+            })
+        );
+
+        const image = screen.getByRole("img", {
+            name: "Lac de Lacanau - photo 1",
+        });
+
+        fireEvent.touchStart(image, {
+            touches: [{ clientX: 250, clientY: 150 }],
+        });
+
+        fireEvent.touchEnd(image, {
+            changedTouches: [{ clientX: 100, clientY: 150 }],
+        });
+
+        expect(
+            screen.getByRole("img", {
+                name: "Lac de Lacanau - photo 2",
+            })
+        ).toBeInTheDocument();
+
+        expect(screen.getByText("2 / 3")).toBeInTheDocument();
+    });
+
+    it("revient à la photo précédente lors d'un swipe vers la droite", () => {
+        render(
+            <MemoryRouter>
+                <PlaceBottomSheet
+                    place={placeWithGallery}
+                    onClose={vi.fn()}
+                />
+            </MemoryRouter>
+        );
+
+        fireEvent.click(
+            screen.getByRole("button", { name: "Agrandir la fiche" })
+        );
+
+        fireEvent.click(
+            screen.getByRole("button", {
+                name: /Voir toutes les photos/,
+            })
+        );
+
+        const image = screen.getByRole("img", {
+            name: "Lac de Lacanau - photo 1",
+        });
+
+        fireEvent.touchStart(image, {
+            touches: [{ clientX: 100, clientY: 150 }],
+        });
+
+        fireEvent.touchEnd(image, {
+            changedTouches: [{ clientX: 250, clientY: 150 }],
+        });
+
+        expect(
+            screen.getByRole("img", {
+                name: "Lac de Lacanau - photo 3",
+            })
+        ).toBeInTheDocument();
+
+        expect(screen.getByText("3 / 3")).toBeInTheDocument();
+    });
+
+    it("ne change pas de photo lors d'un déplacement vertical", () => {
+        render(
+            <MemoryRouter>
+                <PlaceBottomSheet
+                    place={placeWithGallery}
+                    onClose={vi.fn()}
+                />
+            </MemoryRouter>
+        );
+
+        fireEvent.click(
+            screen.getByRole("button", { name: "Agrandir la fiche" })
+        );
+
+        fireEvent.click(
+            screen.getByRole("button", {
+                name: /Voir toutes les photos/,
+            })
+        );
+
+        const image = screen.getByRole("img", {
+            name: "Lac de Lacanau - photo 1",
+        });
+
+        fireEvent.touchStart(image, {
+            touches: [{ clientX: 150, clientY: 100 }],
+        });
+
+        fireEvent.touchEnd(image, {
+            changedTouches: [{ clientX: 160, clientY: 250 }],
+        });
+
+        expect(
+            screen.getByRole("img", {
+                name: "Lac de Lacanau - photo 1",
+            })
+        ).toBeInTheDocument();
+
+        expect(screen.getByText("1 / 3")).toBeInTheDocument();
+    });
+
 
     it("indique lorsqu'aucun parking aménagé n'est disponible", () => {
         const placeWithoutParking: Place = {
@@ -291,32 +422,32 @@ describe("PlaceBottomSheet", () => {
 
 
 
-it("affiche l'adresse même lorsqu'aucun parking aménagé n'est disponible", () => {
-    const placeWithoutParking: Place = {
-        ...mockPlace,
-        parking: {
-            available: false,
-            address: "Rue Dilly Prolongée, 33130 Bègles",
-        },
-    };
+    it("affiche l'adresse même lorsqu'aucun parking aménagé n'est disponible", () => {
+        const placeWithoutParking: Place = {
+            ...mockPlace,
+            parking: {
+                available: false,
+                address: "Rue Dilly Prolongée, 33130 Bègles",
+            },
+        };
 
-    render(
-        <MemoryRouter>
-            <PlaceBottomSheet
-                place={placeWithoutParking}
-                onClose={vi.fn()}
-            />
-        </MemoryRouter>
-    );
+        render(
+            <MemoryRouter>
+                <PlaceBottomSheet
+                    place={placeWithoutParking}
+                    onClose={vi.fn()}
+                />
+            </MemoryRouter>
+        );
 
-    fireEvent.click(
-        screen.getByRole("button", { name: "Agrandir la fiche" })
-    );
+        fireEvent.click(
+            screen.getByRole("button", { name: "Agrandir la fiche" })
+        );
 
-    expect(
-        screen.getByText("Rue Dilly Prolongée, 33130 Bègles")
-    ).toBeInTheDocument();
-});
+        expect(
+            screen.getByText("Rue Dilly Prolongée, 33130 Bègles")
+        ).toBeInTheDocument();
+    });
 
 
 });

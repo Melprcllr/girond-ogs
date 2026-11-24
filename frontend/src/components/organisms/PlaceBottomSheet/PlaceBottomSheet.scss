@@ -241,6 +241,9 @@
         max-height: 100%;
         object-fit: contain;
         border-radius: 8px;
+        touch-action: pan-y;
+        user-select: none;
+        -webkit-user-drag: none;        
     }
 
     &__close,

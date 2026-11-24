@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
     ChevronDown,
@@ -39,6 +39,11 @@ function PlaceBottomSheet({
 
     const [activePhotoIndex, setActivePhotoIndex] =
         useState<number | null>(null);
+
+    const touchStartPosition = useRef<{
+        x: number;
+        y: number;
+    } | null>(null);
 
     const navigate = useNavigate();
 
@@ -86,6 +91,42 @@ function PlaceBottomSheet({
                 ? 0
                 : (current + 1) % galleryImages.length
         );
+    };
+
+    const handleTouchStart = (event: React.TouchEvent<HTMLImageElement>) => {
+        if (event.touches.length !== 1) return;
+
+        touchStartPosition.current = {
+            x: event.touches[0].clientX,
+            y: event.touches[0].clientY,
+        };
+    };
+
+    const handleTouchEnd = (event: React.TouchEvent<HTMLImageElement>) => {
+        if (!touchStartPosition.current) return;
+
+        const touch = event.changedTouches[0];
+
+        if (!touch) {
+            touchStartPosition.current = null;
+            return;
+        }
+
+        const deltaX = touch.clientX - touchStartPosition.current.x;
+        const deltaY = touch.clientY - touchStartPosition.current.y;
+
+        touchStartPosition.current = null;
+
+        // Ignore les mouvements trop courts ou principalement verticaux.
+        if (Math.abs(deltaX) < 50 || Math.abs(deltaX) < Math.abs(deltaY)) {
+            return;
+        }
+
+        if (deltaX < 0) {
+            showNextPhoto();
+        } else {
+            showPreviousPhoto();
+        }
     };
 
     const characteristics = [
@@ -335,6 +376,11 @@ function PlaceBottomSheet({
                         className="place-gallery__image"
                         src={galleryImages[activePhotoIndex]}
                         alt={`${place.name} - photo ${activePhotoIndex + 1}`}
+                        onTouchStart={handleTouchStart}
+                        onTouchEnd={handleTouchEnd}
+                        onTouchCancel={() => {
+                            touchStartPosition.current = null;
+                        }}
                     />
 
                     <button
