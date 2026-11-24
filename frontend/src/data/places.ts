@@ -833,7 +833,7 @@ export const places: Place[] = [
         commune: "Ludon-Médoc",
         postalCode: "33290",
         description:
-            "L'étang de Paloumey est une ancienne gravière devenue un espace naturel de promenade et de pêche à Ludon-Médoc. Entouré de bosquets et de végétation, il offre un cadre agréable au bord de l'eau et dans une petite forêt. \n\nLa signalisation sur place indique que les chiens doivent impérativement être tenus en laisse et l'accès à l'eau leur est interdit.",
+            "L'étang de Paloumey est une ancienne gravière devenue un espace naturel de promenade et de pêche à Ludon-Médoc. Entouré de bosquets et de végétation, il offre un cadre agréable au bord de l'eau et dans une petite forêt. \n\nLa signalisation sur place indique que les chiens doivent impérativement être attachés et l'accès à l'eau leur est interdit.",
         imageUrl: "/images/places/paloumey.webp",
 
         gallery: [
@@ -862,6 +862,7 @@ export const places: Place[] = [
             "/images/places/paloumey-gallery-23.webp",
             "/images/places/paloumey-gallery-24.jpg",
             "/images/places/paloumey-gallery-25.jpg",
+            "/images/places/paloumey-gallery-26.jpeg",
         ],
 
         latitude: 44.984275458780544,
@@ -900,6 +901,440 @@ export const places: Place[] = [
             processionaryCaterpillars: true,
             farmAnimals: true,
             cyanobacteria: true,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
+    },
+
+    // La forêt du Taillan, Le Taillan-Médoc
+    {
+        id: "foret-du-taillan",
+        name: "Forêt du Taillan",
+        commune: "Le Taillan-Médoc",
+        postalCode: "33320",
+        description:
+            "La forêt du Taillan offre un vaste réseau d'allées permettant de profiter d'une promenade au calme entre petits sentiers et plus larges chemins sabloneux.",
+        imageUrl: "/images/places/foret-du-taillan.webp",
+
+        gallery: [
+            "/images/places/foret-du-taillan-gallery-01.png",
+            "/images/places/foret-du-taillan-gallery-02.jpeg",
+            "/images/places/foret-du-taillan-gallery-03.webp",
+            "/images/places/foret-du-taillan-gallery-04.webp",
+            "/images/places/foret-du-taillan-gallery-05.jpeg",
+            "/images/places/foret-du-taillan-gallery-06.png",
+        ],
+
+        latitude: 44.91547179116187,
+        longitude: -0.7017470966410057,
+
+        specificities: [
+            "Rare présence d'eau",
+            "Chemins forestiers variés et de sous-bois",
+            "Beaucoup de départs possibles pour des itinéraires différents",
+        ],
+
+        parking: {
+            available: true,
+            address: "Chemin du Pradigna, 33320 Le Taillan-Médoc",
+            details: "Plusieurs autres ''petits parkings'' au niveau du Chem. du Foin ou du 2 All. des Fleurs pour changer de départs d'itinéraires de balades."
+
+        },
+
+        characteristics: {
+            vineyards: false,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: false,
+            pineTrees: true,
+        },
+
+        regulations: {
+            dogsOnLeash: false,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: true,
+            farmAnimals: false,
+            cyanobacteria: false,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
+    },
+
+    // Plaine des Biges, Saint-Médard-en-Jalles
+    {
+        id: "plaine-des-biges",
+        name: "La Plaine des Biges",
+        commune: "Saint-Médard-en-Jalles",
+        postalCode: "33160",
+        description:
+            "La plaine des Biges est un coin de nature agréable entre espaces ouverts, chemins boisés et abords de la Jalle. Les sentiers permettent de profiter d'une balade dans un environnement verdoyant, avec quelques passages ombragés et une ambiance paisible loin des grands axes. Le secteur se prête aussi bien à une petite sortie qu'à une promenade plus longue en suivant les chemins qui longent le cours d'eau.",
+        imageUrl: "/images/places/plaine-des-biges.jpg",
+
+        gallery: [
+            "/images/places/plaine-des-biges-gallery-00.jpg",
+            "/images/places/plaine-des-biges-gallery-02.jpeg",
+            "/images/places/plaine-des-biges-gallery-03.jpg",
+            "/images/places/plaine-des-biges-gallery-04.jpeg",
+            "/images/places/plaine-des-biges-gallery-05.jpg",
+            "/images/places/plaine-des-biges-gallery-06.jpeg",
+            "/images/places/plaine-des-biges-gallery-07.webp",
+            "/images/places/plaine-des-biges-gallery-08.jpg",
+            "/images/places/plaine-des-biges-gallery-09.webp",
+            "/images/places/plaine-des-biges-gallery-10.jpg",
+            "/images/places/plaine-des-biges-gallery-11.webp",
+            "/images/places/plaine-des-biges-gallery-12.webp",
+            "/images/places/plaine-des-biges-gallery-13.jpg",
+            "/images/places/plaine-des-biges-gallery-14.webp",
+            "/images/places/plaine-des-biges-gallery-15.jpg",
+            "/images/places/plaine-des-biges-gallery-16.jpg",
+            "/images/places/plaine-des-biges-gallery-17.jpg",
+            "/images/places/plaine-des-biges-gallery-18.jpg",
+            "/images/places/plaine-des-biges-gallery-19.jpg",
+            "/images/places/plaine-des-biges-gallery-20.jpg",
+            "/images/places/plaine-des-biges-gallery-21.jpg",
+            "/images/places/plaine-des-biges-gallery-22.jpg",
+        ],
+
+        latitude: 44.887110425164614,
+        longitude: -0.7465048812103997,
+
+        specificities: [
+            "Chemins en partie ombragés",
+            "Promenade possible le long de la Jalle",
+        ],
+
+        parking: {
+            available: true,
+            address: "All. Jules Védrines, 33160 Saint-Médard-en-Jalles",
+            details: "Grand parking face aux terrains de sport. Diverses entrées tout autour de la forêt."
+
+        },
+
+        characteristics: {
+            vineyards: false,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: true,
+            pineTrees: true,
+        },
+
+        regulations: {
+            dogsOnLeash: false,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: true,
+            farmAnimals: false,
+            cyanobacteria: false,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
+    },
+
+    // Parc Floral - La Réserve écologique des Barails, Bordeaux
+    {
+        id: "parc-floral",
+        name: "Réserve Écologique des Barails",
+        commune: "Bordeaux",
+        postalCode: "33300",
+        description:
+            "La Réserve écologique des Barails, premier parc naturel et agricole de la Métropole, est issue de la fusion du parc floral et du Bois de Bordeaux. S’étendant au nord du quartier Bordeaux maritime, cette réserve naturelle s'étendant sur 6 000 hectares est un véritable refuge pour la biodiversité. \n\nLes horaires d'ouverture varient en fonction de la période entre 8h30 et 18h-21h. \n\nDans le respect de cet espace naturel préservé les chiens doivent être attachés. \n\nLa réserve se compose d'un bois, de prairies, de zones humides et de plans d'eaux. \n\nOn peut observer des animaux présents dans les espaces d'écopâturage et souvent des vaches au niveau du parking.",
+        imageUrl: "/images/places/parc-floral.webp",
+
+        gallery: [
+            "/images/places/parc-floral-gallery-00.jpeg",
+            "/images/places/parc-floral-gallery-01.webp",
+            "/images/places/parc-floral-gallery-02.webp",
+            "/images/places/parc-floral-gallery-03.webp",
+            "/images/places/parc-floral-gallery-04.webp",
+            "/images/places/parc-floral-gallery-05.webp",
+            "/images/places/parc-floral-gallery-06.webp",
+            "/images/places/parc-floral-gallery-07.webp",
+            "/images/places/parc-floral-gallery-08.webp",
+            "/images/places/parc-floral-gallery-09.webp",
+            "/images/places/parc-floral-gallery-10.webp",
+            "/images/places/parc-floral-gallery-11.webp",
+            "/images/places/parc-floral-gallery-12.webp",
+            "/images/places/parc-floral-gallery-13.webp",
+            "/images/places/parc-floral-gallery-14.webp",
+            "/images/places/parc-floral-gallery-15.webp",
+            "/images/places/parc-floral-gallery-16.webp",
+            "/images/places/parc-floral-gallery-17.webp",
+            "/images/places/parc-floral-gallery-18.webp",
+            "/images/places/parc-floral-gallery-19.webp",
+            "/images/places/parc-floral-gallery-20.webp",
+            "/images/places/parc-floral-gallery-21.webp",
+            "/images/places/parc-floral-gallery-22.webp",
+            "/images/places/parc-floral-gallery-23.webp",
+            "/images/places/parc-floral-gallery-24.webp",
+            "/images/places/parc-floral-gallery-25.webp",
+            "/images/places/parc-floral-gallery-26.jpeg",
+        ],
+
+        latitude: 44.90401772082344,
+        longitude: -0.5611762138302415,
+
+        specificities: [
+            "Chiens tenus en laisse",
+            "Accès interdit aux espaces plantés",
+            "Présence de moutons et vaches en écopâturage",
+            "Zones de quiétude pour la faune inaccessibles au public",
+        ],
+
+        parking: {
+            available: true,
+            address: "Avenue du Golf, 33300 Bordeaux",
+            details: "Entrées : Cours Jules Ladoumègue et Allée du Bois (anciennement entrée du Bois de Bordeaux). Lors des matchs ou événements au stade l'entrée sud peut être fermée au profit de l'entrée nord."
+        },
+
+        characteristics: {
+            vineyards: false,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: true,
+            pineTrees: false,
+        },
+
+        regulations: {
+            dogsOnLeash: true,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: false,
+            farmAnimals: true,
+            cyanobacteria: true,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-23",
+    },
+
+    // Domaine de Certes et Graveyron, Audenge
+    {
+        id: "domaine-de-certes",
+        name: "Domaine de Certes et Graveyron",
+        commune: "Audenge",
+        postalCode: "33980",
+        description:
+            "Le Domaine de Certes est un magnifique espace naturel du Bassin d'Arcachon, proposant plusieurs circuits de promenade au milieu des paysages de marais, de prairies humides et de bassins. \n\nLes chemins et les digues sont exposés au soleil et traversent une faune particulièrement riche, notamment de nombreux oiseaux. \n\nPlusieurs itinéraires permettent de profiter du domaine à son rythme, dans un environnement calme et dépaysant. Une belle sortie nature, la signalisation indique que les chiens doivent être attachés, il faut aussi veiller à rester sur les chemins et à ne pas déranger les animaux sauvages.",
+        imageUrl: "/images/places/domaine-de-certes.webp",
+
+        gallery: [
+            "/images/places/domaine-de-certes-gallery-00.webp",
+            "/images/places/domaine-de-certes-gallery-01.webp",
+            "/images/places/domaine-de-certes-gallery-02.jpg",
+            "/images/places/domaine-de-certes-gallery-03.webp",
+            "/images/places/domaine-de-certes-gallery-04.webp",
+            "/images/places/domaine-de-certes-gallery-05.webp",
+            "/images/places/domaine-de-certes-gallery-06.webp",
+            "/images/places/domaine-de-certes-gallery-07.webp",
+            "/images/places/domaine-de-certes-gallery-08.jpg",
+            "/images/places/domaine-de-certes-gallery-09.jpg",
+            "/images/places/domaine-de-certes-gallery-10.jpg",
+            "/images/places/domaine-de-certes-gallery-11.jpg",
+        ],
+
+        latitude: 44.6926673927193,
+        longitude: -1.0219753187686735,
+
+        specificities: [
+            "Chiens tenus en laisse",
+            "Espace naturel protégé : faune et flore sensibles",
+            "Présence de nombreux oiseaux et animaux sauvages",
+            "Terrain exposé au soleil avec peu d'ombre sur certaines portions",
+        ],
+
+        parking: {
+            available: true,
+            address: "47 Av. de Certes, 33980 Audenge",
+            details: "En plus du parking principal au niveau du Château de Certes, il est possible de se garer au niveau des bassins de baignade d'Audenge, ou encore du côté de Lanton au niveau du sentier du littoral ou en partant de la plage Suzette."
+
+        },
+
+        characteristics: {
+            vineyards: false,
+            forest: false,
+            beach: true,
+            shadedAreas: false,
+            water: true,
+            pineTrees: false,
+        },
+
+        regulations: {
+            dogsOnLeash: true,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: false,
+            farmAnimals: true,
+            cyanobacteria: true,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
+    },
+
+    // Citadelle de Blaye, Blaye
+    {
+        id: "citadelle-de-blaye",
+        name: "Citadelle de Blaye",
+        commune: "Blaye",
+        postalCode: "33390",
+        description:
+            "La Citadelle de Blaye offre un cadre original pour une promenade au cœur d'un ensemble historique dominant l'estuaire de la Gironde. On peut flâner dans les ruelles pavées, découvrir les remparts et profiter de beaux panoramas sur l'estuaire et les paysages environnants. La balade permet d'associer découverte du patrimoine et sortie en plein air, avec plusieurs espaces ouverts à parcourir librement. Le site est fréquenté par divers visiteurs et comprend des passages pavés comme une sortie semi-urbaine.",
+        imageUrl: "/images/places/citadelle-de-blaye.jpg",
+
+        gallery: [
+            "/images/places/citadelle-de-blaye-gallery-00.webp",
+            "/images/places/citadelle-de-blaye-gallery-01.webp",
+            "/images/places/citadelle-de-blaye-gallery-02.webp",
+            "/images/places/citadelle-de-blaye-gallery-03.webp",
+            "/images/places/citadelle-de-blaye-gallery-04.webp",
+            "/images/places/citadelle-de-blaye-gallery-05.webp",
+            "/images/places/citadelle-de-blaye-gallery-06.webp",
+            "/images/places/citadelle-de-blaye-gallery-07.webp",
+            "/images/places/citadelle-de-blaye-gallery-08.webp",
+            "/images/places/citadelle-de-blaye-gallery-09.webp",
+            "/images/places/citadelle-de-blaye-gallery-10.webp",
+            "/images/places/citadelle-de-blaye-gallery-11.webp",
+            "/images/places/citadelle-de-blaye-gallery-12.webp",
+            "/images/places/citadelle-de-blaye-gallery-13.webp",
+            "/images/places/citadelle-de-blaye-gallery-14.jpeg",
+            "/images/places/citadelle-de-blaye-gallery-15.webp",
+            "/images/places/citadelle-de-blaye-gallery-16.webp",
+            "/images/places/citadelle-de-blaye-gallery-17.webp",
+            "/images/places/citadelle-de-blaye-gallery-18.webp",
+            "/images/places/citadelle-de-blaye-gallery-19.webp",
+            "/images/places/citadelle-de-blaye-gallery-20.webp",
+            "/images/places/citadelle-de-blaye-gallery-21.webp",
+            "/images/places/citadelle-de-blaye-gallery-22.jpg",
+            "/images/places/citadelle-de-blaye-gallery-23.jpg",
+        ],
+
+        latitude: 45.12941491034799,
+        longitude: -0.666099145727996,
+
+        specificities: [
+            "Chiens autorisés tenus en laisse",
+            "Promenade dans un site historique classé au patrimoine mondial de l'UNESCO",
+            "Chemins pavés et passages parfois irréguliers",
+            "Fréquentation touristique variable selon la saison",
+            "Points de vue sur l'estuaire de la Gironde",
+        ],
+
+        parking: {
+            available: true,
+            address: "Rue Pierre Semard, 33390 Blaye",
+            details: "Parking en longueur à côté de la porte principale de la Citadelle."
+
+        },
+
+        characteristics: {
+            vineyards: false,
+            forest: false,
+            beach: false,
+            shadedAreas: false,
+            water: false,
+            pineTrees: false,
+        },
+
+        regulations: {
+            dogsOnLeash: true,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: false,
+            farmAnimals: false,
+            cyanobacteria: false,
+        },
+
+        sources: [],
+        lastVerifiedAt: "2026-11-22",
+    },
+
+    // Bois du Bouscat, Le Bouscat
+    {
+        id: "bois-du-bouscat",
+        name: "Bois du Bouscat",
+        commune: "Le Bouscat",
+        postalCode: "33310",
+        description:
+            "Espace boisé urbain avec des sentiers aménagés, des sous-bois, une clairière, et quelques installations artistiques. On peut profiter d'une balade à travers le bois, la boucle pédestre autour de l’hippodrome est interdite aux chiens même attachés (post Facebook ville du Bouscat du 21/11/26).  \n\nHoraires d'ouverture : en fonction de la saison varient entre 8h et 18h30-20h.",
+        imageUrl: "/images/places/bois-du-bouscat.webp",
+
+        gallery: [
+            "/images/places/bois-du-bouscat-gallery-00.webp",
+            "/images/places/bois-du-bouscat-gallery-01.webp",
+            "/images/places/bois-du-bouscat-gallery-02.webp",
+            "/images/places/bois-du-bouscat-gallery-03.webp",
+            "/images/places/bois-du-bouscat-gallery-04.webp",
+            "/images/places/bois-du-bouscat-gallery-05.webp",
+            "/images/places/bois-du-bouscat-gallery-06.webp",
+            "/images/places/bois-du-bouscat-gallery-07.webp",
+            "/images/places/bois-du-bouscat-gallery-08.webp",
+            "/images/places/bois-du-bouscat-gallery-09.webp",
+            "/images/places/bois-du-bouscat-gallery-10.webp",
+            "/images/places/bois-du-bouscat-gallery-11.webp",
+            "/images/places/bois-du-bouscat-gallery-12.webp",
+            "/images/places/bois-du-bouscat-gallery-13.webp",
+            "/images/places/bois-du-bouscat-gallery-14.webp",
+            "/images/places/bois-du-bouscat-gallery-15.webp",
+            "/images/places/bois-du-bouscat-gallery-16.webp",
+            "/images/places/bois-du-bouscat-gallery-17.webp",
+            "/images/places/bois-du-bouscat-gallery-18.webp",
+            "/images/places/bois-du-bouscat-gallery-19.webp",
+            "/images/places/bois-du-bouscat-gallery-20.webp",
+        ],
+
+        latitude: 44.87372657077126,
+        longitude: -0.6205383084633089,
+
+        specificities: [
+            "Chiens autorisés",
+            "Sentiers boisés et ombragés",
+            "Présence de bancs, passerelles et œuvres artistiques",
+            "Mare et rucher sur le site",
+            "Fermeture possible les jours de courses hippiques",
+        ],
+
+        parking: {
+            available: false,
+            address: "On trouve des places le long du Bd du Maréchal Lyautey, 33310 Le Bouscat",
+            details: "Il existe plusieurs entrées piétonnes : Passage quartier Peseou, Entrée Lyautey, Passage quartier Champ de Courses et enfin Entrée Hippodrome."
+
+        },
+
+        characteristics: {
+            vineyards: false,
+            forest: true,
+            beach: false,
+            shadedAreas: true,
+            water: false,
+            pineTrees: false,
+        },
+
+        regulations: {
+            dogsOnLeash: true,
+            dogsProhibited: false,
+        },
+
+        risks: {
+            processionaryCaterpillars: false,
+            farmAnimals: false,
+            cyanobacteria: false,
         },
 
         sources: [],
