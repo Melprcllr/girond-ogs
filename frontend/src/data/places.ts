@@ -862,6 +862,7 @@ export const places: Place[] = [
             "/images/places/paloumey-gallery-23.webp",
             "/images/places/paloumey-gallery-24.jpg",
             "/images/places/paloumey-gallery-25.jpg",
+            "/images/places/paloumey-gallery-26.jpeg",
         ],
 
         latitude: 44.984275458780544,

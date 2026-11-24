@@ -78,7 +78,7 @@ function InstallationInstructions() {
                             Ouvrez <strong>Girond'ogs dans Safari</strong>.
                         </li>
                         <li>
-                            Appuyez sur le bouton <strong>Partager</strong>
+                            Appuyez sur le bouton <strong>Partager </strong>
                             (le carré avec une flèche vers le haut).
                         </li>
                         <li>
@@ -226,7 +226,7 @@ const faqCategories: FAQCategory[] = [
                                 Forêt, Plage, Zones ombragées et Point d'eau.
                             </li>
                             <li>
-                                <strong>Points de vigilance :</strong>
+                                <strong>Points de vigilance : </strong>
                                 Chenilles processionnaires, Animaux d'élevage,
                                 Risque de cyanobactéries et Présence de pins.
                             </li>
